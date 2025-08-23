@@ -14,7 +14,7 @@ html, body {
       transform: translateX(-100%);
     }
     100% {
-      transform: translateX(-250%);
+      transform: translateX(250%);
     }
   }
   .animate-loading-bar {
