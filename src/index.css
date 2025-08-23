@@ -9,7 +9,19 @@ html, body {
 }
 
 @layer utilities {
-  @keyframes loading {
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  .animate-blink { /*applied to the | character on LoadingScreen.jsx*/
+    animation: blink 0.8s ease infinite;
+  }
+
+  @keyframes loading { /* keyframes = define animation sequence*/
     0% {
       transform: translateX(-100%);
     }
@@ -17,7 +29,7 @@ html, body {
       transform: translateX(250%);
     }
   }
-  .animate-loading-bar {
+  .animate-loading-bar { /*applied to the blue background div that moves accross the loading bar in LoadingScreen.jsx*/
     animation: loading 0.8s ease infinite;
   }
 }

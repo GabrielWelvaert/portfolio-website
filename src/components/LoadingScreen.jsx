@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 
-export const LoadingScreen = ({onComplete}) => {
-    const [text, setText] = useState("");
+export const LoadingScreen = ({onComplete}) => { // loading screen component, passed prop is parent setter function
+    const [text, setText] = useState(""); // internal state for this component and its setter function
     const fullText = "Welcome To My Website!!!";
-    useEffect(() => {
+    useEffect(() => { // useEffect is a built-in hook for side effects (anything that doesn't return jsx)
         let index = 0;
-        const interval = setInterval(() => {
+        const interval = setInterval(() => { // run this function every 50 ms
             setText(fullText.substring(0, index));
             index++;
             if(index > fullText.length){
-                clearInterval(interval)
-                setTimeout(() => {
-                    // onComplete();
+                clearInterval(interval) // stop the running interval
+                setTimeout(() => { // wait 250 ms before body is executed
+                    onComplete(); // calling passed prop, which is callback
                 }, 250)
             }
         }, 50);
-        return () => clearInterval(interval);
-    }, [onComplete])
+        return () => clearInterval(interval); // to stop memory leaks
+    }, [onComplete]) // dependency array must be passed to useEffect, changes to these cause re-render of component
 
     return (
         // outmost div is a flexbox (column) of fixed centered elements
