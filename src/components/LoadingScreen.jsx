@@ -12,7 +12,7 @@ export const LoadingScreen = ({onComplete}) => { // loading screen component, pa
                 clearInterval(interval) // stop the running interval
                 setTimeout(() => { // wait 250 ms before body is executed
                     onComplete(); // calling passed prop, which is callback
-                }, 750)
+                }, 1000)
             }
         }, 50);
         return () => clearInterval(interval); // to stop memory leaks
@@ -24,7 +24,7 @@ export const LoadingScreen = ({onComplete}) => { // loading screen component, pa
             <div className="mb-4 text-6xl font-mono font-bold text-center">
                 {text}<span className="animate-blink text-6xl ml-1">|</span>
             </div>
-            <div className="w-[200px] h-[2px] bg-gray-800 rounded relative overflow-hidden">
+            <div className="w-[500px] h-[2px] bg-gray-800 rounded relative overflow-hidden">
                 <div className="w-[40%] h-full bg-blue-500 shadow-[0_0_15px_#3b82f6] animate-loading-bar"></div>
             </div>
         </div>

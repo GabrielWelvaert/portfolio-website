@@ -8,10 +8,10 @@ export const MobileMenu = ({menuOpen, setMenuOpen}) => {
             <button onClick={() => setMenuOpen(false)} className="absolute top-18 right-6 interactable-text text-5xl focus:outline-none cursor-pointer">
                 &times;
             </button>
-            <a href="#about" className="interactable-text text-3xl">About</a>
-            <a href="#education" className="interactable-text text-3xl">Education</a>
-            <a href="#employment" className="interactable-text text-3xl">Employment</a>
-            <a href="#projects" className="interactable-text text-3xl">Projects</a>
+            <a href="#about" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>About</a>
+            <a href="#education" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>Education</a>
+            <a href="#employment" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>Employment</a>
+            <a href="#projects" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>Projects</a>
         </div>
     </>)
 };
