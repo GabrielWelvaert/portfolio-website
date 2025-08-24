@@ -8,6 +8,10 @@ html, body {
   color: #f3f4f6;
 }
 
+.interactable-text {
+  @apply text-gray-300 hover:text-white transition-colors font-mono;
+}
+
 @layer utilities {
   @keyframes blink {
     0% {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 export const LoadingScreen = ({onComplete}) => { // loading screen component, passed prop is parent setter function
     const [text, setText] = useState(""); // internal state for this component and its setter function
-    const fullText = "Welcome To My Website!!!";
+    const fullText = "Welcome To My Portfolio Website!";
     useEffect(() => { // useEffect is a built-in hook for side effects (anything that doesn't return jsx)
         let index = 0;
         const interval = setInterval(() => { // run this function every 50 ms
@@ -12,7 +12,7 @@ export const LoadingScreen = ({onComplete}) => { // loading screen component, pa
                 clearInterval(interval) // stop the running interval
                 setTimeout(() => { // wait 250 ms before body is executed
                     onComplete(); // calling passed prop, which is callback
-                }, 250)
+                }, 750)
             }
         }, 50);
         return () => clearInterval(interval); // to stop memory leaks
