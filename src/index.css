@@ -12,6 +12,27 @@ html, body {
   @apply text-gray-300 hover:text-white transition-colors font-mono;
 }
 
+.passage-text {
+  @apply text-white font-mono text-lg text-center max-w-lg;
+}
+
+.passage-text-header {
+  @apply text-white font-mono text-4xl text-center;
+}
+
+.page-content-container {
+  @apply max-h-screen mx-auto flex flex-col items-center relative top-20 max-w-7xl gap-6;
+}
+
+.page-content-container-centered {
+  @apply min-h-screen flex flex-col items-center justify-center relative gap-6 mx-auto max-w-3xl;
+}
+
+.bottom-anchor {
+  @apply absolute bottom-10
+}
+
+
 @layer utilities {
   @keyframes blink {
     0% {

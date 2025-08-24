@@ -12,6 +12,7 @@ export const MobileMenu = ({menuOpen, setMenuOpen}) => {
             <a href="#education" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>Education</a>
             <a href="#employment" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>Employment</a>
             <a href="#projects" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>Projects</a>
+            <a href="#contact" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>Contact</a>
         </div>
     </>)
 };
