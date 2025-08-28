@@ -9,8 +9,7 @@ export const MobileMenu = ({menuOpen, setMenuOpen}) => {
                 &times;
             </button>
             <a href="#about" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>About</a>
-            <a href="#education" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>Education</a>
-            <a href="#employment" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>Employment</a>
+            <a href="#work" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>Work</a>
             <a href="#projects" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>Projects</a>
             <a href="#contact" className="interactable-text text-3xl" onClick={() => setMenuOpen(false)}>Contact</a>
         </div>
