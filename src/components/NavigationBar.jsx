@@ -8,7 +8,7 @@ export const NavigationBar = ({menuOpen, setMenuOpen}) => {
     }, [menuOpen]);
 
     return (<>
-        <nav className="fixed top-0  w-full z-40 bg-[rgba(10,10,10,.8)] backdrop-blur-lg border-b border-white/10 shadow-lg">
+        <nav className="fixed top-0  w-full z-40 bg-[#024a80] backdrop-blur-lg border-b border-white/10 shadow-lg">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
                     <a href="#home" className="interactable-text text-2xl">Gabriel Welvaert</a>

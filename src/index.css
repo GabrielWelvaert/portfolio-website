@@ -17,16 +17,36 @@ html, body {
   @apply text-gray-300 hover:text-white transition-colors font-mono;
 }
 
+.list {
+  @apply list-none space-y-2 text-left;
+}
+
 .passage-text {
-  @apply text-white font-mono text-lg text-center w-full;
+  @apply text-white font-sans text-[20px] text-center w-full leading-relaxed;
+}
+
+.small-button-text {
+  @apply text-white bg-black font-sans text-[15px] text-center py-1 px-3 rounded-lg shadow-md leading-relaxed;
+}
+
+.card-button-text {
+  @apply text-white bg-black font-sans text-[20px] text-left py-1 px-3 rounded-lg shadow-md leading-relaxed;
 }
 
 .passage-text-left {
-  @apply text-white font-mono text-lg text-left w-full;
+  @apply text-white font-sans text-[20px] text-left w-full leading-relaxed;
 }
 
-.passage-text-right {
-  @apply text-white font-mono text-lg text-right w-full;
+.cards-row {
+  @apply flex flex-wrap gap-4 justify-center;
+}
+
+.card-item {
+  @apply flex-1 w-[400px] min-w-[250px] bg-[#054575] p-3 rounded-lg shadow-md;
+}
+
+.card-header {
+  @apply text-white font-mono text-[24px] text-center w-full mb-[4px];
 }
 
 .passage-text-header {
@@ -34,15 +54,15 @@ html, body {
 }
 
 .page-content-container-centered-500 {
-  @apply min-h-screen flex flex-col items-center justify-center relative gap-6 mx-auto max-w-[500px];
+  @apply min-h-screen flex flex-col items-center justify-center relative gap-8 mx-auto max-w-[500px];
 }
 
 .page-content-container-centered-1000 {
-  @apply min-h-screen flex flex-col items-center justify-center relative gap-6 mx-auto max-w-[1000px];
+  @apply min-h-screen flex flex-col items-center justify-center relative gap-8 mx-auto max-w-[1000px];
 }
 
 .page-content-container-1000 {
-  @apply min-h-screen flex flex-col items-center mt-[84px] relative gap-6 mx-auto max-w-[1000px];
+  @apply min-h-screen flex flex-col items-center mt-[84px] relative gap-8 mx-auto max-w-[1000px];
 }
 
 .bottom-anchor {
