@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+// this hook updates the url with current section in viewport
+
 export function useIntersectionObserver(sectionIds){
   useEffect(() => {
     const observer = new IntersectionObserver(

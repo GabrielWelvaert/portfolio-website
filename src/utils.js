@@ -7,3 +7,5 @@ export function scrollToId(id){
         section.scrollIntoView({ behavior: "smooth" });
     }
 }
+
+export const sectionIds = ["home", "about", "work", "projects", "contact"];

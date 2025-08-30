@@ -21,6 +21,14 @@ html, body {
   @apply text-white font-mono text-lg text-center w-full;
 }
 
+.passage-text-left {
+  @apply text-white font-mono text-lg text-left w-full;
+}
+
+.passage-text-right {
+  @apply text-white font-mono text-lg text-right w-full;
+}
+
 .passage-text-header {
   @apply text-white font-mono text-4xl text-center w-full;
 }

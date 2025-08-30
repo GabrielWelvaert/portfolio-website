@@ -1,23 +1,32 @@
 import { useState, useEffect } from "react";
 import { scrollToId } from "../utils.js";
 
+// this hook creates a keypress event listener for the window
+// and keeps track of where we are so we can move between sections
+
 export function useNavigationKey(sectionIds) {
   const [currentIndex, setCurrentIndex] = useState(() => {
-    const href =  window.location.hash.replace("#","");
-    const index = sectionIds.indexOf(href)
-    if(index >= 0){
-      return index;
-    } else {
-      return 0;
-    }
+    getCurrentIndexFromURL(sectionIds)
   });
 
-  useEffect(() => {
-    // console.log("Current index changed:", currentIndex, sectionIds[currentIndex]);
-  }, [currentIndex]);
+  function getCurrentIndexFromURL(sectionIds){
+    const href =  window.location.hash.replace("#","");
+    const index = sectionIds.indexOf(href);
+    return index >= 0 ? index : 0;
+  }
+
+  // for debugging
+  // useEffect(() => { 
+  //   console.log("Current index changed:", currentIndex, sectionIds[currentIndex]);
+  // }, [currentIndex]);
 
   useEffect(() => {
     function handleKey(e) {
+      const URLIndex = getCurrentIndexFromURL(sectionIds);
+      let currentEffectiveIndex = currentIndex;
+      if(URLIndex != currentIndex){
+        currentEffectiveIndex = URLIndex;
+      }
       const arrowKeys = new Set(["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft", " "]);
       const key = e.key;
       const maxIndex = sectionIds.length - 1;
@@ -28,12 +37,12 @@ export function useNavigationKey(sectionIds) {
           case " ":
           case "ArrowDown":
           case "ArrowRight": {
-            const incrementIndex = currentIndex + 1; 
+            const incrementIndex = currentEffectiveIndex + 1; 
             index = incrementIndex % (maxIndex + 1);
           } break;
           case "ArrowUp":
           case "ArrowLeft": {
-            const decrementIndex = currentIndex - 1; 
+            const decrementIndex = currentEffectiveIndex - 1; 
             decrementIndex < 0 ? index = maxIndex : index = decrementIndex
           } break;
         }
