@@ -1,19 +1,13 @@
 import { useState, useEffect } from "react";
-import { scrollToId } from "../utils.js";
+import { scrollToId, sectionIds, getCurrentIndexFromURL } from "../utils.js";
 
 // this hook creates a keypress event listener for the window
 // and keeps track of where we are so we can move between sections
 
-export function useNavigationKey(sectionIds) {
+export function useNavigationKey() {
   const [currentIndex, setCurrentIndex] = useState(() => {
-    getCurrentIndexFromURL(sectionIds)
+    getCurrentIndexFromURL();
   });
-
-  function getCurrentIndexFromURL(sectionIds){
-    const href =  window.location.hash.replace("#","");
-    const index = sectionIds.indexOf(href);
-    return index >= 0 ? index : 0;
-  }
 
   // for debugging
   // useEffect(() => { 
@@ -22,7 +16,7 @@ export function useNavigationKey(sectionIds) {
 
   useEffect(() => {
     function handleKey(e) {
-      const URLIndex = getCurrentIndexFromURL(sectionIds);
+      const URLIndex = getCurrentIndexFromURL();
       let currentEffectiveIndex = currentIndex;
       if(URLIndex != currentIndex){
         currentEffectiveIndex = URLIndex;

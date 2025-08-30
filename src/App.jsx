@@ -15,9 +15,8 @@ import { useIntersectionObserver } from "./hooks/useIntersectionObserver.js";
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const sectionIds = ["home", "about", "work", "projects", "contact"];
-  useNavigationKey(sectionIds);
-  useIntersectionObserver(sectionIds);
+  useNavigationKey();
+  useIntersectionObserver();
   useEffect(() => {
     if(isLoaded){
       scrollToId();
