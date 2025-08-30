@@ -16,8 +16,10 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(getCurrentIndexFromURL());
-  useNavigationKey(currentIndex, setCurrentIndex);
-  useIntersectionObserver(currentIndex, setCurrentIndex);
+
+  useNavigationKey(currentIndex, setCurrentIndex); // arrow keys navigation 
+  useIntersectionObserver(currentIndex, setCurrentIndex); // scroll navigation
+
   useEffect(() => { // update URL whenever current index changes
     history.replaceState(null, "", `#${indexToSection.get(currentIndex)}`);
   }, [currentIndex]);
@@ -26,6 +28,7 @@ function App() {
       scrollToId();
     }
   }, [isLoaded]);
+
   return (
     <>
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)}/>}

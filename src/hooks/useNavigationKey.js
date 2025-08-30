@@ -6,9 +6,9 @@ import { scrollToId, sectionIds, getCurrentIndexFromURL, indexToSection, section
 
 export function useNavigationKey(currentIndex, setCurrentIndex) {
   // for debugging
-  useEffect(() => { 
-    console.log("Current index changed:", currentIndex, indexToSection.get(currentIndex));
-  }, [currentIndex]);
+  // useEffect(() => { 
+  //   console.log("Current index changed:", currentIndex, indexToSection.get(currentIndex));
+  // }, [currentIndex]);
 
   useEffect(() => {
     function handleKey(e) {

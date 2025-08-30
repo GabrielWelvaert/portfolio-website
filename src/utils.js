@@ -14,13 +14,6 @@ export function getCurrentIndexFromURL(){
     return index >= 0 ? index : 0;
 }
 
-export function getCurrentPositionFromURL(){
-    const href = window.location.hash.replace("#","");
-    if(href){
-        
-    }
-}
-
 export const sectionIds = ["home", "about", "work", "projects", "contact"];
 
 // section to Index
