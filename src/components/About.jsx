@@ -28,8 +28,8 @@ export const About = () => {
                         title="Skills"
                         description={[
                             "C++", "Javascript", "Python", "PHP",
-                            "HTML", "CSS", "Node/Express", "REST",
-                            "MVC", "Docker", "MySQL", "MySQL Workbench",
+                            "HTML", "CSS", "Node/Express", "React", "Tailwind", "REST",
+                            "MVC", "Docker", "MySQL", "OOP", "DoD",
                             "Git", "GitHub", "Confluence", "Jira", "Agile",
                             "VSCode", "Valgrind", "GDB", "GCC", "Fortify", "AWS",
                             "Linux", "Windows", "OOP", "GIMP", "SDL2"

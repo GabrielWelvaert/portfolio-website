@@ -16,10 +16,10 @@ export const NavigationBar = ({menuOpen, setMenuOpen}) => {
                         &#9776; 
                     </div>
                     <div className="hidden md:flex items-center space-x-5">
-                        <a href="#about" className="interactable-text text-text-[1.8rem]">About</a>
-                        <a href="#work" className="interactable-text text-text-[1.8rem]">Work</a>
-                        <a href="#projects" className="interactable-text text-text-[1.8rem]">Projects</a>
-                        <a href="#contact" className="interactable-text text-text-[1.8rem]">Contact</a>
+                        <a href="#about" className="interactable-text text-[20px]">About</a>
+                        <a href="#work" className="interactable-text text-[20px]">Work</a>
+                        <a href="#projects" className="interactable-text text-[20px]">Projects</a>
+                        <a href="#contact" className="interactable-text text-[20px]">Contact</a>
                     </div>
                 </div>
             </div>
