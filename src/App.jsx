@@ -9,15 +9,19 @@ import { Work } from "./components/Work"
 import { Projects } from "./components/Projects"
 import { Contact } from "./components/Contact"
 import { useNavigationKey } from "./hooks/useNavigationKey";
-import { scrollToId } from "./utils.js";
+import { scrollToId, getCurrentIndexFromURL, indexToSection } from "./utils.js";
 import { useIntersectionObserver } from "./hooks/useIntersectionObserver.js";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  useNavigationKey();
-  useIntersectionObserver();
-  useEffect(() => {
+  const [currentIndex, setCurrentIndex] = useState(getCurrentIndexFromURL());
+  useNavigationKey(currentIndex, setCurrentIndex);
+  useIntersectionObserver(currentIndex, setCurrentIndex);
+  useEffect(() => { // update URL whenever current index changes
+    history.replaceState(null, "", `#${indexToSection.get(currentIndex)}`);
+  }, [currentIndex]);
+  useEffect(() => { // scroll to current section once welcome screen is done
     if(isLoaded){
       scrollToId();
     }

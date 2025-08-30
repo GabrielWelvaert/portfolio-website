@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import { sectionIds } from "../utils.js";
+import { sectionIds, sectionToIndex } from "../utils.js";
 
 // this hook updates the url with current section in viewport
 
-export function useIntersectionObserver(){
+export function useIntersectionObserver(currentIndex, setCurrentIndex){
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            history.replaceState(null, "", `#${entry.target.id}`);
+            setCurrentIndex(sectionToIndex.get(entry.target.id));
           }
         });
       },
@@ -22,5 +22,5 @@ export function useIntersectionObserver(){
     });
 
     return () => observer.disconnect();
-  }, []); 
+  }, [currentIndex, setCurrentIndex]); 
 }

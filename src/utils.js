@@ -14,4 +14,17 @@ export function getCurrentIndexFromURL(){
     return index >= 0 ? index : 0;
 }
 
+export function getCurrentPositionFromURL(){
+    const href = window.location.hash.replace("#","");
+    if(href){
+        
+    }
+}
+
 export const sectionIds = ["home", "about", "work", "projects", "contact"];
+
+// section to Index
+export const sectionToIndex = new Map(sectionIds.map((id, i) => [id, i]));
+
+// index to Section
+export const indexToSection = new Map(sectionIds.map((id, i) => [i, id]));
