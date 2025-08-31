@@ -37,10 +37,10 @@ export const About = () => {
                     />
                 </div>
                 <div className="passage-text">
-                    Currently living in Southeastern Virginia.
+                    Currently living in Southeastern Virginia – open to remote work or relocation.
                 </div>
                 <div className="passage-text">
-                    I also enjoy cooking, the outdoors, travel, and fostering kittens.
+                    I enjoy cooking, the outdoors, traveling, and fostering kittens.
                 </div>
             </div>
         </>
