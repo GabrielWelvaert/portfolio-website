@@ -21,6 +21,19 @@ html, body {
   @apply list-none space-y-2 text-left;
 }
 
+.hover-image-text {
+  @apply font-sans text-[20px] text-center w-full leading-relaxed text-[#247dc2] hover:text-[#a5bfd3] cursor-pointer;
+}
+
+.hover-image {
+  @apply w-64 h-64 rounded-lg object-cover; 
+}
+
+.hover-image-display-grid {
+  @apply fixed left-1/2 transform -translate-x-1/2
+         grid grid-cols-3 gap-2 bg-gradient-to-br from-[#101010] to-[#1a1a25] p-2 rounded shadow-lg z-39;
+}
+
 .passage-text {
   @apply text-white font-sans text-[20px] text-center w-full leading-relaxed;
 }
