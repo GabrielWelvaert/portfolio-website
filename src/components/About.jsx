@@ -33,7 +33,7 @@ export const About = () => {
                             "MVC", "Docker", "MySQL", "OOP", "DoD",
                             "Git", "GitHub", "Confluence", "Jira", "Agile",
                             "VSCode", "Valgrind", "GDB", "GCC", "Fortify", "AWS",
-                            "Linux", "Windows", "SDL2"
+                            "Linux", "Windows", "SDL2", "SSH"
                         ]}
                     />
                 </div>
