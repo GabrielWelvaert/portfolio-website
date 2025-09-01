@@ -9,6 +9,19 @@ html, body {
   scroll-behavior: smooth;
 }
 
+.button-selector-container {
+  @apply inline-flex bg-[#054575] p-3 rounded-lg shadow-md gap-4;
+}
+
+.button-selector-selected-item {
+  @apply bg-blue-500 py-1 px-3 rounded-lg shadow-md cursor-pointer ease-in-out transition-colors;
+}
+
+.button-selector-item {
+  @apply bg-black py-1 px-3 rounded-lg shadow-md cursor-pointer ease-in-out transition-colors;
+}
+
+
 .full-image {
   @apply w-full max-w-full h-auto rounded-lg object-cover;
 }
@@ -26,7 +39,7 @@ html, body {
 }
 
 .hover-image-text {
-  @apply font-sans text-[20px] text-center w-full leading-relaxed text-[#247dc2] hover:text-[#a5bfd3] cursor-pointer;
+  @apply font-sans text-[20px] text-center w-full leading-relaxed text-[#247dc2] hover:text-[#a5bfd3] cursor-pointer transition-colors;
 }
 
 .hover-image {
