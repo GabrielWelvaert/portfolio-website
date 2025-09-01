@@ -19,7 +19,7 @@ export const HoverImage = ({text, images}) => {
                     {displayedImages.map((src, id) => (
                     <img
                         key={id}
-                        src={`/public/${src}`}
+                        src={`/${src}`}
                         className="hover-image"
                     />
                     ))}
