@@ -9,6 +9,10 @@ html, body {
   scroll-behavior: smooth;
 }
 
+.full-image {
+  @apply w-full max-w-full h-auto rounded-lg object-cover;
+}
+
 .non-centered-scrollable-section {
   scroll-margin-top: 84px;
 }
