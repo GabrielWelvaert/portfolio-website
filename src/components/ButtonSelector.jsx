@@ -5,15 +5,13 @@ export const ButtonSelector = ({options, selected, callback}) => {
     <div className="button-selector-container">
       {options.map((opt) => (
         <button 
-            className={`${selected === opt ? "button-selector-selected-item" : "button-selector-item"}`}
-            // className="button-selector-item"
             key={opt}
             onClick={() => {
               callback(opt);
               console.log(opt);
             }}
         >
-            <span className="passage-text">
+            <span className="interactable-text text-[20px] cursor-pointer">
               {opt}
             </span>
         </button>

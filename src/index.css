@@ -10,7 +10,7 @@ html, body {
 }
 
 .button-selector-container {
-  @apply inline-flex bg-[#054575] p-3 rounded-lg shadow-md gap-4;
+  @apply inline-flex bg-[#054575] p-3 rounded-lg shadow-md gap-10;
 }
 
 .button-selector-selected-item {
