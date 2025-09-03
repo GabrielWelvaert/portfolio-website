@@ -41,6 +41,7 @@ export const About = () => {
                     Currently living in Southeastern Virginia – open to remote work or relocation.
                 </div>
                 <div className="passage-text">
+                    {/* TODO make a separate component here for mobile users since HoverImage wont work for them? */}
                     I enjoy <HoverImage text="cooking" images={["IMG_0018.JPEG", "IMG_0283.JPEG", "IMG_0394.JPEG", "IMG_0499.JPEG", "IMG_0591.JPEG", "IMG_7487.JPEG", "IMG_7883.JPEG", "IMG_8557.JPEG", "IMG_8998.JPEG"]}></HoverImage>,&nbsp; 
                             <HoverImage text="the outdoors" images={["IMG_0716.JPEG", "IMG_0843.JPEG", "IMG_3912.JPEG", "IMG_4423.JPEG", "IMG_4709.JPEG", "IMG_6528.JPEG", "IMG_6576.JPEG", "IMG_8193.JPEG", "IMG_8301.JPEG"]}></HoverImage>,&nbsp;
                             <HoverImage text="traveling" images={["00025.jpg", "IMG_0791.JPEG", "IMG_1071.JPEG", "IMG_1734_000.jpg", "IMG_1750.JPEG", "IMG_4371.JPEG", "IMG_5589.JPEG", "IMG_8040.JPEG", "IMG_8154.JPEG"]}></HoverImage>,&nbsp;and&nbsp; 
