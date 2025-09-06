@@ -7,14 +7,6 @@ import { Thiswebsite } from "./Thiswebsite";
 export const Projects = () => {
     const [project, setProject] = useState("");
     const projects = ["Realm of the Mad Gabe", "TheGabebook", "This Website"];
-    let content;
-    if(project === projects[0]){
-        content = <Rotmgabe></Rotmgabe>
-    } else if(project === projects[1]){
-        content = <Gabebook></Gabebook>
-    } else if(project === projects[2]){
-        content = <Thiswebsite></Thiswebsite>
-    }
 
     return (
         <>
@@ -28,8 +20,10 @@ export const Projects = () => {
                     selected={project}
                     callback={setProject}
                 ></ButtonSelector>
-                <div>
-                    {content}
+                <div className="relative min-w-[100%]">
+                    <Rotmgabe className={`opacity-fading-project ${project === projects[0] ? "opacity-100" : "opacity-0"}`}></Rotmgabe>
+                    <Gabebook className={`opacity-fading-project ${project === projects[1] ? "opacity-100" : "opacity-0"}`}></Gabebook>
+                    <Thiswebsite className={`opacity-fading-project ${project === projects[2] ? "opacity-100" : "opacity-0"}`}></Thiswebsite>
                 </div>
             </div>
         </>

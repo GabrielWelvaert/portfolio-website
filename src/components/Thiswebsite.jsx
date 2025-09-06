@@ -1,6 +1,10 @@
 
-export const Thiswebsite = () => {
+export const Thiswebsite = ({ className }) => {
     return (
-        <div>This Website Component TODO</div>
+        <div className={className}>
+            <div className="passage-text">
+                this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website this website 
+            </div>
+        </div>
     )
 }

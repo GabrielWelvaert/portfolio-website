@@ -8,7 +8,6 @@ export const ButtonSelector = ({options, selected, callback}) => {
             key={opt}
             onClick={() => {
               callback(opt);
-              console.log(opt);
             }}
         >
             <span className="interactable-text text-[20px] cursor-pointer">
