@@ -5,8 +5,9 @@ import { Gabebook } from "./Gabebook";
 import { Thiswebsite } from "./Thiswebsite";
 
 export const Projects = () => {
-    const [project, setProject] = useState("");
     const projects = ["Realm of the Mad Gabe", "TheGabebook", "This Website"];
+    // const [project, setProject] = useState("");
+    const [project, setProject] = useState(projects[0]);
 
     return (
         <>
@@ -21,9 +22,9 @@ export const Projects = () => {
                     callback={setProject}
                 ></ButtonSelector>
                 <div className="relative min-w-[100%]">
-                    <Rotmgabe className={`opacity-fading-project ${project === projects[0] ? "opacity-100" : "opacity-0"}`}></Rotmgabe>
-                    <Gabebook className={`opacity-fading-project ${project === projects[1] ? "opacity-100" : "opacity-0"}`}></Gabebook>
-                    <Thiswebsite className={`opacity-fading-project ${project === projects[2] ? "opacity-100" : "opacity-0"}`}></Thiswebsite>
+                    <Rotmgabe className={`opacity-fading-project ${project === projects[0] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} visible={project === projects[0]}></Rotmgabe>
+                    <Gabebook className={`opacity-fading-project ${project === projects[1] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Gabebook>
+                    <Thiswebsite className={`opacity-fading-project ${project === projects[2] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Thiswebsite>
                 </div>
             </div>
         </>
