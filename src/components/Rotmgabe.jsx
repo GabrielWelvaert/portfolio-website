@@ -19,9 +19,9 @@ export const Rotmgabe = ({ className, visible }) => {
                 )}
             </div>
             <div className="passage-text">
-                The core of this of this project is the implementation of an Entity-Component-System (<a className="hover-image-text" href="https://en.wikipedia.org/wiki/Entity_component_system" target="_blank" rel="noopener noreferrer">ECS</a>) architectural pattern.
+                The core of this project is an implementation of an Entity-Component-System (<a className="hover-image-text" href="https://en.wikipedia.org/wiki/Entity_component_system" target="_blank" rel="noopener noreferrer">ECS</a>) architectural pattern.
                 In this pattern, the game is composed of <strong>entities</strong> that have <strong>components</strong> with mutable states, which are updated by various <strong>systems</strong>.
-                This design optimizes CPU memory access patterns, allowing the game to sustain hundreds of frames per second even under high computational load.
+                This unqiue design optimizes CPU memory access, allowing the game to sustain hundreds of frames per second even under high computational load.
             </div>
             <div className="passage-text">
                 DO NOT DO COUNTEREXAMPLE. its too much and is disingenuous, there are so many OOP approaches. I cant just pick one and use it as a counter example. its too complex.
