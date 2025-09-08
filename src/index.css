@@ -4,13 +4,13 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
-  background: #0a0a0a;
+  background: #000000;
   color: #f3f4f6;
   scroll-behavior: smooth;
 }
 
 .opacity-fading-project {
-  @apply absolute inset-0 transition-opacity duration-500 ease-in-out;
+  @apply absolute inset-0 transition-opacity duration-500 ease-in-out flex flex-col gap-8;
 }
 
 .button-selector-container {
@@ -28,6 +28,10 @@ html, body {
 
 .full-image {
   @apply w-full max-w-full h-auto rounded-lg object-cover;
+}
+
+.rounded-image {
+  @apply rounded-lg object-cover;
 }
 
 .non-centered-scrollable-section {
