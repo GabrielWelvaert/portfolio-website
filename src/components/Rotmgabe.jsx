@@ -19,16 +19,54 @@ export const Rotmgabe = ({ className, visible }) => {
                 )}
             </div>
             <div className="passage-text">
-                The core of this project is an implementation of an Entity-Component-System (<a className="hover-image-text" href="https://en.wikipedia.org/wiki/Entity_component_system" target="_blank" rel="noopener noreferrer">ECS</a>) architectural pattern.
+                The core of this project is an implementation of the Entity-Component-System (<a className="hover-image-text" href="https://en.wikipedia.org/wiki/Entity_component_system" target="_blank" rel="noopener noreferrer">ECS</a>) architectural pattern.
                 In this pattern, the game is composed of <strong>entities</strong> that have <strong>components</strong> with mutable states, which are updated by various <strong>systems</strong>.
                 This unqiue design optimizes CPU memory access, allowing the game to sustain hundreds of frames per second even under high computational load.
+                Most professional game engines use ECS.
+            </div>
+            <div className="flex flex-row items-center justify-center gap-22">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">Entities only have an id</div>
+                    <img className="rounded-image" src="/entity.png"></img>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">Components hold pure data for an entity; no functionality</div>
+                    <img className="rounded-image" src="/component.png"></img>
+                </div>
             </div>
             <div className="passage-text">
-                DO NOT DO COUNTEREXAMPLE. its too much and is disingenuous, there are so many OOP approaches. I cant just pick one and use it as a counter example. its too complex.
-                just focus on ECS. 
-                1) next, show how the relationship between entities and components
-                2) then, show the relationship between entities and systems
-                3) then talk about why its so efficient! yay! mvoe on w/ ur life
+                As you can see, an entity holds no data itself. Instead, its data lives in separate components, which themselves are stored in contiguous memory pools:
+            </div>
+            <div className="flex flex-row items-center justify-center gap-22">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">Pools are created per component type, where each cell holds a component for an entity</div>
+                    <img className="rounded-image" src="/pool.png"></img>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">Pools are stored together for easy access</div>
+                    <img className="rounded-image" src="/pools.png"></img>
+                </div>
+            </div>
+            <div className="flex flex-row items-center justify-center gap-22">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">Here is a visualization of the component pools. Notice how there is a pool for each type of component, and that each cell of a pool holds the component for a given entitiy.</div>
+                    <img className="rounded-image" src="/pools.drawio.png"></img>
+                </div>
+            </div>
+            <div className="flex flex-row items-center justify-center gap-22">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">Therefore, modifying the data for an entity means modifying the pools for the component that holds that data. Here is a code example of adding a component to an entity:</div>
+                    <img className="rounded-image" src="/addcomponent.png"></img>
+                </div>
+            </div>
+            <div className="passage-text">
+                need to get into systems so we can start talking about cache locality, vectorization, data oritented design (structs contain data based on access)
+            </div>
+            <div className="passage-text">
+                also, mention separation of concerns of systems allows for potential for paralellization even tho I didnt do this
+            </div>
+            <div className="passage-text">
+                give credit to pikuma, and credit to who he cited. "Credit: I learned this design pattern from an online lecture series by Gustavo X, which was based off an academic paper published by Professor Y."
             </div>
         </div>
     )

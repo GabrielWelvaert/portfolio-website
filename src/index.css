@@ -25,7 +25,6 @@ html, body {
   @apply bg-black py-1 px-3 rounded-lg shadow-md cursor-pointer ease-in-out transition-colors;
 }
 
-
 .full-image {
   @apply w-full max-w-full h-auto rounded-lg object-cover;
 }
