@@ -55,9 +55,31 @@ export const Rotmgabe = ({ className, visible }) => {
             </div>
             <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Therefore, modifying the data for an entity means modifying the pools for the component that holds that data. Here is a code example of adding a component to an entity:</div>
+                    <div className="passage-text">Modifying an entity's data means updating the pool of a corresponding component. Behavior is composition-driven, so an entity's behavior will depend on the set of components it holds. We track this with a signature, efficiently represented as a bitset. Representing the presence of a component in the signature simply means flipping the bit at the index of the component's static Id.</div>
+                    <img className="rounded-image" src="/signature.png"></img>
+                    <img className="rounded-image" src="/signatures.png"></img>
                     <img className="rounded-image" src="/addcomponent.png"></img>
                 </div>
+            </div>
+            <div className="passage-text">
+                For example, here are some basic entities, which have behavior defined by their set of components:
+            </div>
+            <div className="grid grid-cols-3 items-center justify-center gap-12">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text h-[200px]">Entities with sprite and position components are visible; with only these, they may be the floor or some decorative object.</div>
+                    <img className="w-48 h-48" src="/floor.png"></img>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text h-[200px]">Entities with sprite, position, and hitbox components are visible and interactable; with these and a solidBody component, they may be impassable barriers.</div>
+                    <img className="w-48 h-48" src="/tree.png"></img>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text h-[200px]">Entities with sprite, position, hitbox, velocity, and damage components are visible, interactable, mobile, and have some damage value; with only these, they're likely projectiles.</div>
+                    <img className="w-48 h-48" src="/projectile.png"></img>
+                </div>
+            </div>
+            <div className="passage-text">
+                Notice how different "types" of entities often share a subset of components -- thats key in understanding how ECS optimizes CPU access -- system example. start with simple systems (render, movement) --  then show how more components, other systems interested!
             </div>
             <div className="passage-text">
                 need to get into systems so we can start talking about cache locality, vectorization, data oritented design (structs contain data based on access)
@@ -67,6 +89,7 @@ export const Rotmgabe = ({ className, visible }) => {
             </div>
             <div className="passage-text">
                 give credit to pikuma, and credit to who he cited. "Credit: I learned this design pattern from an online lecture series by Gustavo X, which was based off an academic paper published by Professor Y."
+                credit to oryx design lab, of which I purchased these assets from
             </div>
         </div>
     )

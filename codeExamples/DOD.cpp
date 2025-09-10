@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <memory>
 #include "D:\laboratory\c++\Realm-of-the-Mad-Gabe\libs\glm\glm.hpp"
+#include <bitset>
 
 template <typename T>
 struct Component{};
@@ -70,8 +71,8 @@ template <typename TComponent, typename ...TArgs>
 void AddComponent(Entity entity, TArgs&& ...args){
     const auto componentId = Component<TComponent>::GetId();
     const auto entityId = entity.GetId();
-    // omitting logic for resizing componentPools, if the number of pools is at capacity
-    // omitting logic for adding a new pool if this TComponent has not been seen yet
+    // logic here for resizing componentPools if we need to make a new pool and there isn't room
+    // logic here for adding a new pool if this TComponent has not been seen yet, so no pool has been created for it
     // forward parameters to component constructor via Tcomponent
     TComponent newComponent(std::forward<TArgs>(args)...);
     std::shared_ptr<Pool<TComponent>> componentPool = std::static_pointer_cast<Pool<TComponent>>(componentPools[componentId]);
@@ -79,6 +80,15 @@ void AddComponent(Entity entity, TArgs&& ...args){
     TComponent newComponent(std::forward<TArgs>(args)...);
     // add the component to the pool
     componentPool->Set(entityId, newComponent);
-    //update component signature for this entity
+    // update component signature for this entity (resize logic hidden for this demo)
     entityComponentSignatures[entityId].set(componentId);
 }
+
+
+
+#define MAX_COMPONENTS 128
+
+
+typedef std::bitset<MAX_COMPONENTS> Signature;
+
+std::vector<Signature> entityComponentSignatures;
