@@ -22,6 +22,11 @@ export const Projects = () => {
                     callback={setProject}
                 ></ButtonSelector>
                 <div className={`relative min-w-[100%]`}>
+                    <div className="invisible"> {/*invisible div used for height calculations because real project elements are absolute, so aren't growing height of parent*/}
+                        {project === projects[0] && <Rotmgabe className={`opacity-fading-project-non-absolute ${project === projects[0] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} visible={project === projects[0]}></Rotmgabe>}
+                        {project === projects[1] && <Gabebook className={`opacity-fading-project-non-absolute ${project === projects[1] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Gabebook>}
+                        {project === projects[2] && <Thiswebsite className={`opacity-fading-project-non-absolute ${project === projects[2] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Thiswebsite>}
+                    </div>
                     <Rotmgabe className={`opacity-fading-project ${project === projects[0] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} visible={project === projects[0]}></Rotmgabe>
                     <Gabebook className={`opacity-fading-project ${project === projects[1] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Gabebook>
                     <Thiswebsite className={`opacity-fading-project ${project === projects[2] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Thiswebsite>

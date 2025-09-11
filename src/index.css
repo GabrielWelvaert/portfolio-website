@@ -13,6 +13,11 @@ html, body {
   @apply absolute inset-0 transition-opacity duration-500 ease-in-out flex flex-col gap-8;
 }
 
+.opacity-fading-project-non-absolute {
+  @apply inset-0 transition-opacity duration-500 ease-in-out flex flex-col gap-8;
+}
+
+
 .button-selector-container {
   @apply inline-flex bg-[#054575] p-3 rounded-lg shadow-md gap-10;
 }
