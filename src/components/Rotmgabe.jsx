@@ -7,13 +7,13 @@ export const Rotmgabe = ({ className, visible }) => {
                 is a C++ video game that I wrote without the assistance of a game engine or game engine library. This project allowed me to sharpen my C++ skills while learning data-oriented design, focusing on concepts like cache friendliness and vectorization.
                 Debugging was done with <a className="hover-image-text" href="https://sourceware.org/gdb/" target="_blank" rel="noopener noreferrer">GDB</a> and <a className="hover-image-text" href="https://valgrind.org/" target="_blank" rel="noopener noreferrer">Valgrind</a> while <a className="hover-image-text" href="https://www.libsdl.org/" target="_blank" rel="noopener noreferrer">SDL</a> handled all hardware interactions.
             </div>
-            <div class="relative w-full pb-[56.25%]">
+            <div className="relative w-full pb-[56.25%]">
                 {visible && (
                 <iframe 
                     className="absolute top-0 left-0 w-full h-full"
                     src="https://www.youtube.com/embed/aP7Ju_zDels?rel=0" 
                     title="YouTube video player" 
-                    frameborder="0" 
+                    frameBorder="0" 
                     allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 ></iframe>
                 )}
@@ -66,16 +66,19 @@ export const Rotmgabe = ({ className, visible }) => {
             </div>
             <div className="grid grid-cols-3 items-center justify-center gap-12">
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text h-[200px]">Entities with sprite and position components are visible; with only these, they may be the floor or some decorative object.</div>
+                    <div className="passage-text min-h-[200px]">Entities with sprite and position components are visible; with only these, they may be the floor or some decorative object.</div>
                     <img className="w-48 h-48" src="/floor.png"></img>
+                    <img className="rounded-image" src="/floorsignature.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text h-[200px]">Entities with sprite, position, and hitbox components are visible and interactable; with these and a solidBody component, they may be impassable barriers.</div>
+                    <div className="passage-text min-h-[200px]">Entities with sprite, position, and hitbox components are visible and interactable; with these and a solidBody component, they may be impassable barriers.</div>
                     <img className="w-48 h-48" src="/tree.png"></img>
+                    <img className="rounded-image" src="/treesignature.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text h-[200px]">Entities with sprite, position, hitbox, velocity, and damage components are visible, interactable, mobile, and have some damage value; with only these, they're likely projectiles.</div>
+                    <div className="passage-text min-h-[200px]">Entities with sprite, position, hitbox, velocity, and damage components are visible, interactable, mobile, and have some damage value; with only these, they're likely projectiles.</div>
                     <img className="w-48 h-48" src="/projectile.png"></img>
+                    <img className="rounded-image" src="/projectilesignature.png"></img>
                 </div>
             </div>
             <div className="passage-text">
@@ -86,6 +89,20 @@ export const Rotmgabe = ({ className, visible }) => {
             </div>
             <div className="passage-text">
                 also, mention separation of concerns of systems allows for potential for paralellization even tho I didnt do this
+            </div>
+            <div className="flex flex-row items-center justify-center gap-12">
+                <div className="passage-text">
+                    In Data-Oriented Design, we organize and add data fields to structs based on the temporal and spatial locality of the fields, and keep size as low as possible.
+                </div>
+                <div className="passage-text">
+                    In Object-Oriented Design, we organize and add data fields to classes to represent real world objects or concepts that is intuitive for humans
+                </div>
+                great example opportunity: player stat as one class for OO, and separated out for DOd
+            </div>
+            <div className="flex flex-col items-center justify-center gap-1">
+                <div className="passage-text">
+                    also, mention separation of concerns of systems allows for potential for paralellization even tho I didnt do this
+                </div>
             </div>
             <div className="passage-text">
                 give credit to pikuma, and credit to who he cited. "Credit: I learned this design pattern from an online lecture series by Gustavo X, which was based off an academic paper published by Professor Y."

@@ -92,3 +92,9 @@ void AddComponent(Entity entity, TArgs&& ...args){
 typedef std::bitset<MAX_COMPONENTS> Signature;
 
 std::vector<Signature> entityComponentSignatures;
+
+int x,y,z;
+
+std::bitset<8> floor    {00000011}    ;
+std::bitset<8> tree     {00001111}    ;
+std::bitset<8> tree     {00110111}    ;

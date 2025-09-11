@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ButtonSelector } from "./ButtonSelector";
 import { Rotmgabe } from "./Rotmgabe";
 import { Gabebook } from "./Gabebook";
 import { Thiswebsite } from "./Thiswebsite";
 
 export const Projects = () => {
-    const projects = ["Realm of the Mad Gabe", "TheGabebook", "This Website"];
-    // const [project, setProject] = useState("");
-    const [project, setProject] = useState(projects[0]);
+    const projects = ["Realm-of-the-Mad-Gabe", "TheGabebook", "This Website"];
+    const [project, setProject] = useState("");
+    // const [project, setProject] = useState(projects[0]);
 
     return (
         <>
@@ -21,12 +21,7 @@ export const Projects = () => {
                     selected={project}
                     callback={setProject}
                 ></ButtonSelector>
-                <div className="relative min-w-[100%]">
-                    <div className="invisible"> {/*invisible div used for height calculations because real project elements are absolute, so aren't growing height of parent*/}
-                        {project === projects[0] && <Rotmgabe visible={project === projects[0]}></Rotmgabe>}
-                        {project === projects[1] && <Gabebook />}
-                        {project === projects[2] && <Thiswebsite />}
-                    </div>
+                <div className={`relative min-w-[100%]`}>
                     <Rotmgabe className={`opacity-fading-project ${project === projects[0] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} visible={project === projects[0]}></Rotmgabe>
                     <Gabebook className={`opacity-fading-project ${project === projects[1] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Gabebook>
                     <Thiswebsite className={`opacity-fading-project ${project === projects[2] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Thiswebsite>
