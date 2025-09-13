@@ -58,7 +58,9 @@ export const Rotmgabe = ({ className, visible }) => {
                     <div className="passage-text">Modifying an entity's data means updating the pool of a corresponding component. Behavior is composition-driven, so an entity's behavior will depend on the set of components it holds. We track this with a signature, efficiently represented as a bitset. Representing the presence of a component in the signature simply means flipping the bit at the index of the component's static Id.</div>
                     <img className="rounded-image" src="/signature.png"></img>
                     <img className="rounded-image" src="/signatures.png"></img>
+                    <div className="passage-text">Here is sample code for adding a component to an entity; its simply adding the component to the pool:</div>
                     <img className="rounded-image" src="/addcomponent.png"></img>
+                    update this image to communicate that componentPool- set does keep track of index? in the commment I guess
                 </div>
             </div>
             <div className="passage-text">
