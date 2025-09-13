@@ -23,27 +23,22 @@ public:
     }
 };
 
-struct IComponent{};
-
-template <typename T>
-class Component {
-
-};
-
 struct IComponent { 
 protected: 
-    static unsigned int nextId; 
+    static int nextId; 
 };
 
-unsigned int IComponent::nextId = 0;
+int IComponent::nextId = 0;
 
 template <typename T> 
 class Component: public IComponent {
 public:
+    // Returns a unique id per component type.
+    // local static 'id' is initialized only once,
+    // on first call to GetId() for that component type.
     static int GetId() { 
-        static unsigned int id = nextId++; 
-        return id;
-        // unique id per instance type
+        static int id = nextId++; 
+        return id; 
     }
 };
 
@@ -61,7 +56,9 @@ private:
     std::unordered_map<int,int> entityIdToIndex;
     std::unordered_map<int,int> indexToEntityId;
 public:
-    // CRUD logic here
+    virtual ~Pool() = default;
+    template <typename... TArgs> void Set(int entityId, TArgs&&... args){}
+    void Remove(int entityId){} 
 };
 
 // can be indexed by component's static id
@@ -71,20 +68,18 @@ template <typename TComponent, typename ...TArgs>
 void AddComponent(Entity entity, TArgs&& ...args){
     const auto componentId = Component<TComponent>::GetId();
     const auto entityId = entity.GetId();
-    // logic here for resizing componentPools if we need to make a new pool and there isn't room
+    // logic here for growing componentPools if we need to make a new pool and there isn't room
     // logic here for adding a new pool if this TComponent has not been seen yet, so no pool has been created for it
-    // forward parameters to component constructor via Tcomponent
-    TComponent newComponent(std::forward<TArgs>(args)...);
     std::shared_ptr<Pool<TComponent>> componentPool = std::static_pointer_cast<Pool<TComponent>>(componentPools[componentId]);
-    // forward parameters to component constructor via Tcomponent
-    TComponent newComponent(std::forward<TArgs>(args)...);
-    // add the component to the pool
-    componentPool->Set(entityId, newComponent);
+    // add the component to the pool, update entityIdToIndex and indexToEntityId
+    componentPool->Set(entityId, std::forward<TArgs>(args)...);
     // update component signature for this entity (resize logic hidden for this demo)
     entityComponentSignatures[entityId].set(componentId);
 }
+template <typename TComponent>
+TComponent GetComponent(Entity entity){
 
-
+}
 
 #define MAX_COMPONENTS 128
 
@@ -98,3 +93,75 @@ int x,y,z;
 std::bitset<8> floor    {00000011}    ;
 std::bitset<8> tree     {00001111}    ;
 std::bitset<8> tree     {00110111}    ;
+
+
+class System {
+private:
+    Signature ComponentSignature;
+    std::vector<Entity> entities; 
+public:
+    // add entity to entities vector
+    void AddEntityToSystem(Entity entity){}
+    // remove entity from entities vector
+    void RemoveEntityFromSystem(Entity entity){}
+    // get entities in entities vector
+    std::vector<Entity>& GetSystemEntities(){} 
+    // get const ref to system's component signature
+    const Signature& GetComponentSignature() const {}
+    // update this system's component signature
+    template <typename TComponent> void RequireComponent(){}
+};
+
+struct HealthComponent {
+    float maxHealth;
+    float activeHealth;
+};
+
+struct PositionComponent {
+    glm::vec2 position;
+};
+
+struct VelocityComponent {
+    glm::vec2 velocity;
+};
+
+struct SpriteComponent {
+
+};
+
+// for linear movement
+class MovementSystem: public System {
+public:
+    MovementSystem() {
+        // on construction build the system's component signature
+        RequireComponent<PositionComponent>();
+        RequireComponent<VelocityComponent>();
+    }
+
+    void Update(double deltaTime){
+        // process all entities tracked by this system
+        for(auto& entity: GetSystemEntities()){
+            auto& positionComponent = GetComponent<PositionComponent>(entity);
+            auto& velocityComponent = GetComponent<VelocityComponent>(entity);
+            positionComponent.position.x += (velocityComponent.velocity.x * deltaTime);
+            positionComponent.position.y += (velocityComponent.velocity.y * deltaTime);
+        }
+    }
+};
+
+// for rendering 
+class RenderSystem: public System {
+public:
+    RenderSystem() {
+        // on construction build the system's component signature
+        RequireComponent<PositionComponent>();
+        RequireComponent<SpriteComponent>();
+    }
+
+    void Update(){
+        // process all entities tracked by this system
+        for(auto& entity: GetSystemEntities()){
+            // logic for rendering each entity
+        }
+    }
+};

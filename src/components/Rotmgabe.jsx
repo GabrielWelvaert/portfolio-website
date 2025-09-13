@@ -24,26 +24,30 @@ export const Rotmgabe = ({ className, visible }) => {
                 This unqiue design optimizes CPU memory access, allowing the game to sustain hundreds of frames per second even under high computational load.
                 Most professional game engines use ECS.
             </div>
-            <div className="flex flex-row items-center justify-center gap-22">
-                <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Entities only have an id</div>
+            <div className="grid grid-cols-[1fr_2fr_1fr] items-center justify-center gap-6">
+                <div className="flex flex-col items-center justify-center gap-1 w-fit">
+                    <div className="passage-text">Entities only have an id.</div>
                     <img className="rounded-image" src="/entity.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Components hold pure data for an entity; no functionality</div>
+                    <div className="passage-text">Components hold data for entities.</div>
                     <img className="rounded-image" src="/component.png"></img>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">Component examples (passed as template args). </div>
+                    <img className="rounded-image" src="/componentexamples.png"></img>
                 </div>
             </div>
             <div className="passage-text">
                 As you can see, an entity holds no data itself. Instead, its data lives in separate components, which themselves are stored in contiguous memory pools:
             </div>
-            <div className="flex flex-row items-center justify-center gap-22">
+            <div className="grid grid-cols-[55%_45%] items-center justify-center gap-6">
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Pools are created per component type, where each cell holds a component for an entity</div>
+                    <div className="passage-text">Pools are wrappers for vectors of components</div>
                     <img className="rounded-image" src="/pool.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Pools are stored together for easy access</div>
+                    <div className="passage-text">Pools are stored together for easy access.</div>
                     <img className="rounded-image" src="/pools.png"></img>
                 </div>
             </div>
@@ -60,13 +64,12 @@ export const Rotmgabe = ({ className, visible }) => {
                     <img className="rounded-image" src="/signatures.png"></img>
                     <div className="passage-text">Here is sample code for adding a component to an entity; its simply adding the component to the pool:</div>
                     <img className="rounded-image" src="/addcomponent.png"></img>
-                    update this image to communicate that componentPool- set does keep track of index? in the commment I guess
                 </div>
             </div>
             <div className="passage-text">
                 For example, here are some basic entities, which have behavior defined by their component signature:
             </div>
-            <div className="grid grid-cols-3 items-center justify-center gap-12">
+            <div className="grid grid-cols-3 items-start justify-center gap-12">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text min-h-[200px]">Entities with sprite and position components are visible; with only these, they may be the floor or some decorative object.</div>
                     <img className="w-48 h-48" src="/floor.png"></img>
@@ -86,11 +89,40 @@ export const Rotmgabe = ({ className, visible }) => {
             <div className="passage-text">
                 As you can see, even if entities differ conceptually, they may still share a common subset of components.
             </div>
-            <div className="passage-text">
-                This brings us to the systems part of ECS, which are responsible for updating the data in the components of entities. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed— If an entity's component signature contains all the components in the system's signature, it will be tracked and processed. All systems perform their updates on every entity that they track for each frame: 
+            <div className="flex flex-row items-center justify-center gap-22">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">
+                        This brings us to the system part of ECS, of which are responsible for updating the data in the components of entities. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed— If an entity's component signature contains all the components in the system's signature, it will be tracked and processed. All systems perform their updates on every entity that they track for each frame: 
+                    </div>
+                    <img className="rounded-image" src="/system.png"></img>
+                </div>
+            </div>    
+            <div className="flex flex-row items-center justify-center gap-22">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">
+                        Here is an example of a simple render system. From our entity examples above, all of them would be tracked by this system, because they all have the required sprite and position components:
+                    </div>
+                    <img className="rounded-image" src="/rendersystem.png"></img>
+                </div>
             </div>
+            <div className="flex flex-row items-center justify-center gap-22">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">
+                        Here is an example of a simple movement system. From our entity examples above, only the projectile entity would be updated by this system, because it has both a position and velocity component, which are both needed to be tracked by this system:
+                    </div>
+                    <img className="rounded-image" src="/movementsystem.png"></img>
+                </div>
+            </div>    
+            <div className="flex flex-row items-center justify-center gap-22">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">
+                        Here is how to check if an entity should be tracked by a given system. Since bitsets are used, we can simply use logical AND:                        
+                    </div>
+                    <img className="rounded-image" src="/.png"></img>
+                </div>
+            </div>    
             <div className="passage-text">
-                System architecture code goes here.
+                show how easy it is to check if an entity should be tracked by a system here. Registry::AddEntityToSystems
             </div>
             <div className="passage-text">
                 Example systems here. Render system, linear movement system. use above entities as example. then can finally talk abt cache locality, vectorization, data oritented design (structs contain data based on access)
@@ -113,7 +145,7 @@ export const Rotmgabe = ({ className, visible }) => {
                 </div>
             </div>
             <div className="passage-text">
-                Brief info about stuff I abstracted away: eventBus, Registry, managing event ids.
+                Brief info about stuff I abstracted away: eventBus, Registry, managing event ids, game loop (what is a frame), data hole filling (on entity death, component Remove), numeric types (only used int in this example)
             </div>
             <div className="passage-text">
                 give credit to pikuma, and credit to who he cited. "Credit: I was introduced to ECS from an online lecture series by Gustavo X, which was based off an academic paper published by Professor Y."
@@ -123,7 +155,7 @@ export const Rotmgabe = ({ className, visible }) => {
                 mockups here, maybe. I don't know if they're interesting enough to show
             </div>
             <div className="passage-text">
-                todo simplify pool.png. indexToEntityId is never even used in rotmgabe lol so remove it. show definition for add remove maybe
+                todo simplify pool.png. show definition for add remove maybe
                 include ~Pool destructor.
             </div>
         </div>
