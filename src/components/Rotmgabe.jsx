@@ -62,7 +62,7 @@ export const Rotmgabe = ({ className, visible }) => {
                 </div>
             </div>
             <div className="passage-text">
-                For example, here are some basic entities, which have behavior defined by their set of components:
+                For example, here are some basic entities, which have behavior defined by their component signature:
             </div>
             <div className="grid grid-cols-3 items-center justify-center gap-12">
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -82,10 +82,16 @@ export const Rotmgabe = ({ className, visible }) => {
                 </div>
             </div>
             <div className="passage-text">
-                Notice how different "types" of entities often share a subset of components -- thats key in understanding how ECS optimizes CPU access -- system example. start with simple systems (render, movement) --  then show how more components, other systems interested!
+                As you can see, even if entities differ conceptually, they may still share a common subset of components.
             </div>
             <div className="passage-text">
-                need to get into systems so we can start talking about cache locality, vectorization, data oritented design (structs contain data based on access)
+                This brings us to the systems part of ECS, which are responsible for updating the data in the components of entities. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed— If an entity's component signature contains all the components in the system's signature, it will be tracked and processed. All systems perform their updates on every entity that they track for each frame: 
+            </div>
+            <div className="passage-text">
+                System architecture code goes here.
+            </div>
+            <div className="passage-text">
+                Example systems here. Render system, linear movement system. use above entities as example. then can finally talk abt cache locality, vectorization, data oritented design (structs contain data based on access)
             </div>
             <div className="passage-text">
                 also, mention separation of concerns of systems allows for potential for paralellization even tho I didnt do this
@@ -95,9 +101,9 @@ export const Rotmgabe = ({ className, visible }) => {
                     In Data-Oriented Design, we organize and add data fields to structs based on the temporal and spatial locality of the fields, and keep size as low as possible.
                 </div>
                 <div className="passage-text">
-                    In Object-Oriented Design, we organize and add data fields to classes to represent real world objects or concepts that is intuitive for humans
+                    In Object-Oriented Design, we organize and add data fields to classes to represent real world objects or concepts that are intuitive for humans
                 </div>
-                great example opportunity: player stat as one class for OO, and separated out for DOd
+                <strong>great example opportunity: player stat as one class for OO, and separated out for DOd</strong>
             </div>
             <div className="flex flex-col items-center justify-center gap-1">
                 <div className="passage-text">
@@ -105,8 +111,18 @@ export const Rotmgabe = ({ className, visible }) => {
                 </div>
             </div>
             <div className="passage-text">
-                give credit to pikuma, and credit to who he cited. "Credit: I learned this design pattern from an online lecture series by Gustavo X, which was based off an academic paper published by Professor Y."
-                credit to oryx design lab, of which I purchased these assets from
+                Brief info about stuff I abstracted away: eventBus, Registry, managing event ids.
+            </div>
+            <div className="passage-text">
+                give credit to pikuma, and credit to who he cited. "Credit: I was introduced to ECS from an online lecture series by Gustavo X, which was based off an academic paper published by Professor Y."
+                The art in this project was created by Oryx Design Labs and licensed for its use.”
+            </div>
+            <div className="passage-text">
+                mockups here, maybe. I don't know if they're interesting enough to show
+            </div>
+            <div className="passage-text">
+                todo simplify pool.png. indexToEntityId is never even used in rotmgabe lol so remove it. show definition for add remove maybe
+                include ~Pool destructor.
             </div>
         </div>
     )

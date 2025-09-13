@@ -38,7 +38,7 @@ export const About = () => {
                     />
                 </div>
                 <div className="passage-text">
-                    Currently living in Southeastern Virginia – open to remote work or relocation.
+                    Currently living in Southeastern Virginia. Open to remote work and relocation.
                 </div>
                 <div className="passage-text">
                     {/* TODO make a separate component here for mobile users since HoverImage wont work for them? */}
