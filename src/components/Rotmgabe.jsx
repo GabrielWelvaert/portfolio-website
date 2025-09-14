@@ -25,32 +25,36 @@ export const Rotmgabe = ({ className, visible }) => {
                 This unqiue design optimizes CPU memory access, allowing the game to sustain hundreds of frames per second even under high computational load.
                 Most professional game engines use ECS.
             </div>
-            <div className="grid grid-cols-[1fr_2fr_1fr] items-center justify-center gap-6">
-                <div className="flex flex-col items-center justify-center gap-1 w-fit">
+            <div className="grid grid-cols-2 items-center justify-around gap-1">
+                <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">Entities only have an id.</div>
-                    <img className="rounded-image" src="/entity.png"></img>
+                    <img className="rounded-image w-[50%]" src="/entity.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Components hold data for entities.</div>
-                    <img className="rounded-image" src="/component.png"></img>
-                </div>
-                <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Component examples (passed as template args). </div>
-                    <img className="rounded-image" src="/componentexamples.png"></img>
+                    <div className="passage-text">Components hold data.</div>
+                    <img className="rounded-image w-[50%]" src="/componentexamples.png"></img>
                 </div>
             </div>
             <div className="passage-text">
                 As you can see, an entity holds no data itself. Instead, its data lives in separate components, which themselves are stored in contiguous memory pools:
             </div>
-            <div className="grid grid-cols-[55%_45%] items-center justify-center gap-6">
+            <div className="grid grid-cols-[2fr_1fr] items-center justify-center gap-1">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">Pools are wrappers for vectors of components</div>
                     <img className="rounded-image" src="/pool.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Pools are stored together for easy access.</div>
-                    <img className="rounded-image" src="/pools.png"></img>
+                    <div className="passage-text">Components have a static id per template instance:</div>
+                    <img className="rounded-image" src="/component.png"></img>
                 </div>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-1">
+                <div className="passage-text">Components are templated with structs to create component types:</div>
+                <img className="rounded-image w-[50%]" src="/componenttemplateexample.png"></img>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-1">
+                <div className="passage-text">Pools are stored together for easy access. This vector can be indexed by component id:</div>
+                <img className="rounded-image w-[60%]" src="/pools.png"></img>
             </div>
             <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -58,17 +62,23 @@ export const Rotmgabe = ({ className, visible }) => {
                     <img className="rounded-image" src="/pools.drawio.png"></img>
                 </div>
             </div>
-            <div className="flex flex-row items-center justify-center gap-22">
-                <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Modifying an entity's data means updating the pool of a corresponding component. Behavior is composition-driven, so an entity's behavior will depend on the set of components it holds. We track this with a signature, efficiently represented as a bitset. Representing the presence of a component in the signature simply means flipping the bit at the index of the component's static Id.</div>
-                    <img className="rounded-image" src="/signature.png"></img>
-                    <img className="rounded-image" src="/signatures.png"></img>
-                    <div className="passage-text">Here is sample code for adding a component to an entity; its simply adding the component to the pool:</div>
-                    <img className="rounded-image" src="/addcomponent.png"></img>
+            <div className="passage-text">
+                Modifying an entity's data means updating the pool of a corresponding component. Behavior is composition-driven, so an entity's behavior will depend on the set of components it holds. We track this with a signature, efficiently represented as a bitset. Representing the presence of a component in the signature simply means flipping the bit at the index of the component's static Id:
+            </div>
+            <div className="flex flex-col items-center justify-center gap-1">
+                <div className="passage-text">
+                    Component signatures are bitsets indexable by component id's.
                 </div>
+                <img className="rounded-image" src="/signature.png"></img>
+                <img className="rounded-image" src="/signatures.png"></img>
             </div>
             <div className="passage-text">
-                For example, here are some basic entities, which have behavior defined by their component signature:
+                Here is sample code for adding a component to an entity; we simply add the component to the pool.
+                The component type is used to access the correct pool. Then, the entity Id and component data are passed, and the pool will insert the component and keep track of where that entity's data is so we can get it later: 
+                <img className="rounded-image" src="/addcomponent.png"></img>
+            </div>
+            <div className="passage-text">
+                For example, here are some basic entities, which have behavior defined by their components:
             </div>
             <div className="grid grid-cols-3 items-start justify-center gap-12">
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -90,10 +100,13 @@ export const Rotmgabe = ({ className, visible }) => {
             <div className="passage-text">
                 As you can see, even if entities differ conceptually, they may still share a common subset of components.
             </div>
+            <div className="passage-text">
+                This brings us to the system part of ECS, of which are responsible for updating the data in the components of entities. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed— If an entity's component signature contains all the components in the system's signature, it will be tracked and processed. All systems perform their updates each frame on every entity that they track: 
+            </div>
             <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">
-                        This brings us to the system part of ECS, of which are responsible for updating the data in the components of entities. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed— If an entity's component signature contains all the components in the system's signature, it will be tracked and processed. All systems perform their updates each frame on every entity that they track: 
+                        System parent class; actual systems will inherit from this:
                     </div>
                     <img className="rounded-image" src="/system.png"></img>
                 </div>
@@ -118,7 +131,7 @@ export const Rotmgabe = ({ className, visible }) => {
             <div className="grid grid-cols-[55%_45%] items-center justify-center gap-8">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">
-                        Here is an example of a movement system. From our entity examples above, only the projectile entity would be tracked by this system; only it has both the required position and velocity components:
+                        Here is an example of a movement system. From our entity examples above, only the projectile entity would be tracked by this system because only it has both the required position and velocity components:
                     </div>
                     <img className="rounded-image" src="/movementsystem.png"></img>
                 </div>
@@ -138,7 +151,7 @@ export const Rotmgabe = ({ className, visible }) => {
             <div className="flex flex-col items-center justify-center gap-4">
                 <BaseCard title="1) CPU Cache Friendliness"></BaseCard>
                 <div className="passage-text">
-                    Contiguous component pools provide spatial and temporal locality during system updates. When a system reads a component for an entity, it actually loads an entire cache line (usually 64 bytes) of data from RAM into the CPU cache. Given that systems update all of their entities each frame, fetching components often results in cache hits because that data has already been loaded into the CPU cache, which is orders of magnitude faster than getting the data from RAM in the case of a cache miss.
+                    Contiguous component pools provide spatial and temporal locality during system updates. When a system reads a component for an entity, it actually loads an entire cache line (usually 64 bytes) of contiguous data from RAM into the CPU cache. Given that systems update all of their entities each frame, fetching components often results in cache hits because that data has already been loaded into the CPU cache, which is orders of magnitude faster than getting the data from RAM in the case of a cache miss.
                 </div>
                 <div className="passage-text">
                     With this in mind, components are designed to be as small as possible. Smaller components mean more of them fit into a single cache line, maximizing the amount of useful data loaded into the CPU cache at once. Additionally, components are structured around system access patterns—ideally, to reduce cache misses, all the data in a component will be needed whenever it is loaded from memory. To illustrate this, I'll show how a player-statistics component would be designed in an object-oriented approach and constrast it with data-oriented approach.
@@ -179,10 +192,6 @@ export const Rotmgabe = ({ className, visible }) => {
             </div>
             <div className="passage-text">
                 mockups here, maybe. I don't know if they're interesting enough to show
-            </div>
-            <div className="passage-text">
-                give credit to pikuma, and credit to who he cited. "Credit: I was introduced to ECS from an online lecture series by Gustavo X, which was based off an academic paper published by Professor Y."
-                The art in this project was created by Oryx Design Labs and licensed for its use.”
             </div>
         </div>
     )

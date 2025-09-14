@@ -35,9 +35,6 @@ int IComponent::nextId = 0;
 template <typename T> 
 class Component: public IComponent {
 public:
-    // Returns a unique id per component type.
-    // local static 'id' is initialized only once,
-    // on first call to GetId() for that component type.
     static int GetId() { 
         static int id = nextId++; 
         return id; 
@@ -65,8 +62,9 @@ public:
     void Remove(int entityId) override {} 
 };
 
-// can be indexed by component's static id
 std::vector<std::shared_ptr<IPool>> componentPools;
+
+Component<HealthComponent> example;
 
 template <typename TComponent, typename ...TArgs>
 void AddComponent(Entity entity, TArgs&& ...args){
