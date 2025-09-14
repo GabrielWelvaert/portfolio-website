@@ -57,7 +57,8 @@ private:
 public:
     virtual ~Pool() = default;
     // adding a component to the pool
-    template <typename... TArgs> void Set(int entityId, TArgs&&... args) {}
+    template <typename... TArgs>
+    void Set(int entityId, TArgs&&... args) {}
     // removing a component from the pool
     void Remove(int entityId) override {} 
 };

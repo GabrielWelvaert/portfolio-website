@@ -25,22 +25,22 @@ export const Rotmgabe = ({ className, visible }) => {
                 This unqiue design optimizes CPU memory access, allowing the game to sustain hundreds of frames per second even under high computational load.
                 Most professional game engines use ECS.
             </div>
-            <div className="grid grid-cols-2 items-center justify-around gap-1">
+            <div className="grid grid-cols-2 items-center justify-around gap-2">
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Entities only have an id.</div>
-                    <img className="rounded-image w-[50%]" src="/entity.png"></img>
+                    <div className="passage-text">Entities only have an id:</div>
+                    <img className="rounded-image w-[60%]" src="/entity.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Components hold data.</div>
-                    <img className="rounded-image w-[50%]" src="/componentexamples.png"></img>
+                    <div className="passage-text">Components hold data:</div>
+                    <img className="rounded-image w-[60%]" src="/componentexamples.png"></img>
                 </div>
             </div>
             <div className="passage-text">
                 As you can see, an entity holds no data itself. Instead, its data lives in separate components, which themselves are stored in contiguous memory pools:
             </div>
-            <div className="grid grid-cols-[2fr_1fr] items-center justify-center gap-1">
+            <div className="grid grid-cols-[54%_46%] items-center justify-center gap-6">
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Pools are wrappers for vectors of components</div>
+                    <div className="passage-text">Pools are wrappers for vectors of components:</div>
                     <img className="rounded-image" src="/pool.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -63,7 +63,7 @@ export const Rotmgabe = ({ className, visible }) => {
                 </div>
             </div>
             <div className="passage-text">
-                Modifying an entity's data means updating the pool of a corresponding component. Behavior is composition-driven, so an entity's behavior will depend on the set of components it holds. We track this with a signature, efficiently represented as a bitset. Representing the presence of a component in the signature simply means flipping the bit at the index of the component's static Id:
+                Modifying an entity's data means updating the pool of a corresponding component. Behavior is composition-driven, so an entity's behavior will depend on the set of components it holds. We track this with a signature, efficiently represented as a bitset. Representing the presence of a component in the signature simply means flipping the bit at the index of the component's static id:
             </div>
             <div className="flex flex-col items-center justify-center gap-1">
                 <div className="passage-text">
@@ -74,7 +74,7 @@ export const Rotmgabe = ({ className, visible }) => {
             </div>
             <div className="passage-text">
                 Here is sample code for adding a component to an entity; we simply add the component to the pool.
-                The component type is used to access the correct pool. Then, the entity Id and component data are passed, and the pool will insert the component and keep track of where that entity's data is so we can get it later: 
+                The component type is used to access the correct pool. Then, the entity id and component data are passed, and the pool will insert the component and keep track of where that entity's data is so we can get it later: 
                 <img className="rounded-image" src="/addcomponent.png"></img>
             </div>
             <div className="passage-text">
