@@ -31,7 +31,7 @@ export const Rotmgabe = ({ className, visible }) => {
                     <img className="rounded-image w-[60%]" src="/entity.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Components hold data:</div>
+                    <div className="passage-text">Components only hold data:</div>
                     <img className="rounded-image w-[60%]" src="/componentexamples.png"></img>
                 </div>
             </div>

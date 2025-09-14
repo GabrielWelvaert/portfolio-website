@@ -25,7 +25,7 @@ public:
     }
 };
 
-struct IComponent { 
+class IComponent { 
 protected: 
     static int nextId; 
 };
@@ -116,8 +116,8 @@ public:
 };
 
 struct HealthComponent {
-    float maxHealth;
-    float activeHealth;
+    double maxHealth;
+    int activeHealth;
 };
 
 struct PositionComponent {
