@@ -76,7 +76,7 @@ export const Rotmgabe = ({ className, visible }) => {
                     <img className="rounded-image" src="/floorsignature.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text min-h-[200px]">Entities with sprite, position, and hitbox components are visible and interactable; with these and a solidBody component, they may be impassable barriers.</div>
+                    <div className="passage-text min-h-[200px]">Entities with sprite, position, and hitbox components are visible and interactable; with these and a solidBody component, they may be impassable barriers like trees.</div>
                     <img className="w-48 h-48" src="/tree.png"></img>
                     <img className="rounded-image" src="/treesignature.png"></img>
                 </div>
@@ -92,33 +92,43 @@ export const Rotmgabe = ({ className, visible }) => {
             <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">
-                        This brings us to the system part of ECS, of which are responsible for updating the data in the components of entities. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed— If an entity's component signature contains all the components in the system's signature, it will be tracked and processed. All systems perform their updates on every entity that they track for each frame: 
+                        This brings us to the system part of ECS, of which are responsible for updating the data in the components of entities. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed— If an entity's component signature contains all the components in the system's signature, it will be tracked and processed. All systems perform their updates each frame on every entity that they track: 
                     </div>
                     <img className="rounded-image" src="/system.png"></img>
                 </div>
             </div>    
-            <div className="flex flex-row items-center justify-center gap-22">
+            <div className="grid grid-cols-[55%_45%] items-center justify-center gap-8">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">
-                        Here is an example of a simple render system. From our entity examples above, all of them would be tracked by this system, because they all have the required sprite and position components:
+                        Here is an example of a render system. From our entity examples above, all would be tracked by this system, because they all have the required sprite and position components:
                     </div>
                     <img className="rounded-image" src="/rendersystem.png"></img>
                 </div>
-            </div>
-            <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">
-                        Here is an example of a simple movement system. From our entity examples above, only the projectile entity would be updated by this system, because it has both a position and velocity component, which are both needed to be tracked by this system:
+                        Checking if the projectile entity (<img className="inline w-8 h-8" src="/projectile.png"></img>) should be tracked by the render system:
+                    </div>
+                    <img className="rounded-image" src="/signatureexample1.png"></img>
+                    <div className="passage-text">
+                        The resulting signature matches the signature of the system, so it will be tracked.
+                    </div>
+                </div>
+            </div>
+            <div className="grid grid-cols-[55%_45%] items-center justify-center gap-8">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">
+                        Here is an example of a movement system. From our entity examples above, only the projectile entity would be tracked by this system; only it has both the required position and velocity components:
                     </div>
                     <img className="rounded-image" src="/movementsystem.png"></img>
                 </div>
-            </div>    
-            <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">
-                        Here is how to check if an entity should be tracked by a given system. Since bitsets are used, we can simply use logical AND:                        
+                        Checking if the tree entity (<img className="inline w-8 h-8" src="/tree.png"></img>) should be tracked by the movement system:
                     </div>
-                    <img className="rounded-image" src="/.png"></img>
+                    <img className="rounded-image" src="/signatureexample2.png"></img>
+                    <div className="passage-text">
+                        The resulting signature does not match the signature of the system, so it will not be tracked.
+                    </div>
                 </div>
             </div>    
             <div className="passage-text">
@@ -145,7 +155,10 @@ export const Rotmgabe = ({ className, visible }) => {
                 </div>
             </div>
             <div className="passage-text">
-                Brief info about stuff I abstracted away: eventBus, Registry, managing event ids, game loop (what is a frame), data hole filling (on entity death, component Remove), numeric types (only used int in this example)
+                game loop
+                Registry: entity id mgmt, killing/creating entities, data hole filling (remove component), managing pools
+                numeric types
+                eventBus
             </div>
             <div className="passage-text">
                 give credit to pikuma, and credit to who he cited. "Credit: I was introduced to ECS from an online lecture series by Gustavo X, which was based off an academic paper published by Professor Y."

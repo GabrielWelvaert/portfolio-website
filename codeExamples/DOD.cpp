@@ -45,20 +45,22 @@ public:
 class IPool {
 public:
     virtual ~IPool() = default;
-    virtual void RemoveEntityFromPool(int entityId) = 0;
+    virtual void Remove(int entityId) = 0;
 };
 
 template <typename T>
 class Pool: public IPool {
 private:
     std::vector<T> data; 
-    unsigned int size;
+    unsigned int size; // actual count of "live" components
     std::unordered_map<int,int> entityIdToIndex;
     std::unordered_map<int,int> indexToEntityId;
 public:
     virtual ~Pool() = default;
-    template <typename... TArgs> void Set(int entityId, TArgs&&... args){}
-    void Remove(int entityId){} 
+    // adding a component to the pool
+    template <typename... TArgs> void Set(int entityId, TArgs&&... args) {}
+    // removing a component from the pool
+    void Remove(int entityId) override {} 
 };
 
 // can be indexed by component's static id
@@ -141,10 +143,10 @@ public:
     void Update(double deltaTime){
         // process all entities tracked by this system
         for(auto& entity: GetSystemEntities()){
-            auto& positionComponent = GetComponent<PositionComponent>(entity);
-            auto& velocityComponent = GetComponent<VelocityComponent>(entity);
-            positionComponent.position.x += (velocityComponent.velocity.x * deltaTime);
-            positionComponent.position.y += (velocityComponent.velocity.y * deltaTime);
+            auto& posComponent = GetComponent<PositionComponent>(entity);
+            auto& velComponent = GetComponent<VelocityComponent>(entity);
+            posComponent.position.x += (velComponent.velocity.x * deltaTime);
+            posComponent.position.y += (velComponent.velocity.y * deltaTime);
         }
     }
 };
@@ -165,3 +167,16 @@ public:
         }
     }
 };
+
+void ProcessInput(){}
+void Update(){}
+void Render(){}
+bool isRunning;
+int main(){
+    // 3 things happen per frame:
+    while(isRunning){ 
+        ProcessInput(); // capture user input
+        Update(); // call all non-rendering systems' update functions
+        Render(); // call all rendering systems' update functions
+    }    
+}
