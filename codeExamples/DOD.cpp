@@ -5,6 +5,8 @@
 #include <memory>
 #include "D:\laboratory\c++\Realm-of-the-Mad-Gabe\libs\glm\glm.hpp"
 #include <bitset>
+#include <cstdint>
+
 
 template <typename T>
 struct Component{};
@@ -163,6 +165,8 @@ public:
     void Update(){
         // process all entities tracked by this system
         for(auto& entity: GetSystemEntities()){
+            auto& posComponent = GetComponent<PositionComponent>(entity);
+            auto& spriteComponent = GetComponent<SpriteComponent>(entity);
             // logic for rendering each entity
         }
     }
@@ -180,3 +184,45 @@ int main(){
         Render(); // call all rendering systems' update functions
     }    
 }
+
+// bundled together to represent a human friendly concept
+class PlayerStats {
+public:
+    double HP; // health points
+    double MP; // magic points
+    int maxHP; // maximum possible health points
+    int maxMP; // maxiumum possible magic points
+    int defense; // reduces damage taken
+    int wisdom; // rate of magic points restoration
+    int vitality; // rate of health points restoration
+    int speed; // used in velocity calculations
+    int dexterity; // rate of fire
+    int attack; // damage modifier for attacking
+};
+
+// used in systems related to health (ie taking damage)
+struct HealthStatComponent {
+    float HP; // health points
+    uint16_t maxHP; // maximum possible health points
+    uint8_t defense; // reduces damage taken
+    uint8_t vitality; // rate of health points restoration
+};
+
+// used in systems related to magic (ie using abilities)
+struct MagicStatComponent {
+    float MP; // magic points
+    uint16_t maxMP; // maxiumum possible magic points
+    uint8_t wisdom; // rate of magic points restoration
+};
+
+// used in systems related to attacking
+struct OffensiveStatComponent {
+    uint8_t dexterity; // rate of fire
+    uint8_t attack; // damage modifier for attacking
+};
+
+// used in systemd related to moving
+struct SpeedStatComponent {
+    uint8_t speed; // used in velocity calculations
+};
+

@@ -1,3 +1,4 @@
+import { BaseCard } from "./BaseCard"
 
 export const Rotmgabe = ({ className, visible }) => {
     return (
@@ -130,28 +131,41 @@ export const Rotmgabe = ({ className, visible }) => {
                         The resulting signature does not match the signature of the system, so it will not be tracked.
                     </div>
                 </div>
-            </div>    
+            </div> 
             <div className="passage-text">
-                show how easy it is to check if an entity should be tracked by a system here. Registry::AddEntityToSystems
+                So, now we have entities, with their components in contiguous pools, that are modified by specialized systems. What are the advantages with this design? Why is this code so performant? There are three primary reasons:
             </div>
-            <div className="passage-text">
-                Example systems here. Render system, linear movement system. use above entities as example. then can finally talk abt cache locality, vectorization, data oritented design (structs contain data based on access)
-            </div>
-            <div className="passage-text">
-                also, mention separation of concerns of systems allows for potential for paralellization even tho I didnt do this
-            </div>
-            <div className="flex flex-row items-center justify-center gap-12">
+            <div className="flex flex-col items-center justify-center gap-4">
+                <BaseCard title="1) CPU Cache Friendliness"></BaseCard>
                 <div className="passage-text">
-                    In Data-Oriented Design, we organize and add data fields to structs based on the temporal and spatial locality of the fields, and keep size as low as possible.
+                    Contiguous component pools provide spatial and temporal locality during system updates. When a system reads a component for an entity, it actually loads an entire cache line (usually 64 bytes) of data from RAM into the CPU cache. Given that systems update all of their entities each frame, fetching components often results in cache hits because that data has already been loaded into the CPU cache, which is orders of magnitude faster than getting the data from RAM in the case of a cache miss.
                 </div>
                 <div className="passage-text">
-                    In Object-Oriented Design, we organize and add data fields to classes to represent real world objects or concepts that are intuitive for humans
+                    With this in mind, components are designed to be as small as possible. Smaller components mean more of them fit into a single cache line, maximizing the amount of useful data loaded into the CPU cache at once. Additionally, components are structured around system access patterns—ideally, to reduce cache misses, all the data in a component will be needed whenever it is loaded from memory. To illustrate this, I'll show how a player-statistics component would be designed in an object-oriented approach and constrast it with data-oriented approach.
                 </div>
-                <strong>great example opportunity: player stat as one class for OO, and separated out for DOd</strong>
+                <div className="grid grid-cols-2 items-start justify-center gap-12">
+                    <div className="flex flex-col items-center justify-center gap-1">
+                        <div className="passage-text font-bold">Object-Oritented Design:</div>
+                        <div className="passage-text">In Object-Oriented Design, we organize and add data fields to classes to represent real world objects or concepts that are intuitive for humans:</div>
+                        <img className="rounded-image" src="/OOPstats.png"></img>
+                    </div>
+                    <div className="flex flex-col items-center justify-center gap-1">
+                        <div className="passage-text font-bold">Data-Oritented Design:</div>
+                        <div className="passage-text">In Data-Oriented Design, we organize and add data fields to structs based on the temporal and spatial locality of the fields, and keep size as low as possible:</div>
+                        <img className="rounded-image" src="/DODstats.png"></img>
+                    </div>
+                </div>
             </div>
-            <div className="flex flex-col items-center justify-center gap-1">
+            <div className="flex flex-col items-center justify-center gap-4">
+                <BaseCard title="2) Vectorization"></BaseCard>
                 <div className="passage-text">
-                    also, mention separation of concerns of systems allows for potential for paralellization even tho I didnt do this
+                    Blah Blah Blah 
+                </div>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-4">
+                <BaseCard title="3) Parallelism"></BaseCard>
+                <div className="passage-text">
+                    Blah Blah Blah 
                 </div>
             </div>
             <div className="passage-text">
@@ -159,17 +173,16 @@ export const Rotmgabe = ({ className, visible }) => {
                 Registry: entity id mgmt, killing/creating entities, data hole filling (remove component), managing pools
                 numeric types
                 eventBus
-            </div>
-            <div className="passage-text">
-                give credit to pikuma, and credit to who he cited. "Credit: I was introduced to ECS from an online lecture series by Gustavo X, which was based off an academic paper published by Professor Y."
-                The art in this project was created by Oryx Design Labs and licensed for its use.”
+                branch predictability
+                enums
+                initializer lists
             </div>
             <div className="passage-text">
                 mockups here, maybe. I don't know if they're interesting enough to show
             </div>
             <div className="passage-text">
-                todo simplify pool.png. show definition for add remove maybe
-                include ~Pool destructor.
+                give credit to pikuma, and credit to who he cited. "Credit: I was introduced to ECS from an online lecture series by Gustavo X, which was based off an academic paper published by Professor Y."
+                The art in this project was created by Oryx Design Labs and licensed for its use.”
             </div>
         </div>
     )

@@ -5,9 +5,8 @@ import { Gabebook } from "./Gabebook";
 import { Thiswebsite } from "./Thiswebsite";
 
 export const Projects = () => {
-    const projects = ["Realm-of-the-Mad-Gabe", "TheGabebook", "This Website"];
+    const projects = ["Realm of the Mad Gabe", "TheGabebook", "This Website"];
     const [project, setProject] = useState("");
-    // const [project, setProject] = useState(projects[0]);
 
     return (
         <>
