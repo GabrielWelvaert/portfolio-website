@@ -154,7 +154,7 @@ export const Rotmgabe = ({ className, visible }) => {
                     Contiguous component pools provide spatial and temporal locality during system updates. When a system reads a component for an entity, it actually loads an entire cache line (usually 64 bytes) of contiguous data from RAM into the CPU cache. Given that systems update all of their entities each frame, fetching components often results in cache hits because that data has already been loaded into the CPU cache, which is orders of magnitude faster than getting the data from RAM in the case of a cache miss.
                 </div>
                 <div className="passage-text">
-                    With this in mind, components are designed to be as small as possible. Smaller components mean more of them fit into a single cache line, maximizing the amount of useful data loaded into the CPU cache at once. Additionally, components are structured around system access patterns—ideally, to reduce cache misses, all the data in a component will be needed whenever it is loaded from memory. To illustrate this, I'll show how a player-statistics component would be designed in an object-oriented approach and constrast it with data-oriented approach.
+                    With this in mind, components are designed to be as small as possible. Smaller components mean more of them fit into a single cache line, maximizing the amount of useful data loaded into the CPU cache at once. Additionally, components are structured around system access patterns—ideally, to reduce cache misses, all the data in a component will be needed whenever it is loaded from memory. To illustrate this, I'll show how a player-statistics component would be designed in an object-oriented approach and constrast it with a data-oriented approach.
                 </div>
                 <div className="grid grid-cols-2 items-start justify-center gap-12">
                     <div className="flex flex-col items-center justify-center gap-1">
@@ -167,6 +167,9 @@ export const Rotmgabe = ({ className, visible }) => {
                         <div className="passage-text">In Data-Oriented Design, we organize and add data fields to structs based on the temporal and spatial locality of the fields, and keep size as low as possible:</div>
                         <img className="rounded-image" src="/DODstats.png"></img>
                     </div>
+                </div>
+                <div className="passage-text">
+                    As you can see, the data-oriented approach favors breaking large structs into smaller, focused ones. This isn’t a criticism of object-oriented programming, but rather an observation that data-oriented design offers better performance in the context of ECS.
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center gap-4">
