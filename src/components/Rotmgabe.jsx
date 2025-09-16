@@ -36,7 +36,7 @@ export const Rotmgabe = ({ className, visible }) => {
                 </div>
             </div>
             <div className="passage-text">
-                As you can see, an entity holds no data itself. Instead, its data lives in separate components, which themselves are stored in contiguous memory pools:
+                As you can see, an entity holds no data itself. Instead, their data lives in separate components. Components are stored in contiguous memory pools:
             </div>
             <div className="grid grid-cols-[54%_46%] items-center justify-center gap-6">
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -53,17 +53,17 @@ export const Rotmgabe = ({ className, visible }) => {
                 <img className="rounded-image w-[50%]" src="/componenttemplateexample.png"></img>
             </div>
             <div className="flex flex-col items-center justify-center gap-1">
-                <div className="passage-text">Pools are stored together for easy access. This vector can be indexed by component id:</div>
+                <div className="passage-text">Pools are stored together for easy access:</div>
                 <img className="rounded-image w-[60%]" src="/pools.png"></img>
             </div>
             <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">Here is a visualization of the component pools. Notice how there is a pool for each type of component, and that each cell of a pool holds the component for a given entitiy.</div>
-                    <img className="rounded-image" src="/pools.drawio.png"></img>
+                    <img className="rounded-image" src="/pools.drawio(1).png"></img>
                 </div>
             </div>
             <div className="passage-text">
-                Modifying an entity's data means updating the pool of a corresponding component. Behavior is composition-driven, so an entity's behavior will depend on the set of components it holds. We track this with a signature, efficiently represented as a bitset. Representing the presence of a component in the signature simply means flipping the bit at the index of the component's static id:
+                In other words, any operation on an entity's components takes place in the pools. Behavior is composition-driven, so an entity's behavior will depend on the set of components it holds. We track this with a signature, efficiently represented as a bitset. Representing the presence of a component in the signature simply means flipping the bit at the index of the component's static id:
             </div>
             <div className="flex flex-col items-center justify-center gap-1">
                 <div className="passage-text">
@@ -73,8 +73,8 @@ export const Rotmgabe = ({ className, visible }) => {
                 <img className="rounded-image" src="/signatures.png"></img>
             </div>
             <div className="passage-text">
-                Here is sample code for adding a component to an entity; we simply add the component to the pool.
-                The component type is used to access the correct pool. Then, the entity id and component data are passed, and the pool will insert the component and keep track of where that entity's data is so we can get it later: 
+                To exemplify pool access, here is sample code for adding a component to an entity (we simply add the component to the pool)
+                First, the component id is used to find the correct pool. Then the entity id and component data are passed to the pool, which inserts the component and records the location for later retrieval for this entity. We also update the entity's component signature: 
                 <img className="rounded-image" src="/addcomponent.png"></img>
             </div>
             <div className="passage-text">
@@ -193,6 +193,7 @@ export const Rotmgabe = ({ className, visible }) => {
                 enums
                 initializer lists
             </div>
+            <img className="rounded-image w-[50%]" src="/memoryhole.drawio.png"></img>
             <div className="passage-text">
                 mockups here, maybe. I don't know if they're interesting enough to show
             </div>
