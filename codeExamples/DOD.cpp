@@ -133,9 +133,9 @@ struct SpriteComponent {
 };
 
 // for linear movement
-class MovementSystem: public System {
+class LinearMovementSystem: public System {
 public:
-    MovementSystem() {
+    LinearMovementSystem() {
         // on construction build the system's component signature
         RequireComponent<PositionComponent>();
         RequireComponent<VelocityComponent>();
@@ -186,20 +186,22 @@ int main(){
 
 // bundled together to represent a human friendly concept
 class PlayerStats {
-public:
+private:
     double HP; // health points
     double MP; // magic points
     int maxHP; // maximum possible health points
-    int maxMP; // maxiumum possible magic points
+    int maxMP; // maximum possible magic points
     int defense; // reduces damage taken
     int wisdom; // rate of magic points restoration
     int vitality; // rate of health points restoration
     int speed; // used in velocity calculations
     int dexterity; // rate of fire
     int attack; // damage modifier for attacking
+public:
+    // accessor & mutator methods
 };
 
-// used in systems related to health (ie taking damage)
+// used in systems related to health & damage
 struct HealthStatComponent {
     float HP; // health points
     uint16_t maxHP; // maximum possible health points
@@ -210,7 +212,7 @@ struct HealthStatComponent {
 // used in systems related to magic (ie using abilities)
 struct MagicStatComponent {
     float MP; // magic points
-    uint16_t maxMP; // maxiumum possible magic points
+    uint16_t maxMP; // maximum possible magic points
     uint8_t wisdom; // rate of magic points restoration
 };
 
@@ -220,7 +222,7 @@ struct OffensiveStatComponent {
     uint8_t attack; // damage modifier for attacking
 };
 
-// used in systemd related to moving
+// used in systems related to moving
 struct SpeedStatComponent {
     uint8_t speed; // used in velocity calculations
 };

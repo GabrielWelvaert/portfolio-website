@@ -22,7 +22,7 @@ export const Rotmgabe = ({ className, visible }) => {
             <div className="passage-text">
                 The core of this project is an implementation of the Entity-Component-System (<a className="hover-image-text" href="https://en.wikipedia.org/wiki/Entity_component_system" target="_blank" rel="noopener noreferrer">ECS</a>) architectural pattern.
                 In this pattern, the game is composed of <strong>entities</strong> that have <strong>components</strong> with mutable states, which are updated by various <strong>systems</strong>.
-                This unqiue design optimizes CPU memory access, allowing the game to sustain hundreds of frames per second even under high computational load.
+                This unique design optimizes CPU memory access, allowing the game to sustain hundreds of frames per second even under high computational load.
                 Most professional game engines use ECS.
             </div>
             <div className="grid grid-cols-2 items-center justify-around gap-2">
@@ -58,7 +58,7 @@ export const Rotmgabe = ({ className, visible }) => {
             </div>
             <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Here is a visualization of the component pools. Notice how there is a pool for each type of component, and that each cell of a pool holds the component for a given entitiy.</div>
+                    <div className="passage-text">Here is a visualization of the component pools. Notice how there is a pool for each type of component, and that each cell of a pool holds the component for a given entity.</div>
                     <img className="rounded-image" src="/pools.drawio(1).png"></img>
                 </div>
             </div>
@@ -67,14 +67,14 @@ export const Rotmgabe = ({ className, visible }) => {
             </div>
             <div className="flex flex-col items-center justify-center gap-1">
                 <div className="passage-text">
-                    Component signatures are bitsets indexable by component id's.
+                    Component signatures are bitsets indexable by component id's:
                 </div>
                 <img className="rounded-image" src="/signature.png"></img>
                 <img className="rounded-image" src="/signatures.png"></img>
             </div>
             <div className="passage-text">
-                To exemplify pool access, here is sample code for adding a component to an entity (we simply add the component to the pool)
-                First, the component id is used to find the correct pool. Then the entity id and component data are passed to the pool, which inserts the component and records the location for later retrieval for this entity. We also update the entity's component signature: 
+                To exemplify pool access, here is sample code for adding a component to an entity.
+                First, the component id is used to find the correct pool. Then, the entity id and component data are passed to the pool, which inserts the component and records the location for later retrieval for this entity. We also update the entity's component signature: 
                 <img className="rounded-image" src="/addcomponent.png"></img>
             </div>
             <div className="passage-text">
@@ -101,7 +101,7 @@ export const Rotmgabe = ({ className, visible }) => {
                 As you can see, even if entities differ conceptually, they may still share a common subset of components.
             </div>
             <div className="passage-text">
-                This brings us to the system part of ECS, of which are responsible for updating the data in the components of entities. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed— If an entity's component signature contains all the components in the system's signature, it will be tracked and processed. All systems perform their updates each frame on every entity that they track: 
+                This brings us to the systems part of ECS, which are responsible for updating the data in components. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed— If an entity's component signature contains all the components in the system's signature, it will be tracked and processed. All systems perform their updates each frame on every entity that they track: 
             </div>
             <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -131,7 +131,7 @@ export const Rotmgabe = ({ className, visible }) => {
             <div className="grid grid-cols-[55%_45%] items-center justify-center gap-8">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">
-                        Here is an example of a movement system. From our entity examples above, only the projectile entity would be tracked by this system because only it has both the required position and velocity components:
+                        Here is an example of a linear movement system. From our entity examples above, only the projectile entity would be tracked by this system because only it has both the required position and velocity components:
                     </div>
                     <img className="rounded-image" src="/movementsystem.png"></img>
                 </div>
@@ -154,28 +154,50 @@ export const Rotmgabe = ({ className, visible }) => {
                     Contiguous component pools provide spatial and temporal locality during system updates. When a system reads a component for an entity, it actually loads an entire cache line (usually 64 bytes) of contiguous data from RAM into the CPU cache. Given that systems update all of their entities each frame, fetching components often results in cache hits because that data has already been loaded into the CPU cache, which is orders of magnitude faster than getting the data from RAM in the case of a cache miss.
                 </div>
                 <div className="passage-text">
-                    With this in mind, components are designed to be as small as possible. Smaller components mean more of them fit into a single cache line, maximizing the amount of useful data loaded into the CPU cache at once. Additionally, components are structured around system access patterns—ideally, to reduce cache misses, all the data in a component will be needed whenever it is loaded from memory. To illustrate this, I'll show how a player-statistics component would be designed in an object-oriented approach and constrast it with a data-oriented approach.
+                    With this in mind, components are designed to be as small as possible. Smaller components mean more of them fit into a single cache line, maximizing the amount of useful data loaded into the CPU cache at once. Additionally, components are structured around system access patterns—ideally, to reduce cache misses, all the data in a component will be needed whenever it is loaded from memory. To illustrate this, I'll show how a player-statistics component would be designed in an object-oriented approach and contrast it with a data-oriented approach:
                 </div>
                 <div className="grid grid-cols-2 items-start justify-center gap-12">
                     <div className="flex flex-col items-center justify-center gap-1">
-                        <div className="passage-text font-bold">Object-Oritented Design:</div>
+                        <div className="passage-text font-bold">Object-Oriented Design:</div>
                         <div className="passage-text">In Object-Oriented Design, we organize and add data fields to classes to represent real world objects or concepts that are intuitive for humans:</div>
                         <img className="rounded-image" src="/OOPstats.png"></img>
                     </div>
                     <div className="flex flex-col items-center justify-center gap-1">
-                        <div className="passage-text font-bold">Data-Oritented Design:</div>
+                        <div className="passage-text font-bold">Data-Oriented Design:</div>
                         <div className="passage-text">In Data-Oriented Design, we organize and add data fields to structs based on the temporal and spatial locality of the fields, and keep size as low as possible:</div>
                         <img className="rounded-image" src="/DODstats.png"></img>
                     </div>
                 </div>
                 <div className="passage-text">
-                    As you can see, the data-oriented approach favors breaking large structs into smaller, focused ones. This isn’t a criticism of object-oriented programming, but rather an observation that data-oriented design offers better performance in the context of ECS.
+                    As you can see, the data-oriented approach favors breaking large structs into smaller, focused ones. This isn't a criticism of object-oriented programming, but rather an observation that data-oriented design offers better performance in the context of ECS.
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center gap-4">
-                <BaseCard title="2) Vectorization"></BaseCard>
+                <BaseCard title="2) Auto-Vectorization & Branch Predictability"></BaseCard>
                 <div className="passage-text">
-                    Blah Blah Blah 
+
+                    -- explain auto-vectorization (can only happen if the next x iterations are also the next x in contiguous memory.)
+                    -- explain compiler dependence, gather operations hurt this, performance tradeoffs, different ecs implementations
+                    -- explain branch predictability, simplicity of system bodies
+                    -- NEED TO SEE IF MY IMPLEMENTATION IS LOADING SIMD INSTRUCTIONS!!! COMPILE IT AND LOOK
+                    <br></br>
+                    <br></br>
+                    early draft to take ideas from, but use above:
+                    Systems are designed to perform their updates by iterating over contiguous memory with minimal logic to allow for auto-vectorization and improved branch predictability.
+                    When we load from contiguous memory with compiler optimizations, the compiler is likely to load data into single-instruction-multiple-data (SIMD) registers, which can perform instructions on multiple pieces of data at the same time.
+
+
+                </div>
+                <div className="passage-text">
+                    Additionally, keeping system logic simple allows the CPU's branch predictor to operate more effectively. 
+                </div>
+                <div className="passage-text">                   
+                    idToIndex hurts vectorization, mention this. oh well 
+                    vectorization can only happen if the next x iterations are also the next x in contiguous memory.
+                    data[entityIdToIndex[i]] is effectively a gather: the elements could be anywhere in memory. Compilers often don’t auto-vectorize gather patterns unless they’re confident the hardware supports fast SIMD gathers.
+                </div>
+                <div className="passage-text">
+                    compare a movement system with different branching for oscillating, parabolic, boomerang, compare to all of those being isolated
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center gap-4">
@@ -185,6 +207,9 @@ export const Rotmgabe = ({ className, visible }) => {
                 </div>
             </div>
             <div className="passage-text">
+                Short passage about how performance is hardware dependent and always a tradeoff (performance lottery). Also maybe something about GPU?
+            </div>
+            <div className="passage-text">
                 game loop
                 Registry: entity id mgmt, killing/creating entities, data hole filling (remove component), managing pools
                 numeric types
@@ -192,6 +217,7 @@ export const Rotmgabe = ({ className, visible }) => {
                 branch predictability
                 enums
                 initializer lists
+                SoA, AoS. SoA better usually
             </div>
             <img className="rounded-image w-[50%]" src="/memoryhole.drawio.png"></img>
             <div className="passage-text">

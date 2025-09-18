@@ -5,7 +5,7 @@ export const Work = () => {
                 <div className="passage-text-header">Work Experience</div>
                 <div className="passage-text">
                     Since 2024, I have been working for <a className="hover-image-text" href="https://ardx.net/" target="_blank" rel="noopener noreferrer">ARDX</a>, a CMMI-SVC level 5 management and technology consulting firm that serves as an Application Development Organization (ADO) for the Centers for Medicare & Medicaid Services (CMS).
-                    As a software developer, my primary responsibilty is maintaining and developing REGTAP, our federal web application which supports over 180,000 users. 
+                    As a software developer, my primary responsibility is maintaining and developing REGTAP, our federal web application which supports over 180,000 users. 
                 </div>
                 <img className="full-image" src='/REGTAP.png'></img>
                 <div className="passage-text">

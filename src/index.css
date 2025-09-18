@@ -133,7 +133,7 @@ html, body {
       transform: translateX(250%);
     }
   }
-  .animate-loading-bar { /*applied to the blue background div that moves accross the loading bar in LoadingScreen.jsx*/
+  .animate-loading-bar { /*applied to the blue background div that moves across the loading bar in LoadingScreen.jsx*/
     animation: loading 0.8s ease infinite;
   }
 }
