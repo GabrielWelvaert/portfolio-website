@@ -106,7 +106,7 @@ export const Rotmgabe = ({ className, visible }) => {
             <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">
-                        System parent class; actual systems will inherit from this:
+                        System parent class:
                     </div>
                     <img className="rounded-image" src="/system.png"></img>
                 </div>
@@ -146,7 +146,7 @@ export const Rotmgabe = ({ className, visible }) => {
                 </div>
             </div> 
             <div className="passage-text">
-                Systems that do not share any common component dependencies can easily run thier updates in parallel.
+                The specific and isolated nature of system updates naturally allows them to run in parallel if needed.
             </div>
             <div className="passage-text">
                 So, now we have entities, with their components in contiguous pools, that are modified by specialized systems. What are the advantages with this design? Why is this code so performant? 
@@ -178,9 +178,31 @@ export const Rotmgabe = ({ className, visible }) => {
                 <img className="rounded-image w-[50%]" src="/memoryhole.drawio.png"></img>
             </div>
             <div className="passage-text">
-                The ECS design that I have described above uses an array-of-structures (AoS) approach that works well for accessing entire components for updates.
-                Many ECS implementation favor a struct-of-array (SoA) approach, which is better for auto-vectorization and component designs where individual fields for all components are accessed at once.
-                Ultimately, performance always depends on both the goals of the system and the capabilities of the hardware which it runs on.
+                Essential operations like this and others including the management of entities, pools, and systems are the responsibility of the ECS "Manager" class which 
+                I've omitted to keep explanations concise and centered on the essential underlying mechanisms.
+            </div>
+            <div className="passage-text">
+                The ECS implementation that we have just explored uses an array-of-structures (AoS) layout, which works well when entire components are accessed. Many ECS implementations favor a struct-of-arrays (SoA) layout, which enables auto-vectorization for operations on individual fields. Choosing between AoS and SoA is a trade-off between flexibility, ease of use, and memory access patterns, and actual results will be hardware-dependent.
+                Here is a useful visualization the memory layout for each for a component with 3 fields:
+            </div>
+            <div className="grid grid-cols-2 items-start justify-center gap-12">
+                <div className="flex flex-col items-center justify-center gap-2">
+                    <div className="passage-text font-bold">AoS:</div>
+                    <div className="passage-text">Code representation:</div>
+                    <img className="rounded-image" src="/aos.png"></img>
+                    <div className="passage-text">Components are adjacent in memory:</div>
+                    <img className="rounded-image" src="/aos.drawio.png"></img>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-2">
+                    <div className="passage-text font-bold">SoA</div>
+                    <div className="passage-text">Code representation:</div>
+                    <img className="rounded-image" src="/soa.png"></img>
+                    <div className="passage-text">Fields are adjacent in memory:</div>
+                    <img className="rounded-image" src="/soa.drawio.png"></img>
+                </div>
+            </div>
+            <div className="passage-text">
+                This project was a rewarding mix of challenge, fun, and learning. I enjoy C++ programming and working on projects that directly involve data structures, memory representation, and algorithm design. I would be excited to pursue opportunities that allows me to apply and further develop skills relevant to this type of programming.
             </div>
         </div>
     )
