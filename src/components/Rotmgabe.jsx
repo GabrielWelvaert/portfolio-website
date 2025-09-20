@@ -146,6 +146,9 @@ export const Rotmgabe = ({ className, visible }) => {
                 </div>
             </div> 
             <div className="passage-text">
+                Systems that do not share any common component dependencies can easily run thier updates in parallel.
+            </div>
+            <div className="passage-text">
                 So, now we have entities, with their components in contiguous pools, that are modified by specialized systems. What are the advantages with this design? Why is this code so performant? 
                 For this ECS implementation, the primary reason is <span class="font-bold">cache efficiency</span>:
             </div>
@@ -170,26 +173,14 @@ export const Rotmgabe = ({ className, visible }) => {
             <div className="passage-text">
                 As you can see, the data-oriented approach favors breaking large structs into smaller, focused ones. This isn't a criticism of object-oriented programming, but rather an observation that data-oriented design offers better performance in the context of ECS.
             </div>
-            <br></br><br></br><br></br><br></br>
-            <div className="passage-text">
-                this is very important do not skip this. performance is hardware dependent. needs to be profiled for certainly. not all systems will perform the same.
-                Short passage about how performance is hardware dependent and always a tradeoff (performance lottery). Also maybe something about GPU?
+            <div className="flex flex-col items-center justify-center gap-1">
+                <div className="passage-text">Additionally, to minimize cache misses, pools are kept dense by filling memory holes when entities die. Here is an example of filling the hole left by the death of entity 1 in a pool of health components:</div>
+                <img className="rounded-image w-[50%]" src="/memoryhole.drawio.png"></img>
             </div>
             <div className="passage-text">
-                game loop
-                Registry: entity id mgmt, killing/creating entities, data hole filling (remove component), managing pools
-                numeric types
-                eventBus
-                branch predictability
-                this isn't best approach. SoA for vectorization. AoS favors flexibility and easy entity/component access, SoA favors SIMD speed
-                system isolation allows parallelism
-                enums
-                initializer lists
-                SoA, AoS. SoA better always
-            </div>
-            <img className="rounded-image w-[50%]" src="/memoryhole.drawio.png"></img>
-            <div className="passage-text">
-                mockups here, maybe. I don't know if they're interesting enough to show
+                The ECS design that I have described above uses an array-of-structures (AoS) approach that works well for accessing entire components for updates.
+                Many ECS implementation favor a struct-of-array (SoA) approach, which is better for auto-vectorization and component designs where individual fields for all components are accessed at once.
+                Ultimately, performance always depends on both the goals of the system and the capabilities of the hardware which it runs on.
             </div>
         </div>
     )
