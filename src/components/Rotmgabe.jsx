@@ -5,7 +5,7 @@ export const Rotmgabe = ({ className, visible }) => {
         <div className={className}>
             <div className="passage-text">
                 Realm of the Mad Gabe (<a className="hover-image-text" href="https://github.com/GabrielWelvaert/Realm-of-the-Mad-Gabe" target="_blank" rel="noopener noreferrer">GitHub</a>)
-                is a C++ video game that I wrote without the assistance of a game engine or game engine library. This project allowed me to sharpen my C++ skills while learning data-oriented design, focusing on concepts like cache friendliness and vectorization.
+                is a C++ video game that I wrote without the assistance of a game engine or game engine library. This project allowed me to sharpen my C++ skills while learning data-oriented design and high performance computing concepts.
                 Debugging was done with <a className="hover-image-text" href="https://sourceware.org/gdb/" target="_blank" rel="noopener noreferrer">GDB</a> and <a className="hover-image-text" href="https://valgrind.org/" target="_blank" rel="noopener noreferrer">Valgrind</a> while <a className="hover-image-text" href="https://www.libsdl.org/" target="_blank" rel="noopener noreferrer">SDL</a> handled all hardware interactions.
             </div>
             <div className="relative w-full pb-[56.25%]">
@@ -146,82 +146,31 @@ export const Rotmgabe = ({ className, visible }) => {
                 </div>
             </div> 
             <div className="passage-text">
-                So, now we have entities, with their components in contiguous pools, that are modified by specialized systems. What are the advantages with this design? Why is this code so performant? There are three primary reasons:
+                So, now we have entities, with their components in contiguous pools, that are modified by specialized systems. What are the advantages with this design? Why is this code so performant? 
+                For this ECS implementation, the primary reason is <span class="font-bold">cache efficiency</span>:
             </div>
-            <div className="flex flex-col items-center justify-center gap-4">
-                <BaseCard title="1) CPU Cache Friendliness"></BaseCard>
-                <div className="passage-text">
-                    Contiguous component pools provide spatial and temporal locality during system updates. When a system reads a component for an entity, it actually loads an entire cache line (usually 64 bytes) of contiguous data from RAM into the CPU cache. Given that systems update all of their entities each frame, fetching components often results in cache hits because that data has already been loaded into the CPU cache, which is orders of magnitude faster than getting the data from RAM in the case of a cache miss.
+            <div className="passage-text">
+                Contiguous component pools provide spatial and temporal locality during system updates. When a system reads a component for an entity, it actually loads an entire cache line (usually 64 bytes) of contiguous data from RAM into the CPU cache. Given that systems update all of their entities each frame, fetching components often results in cache hits because that data has already been loaded into the CPU cache, which is orders of magnitude faster than getting the data from RAM in the case of a cache miss.
+            </div>
+            <div className="passage-text">
+                With this in mind, components are designed to be as small as possible. Smaller components mean more of them fit into a single cache line, maximizing the amount of useful data loaded into the CPU cache at once. Additionally, components are structured around system access patterns—ideally, to reduce cache misses, all the data in a component will be needed whenever it is loaded from memory. To illustrate this, I'll show how a player-statistics component would be designed in an object-oriented approach and contrast it with a data-oriented approach:
+            </div>
+            <div className="grid grid-cols-2 items-start justify-center gap-12">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text font-bold">Object-Oriented Design:</div>
+                    <div className="passage-text">In Object-Oriented Design, we organize and add data fields to classes to represent real world objects or concepts that are intuitive for humans:</div>
+                    <img className="rounded-image" src="/OOPstats.png"></img>
                 </div>
-                <div className="passage-text">
-                    With this in mind, components are designed to be as small as possible. Smaller components mean more of them fit into a single cache line, maximizing the amount of useful data loaded into the CPU cache at once. Additionally, components are structured around system access patterns—ideally, to reduce cache misses, all the data in a component will be needed whenever it is loaded from memory. To illustrate this, I'll show how a player-statistics component would be designed in an object-oriented approach and contrast it with a data-oriented approach:
-                </div>
-                <div className="grid grid-cols-2 items-start justify-center gap-12">
-                    <div className="flex flex-col items-center justify-center gap-1">
-                        <div className="passage-text font-bold">Object-Oriented Design:</div>
-                        <div className="passage-text">In Object-Oriented Design, we organize and add data fields to classes to represent real world objects or concepts that are intuitive for humans:</div>
-                        <img className="rounded-image" src="/OOPstats.png"></img>
-                    </div>
-                    <div className="flex flex-col items-center justify-center gap-1">
-                        <div className="passage-text font-bold">Data-Oriented Design:</div>
-                        <div className="passage-text">In Data-Oriented Design, we organize and add data fields to structs based on the temporal and spatial locality of the fields, and keep size as low as possible:</div>
-                        <img className="rounded-image" src="/DODstats.png"></img>
-                    </div>
-                </div>
-                <div className="passage-text">
-                    As you can see, the data-oriented approach favors breaking large structs into smaller, focused ones. This isn't a criticism of object-oriented programming, but rather an observation that data-oriented design offers better performance in the context of ECS.
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text font-bold">Data-Oriented Design:</div>
+                    <div className="passage-text">In Data-Oriented Design, we organize and add data fields to structs based on the temporal and spatial locality of the fields, and keep size as low as possible:</div>
+                    <img className="rounded-image" src="/DODstats.png"></img>
                 </div>
             </div>
-            <div className="flex flex-col items-center justify-center gap-4">
-                <BaseCard title="2) Auto-Vectorization & Branch Predictability"></BaseCard>
-                <div className="passage-text">
-                    Iterating over contiguous memory with simple, independent operations gives the compiler an opportunity to apply auto-vectorization. In this process, data is loaded into single-instruction-multiple-data (SIMD) registers, allowing multiple elements to be updated in a single instruction rather than one at a time.
-                </div>
-                image of vectorizable code? -- yes describe it as "contiguous, indepdent iteration and update, that is what causes vectorization"
-                <div className="passage-text">
-                    Branches, gathers, and indirection are all bad for vectorization-- nothing should happen between the iterative-contiguous read and performing the operation.
-                    In truth, the ECS implementation that I've described above is not optimized for vectorization.
-                    Although systems iterate over a vector of entities, and the components are stored in vectors of pools, the gather operation to get a component from the pool breaks the opportunity for vectorization. In other words, since we don't know where the 
-                    Although our systems iterative over a vector of entities and their components are stored in vectors of pools, the position of an entitie's component in the pool is random. Only in the case where we know for certain that every component in the pool can be updated in the same fashion can we perform an update that is highly vecotrizable
-                </div>
-                <div className="passage-text">
-                    try to find a system that actuallly vectorizes but its unlikely. maybe rewrite one that iteratives over an entire pool -- such as hp regen. that would be vectorized! talk about SoA here maybe..
-                </div>
-                https://stackoverflow.com/a/28677057/20080198
-                <br></br>
-                also could talk about components designed for vectorization -- ie compound components if 95% of entities will have both, you may opt to combine them -- remember, performance is a lottery. nothing set in stone!
-                <div className="passage-text">
-
-                    -- explain auto-vectorization (can only happen if the next x iterations are also the next x in contiguous memory.)
-                    -- explain compiler dependence, gather operations hurt this, performance tradeoffs, different ecs implementations
-                    -- explain branch predictability, simplicity of system bodies
-                    -- NEED TO SEE IF MY IMPLEMENTATION IS LOADING SIMD INSTRUCTIONS!!! COMPILE IT AND LOOK
-                    <br></br>
-                    <br></br>
-                    early draft to take ideas from, but use above:
-                    Systems are designed to perform their updates by iterating over contiguous memory with minimal logic to allow for auto-vectorization and improved branch predictability.
-                    When we load from contiguous memory with compiler optimizations, the compiler is likely to load data into single-instruction-multiple-data (SIMD) registers, which can perform instructions on multiple pieces of data at the same time.
-
-
-                </div>
-                <div className="passage-text">
-                    Additionally, keeping system logic simple allows the CPU's branch predictor to operate more effectively. 
-                </div>
-                <div className="passage-text">                   
-                    idToIndex hurts vectorization, mention this. oh well 
-                    vectorization can only happen if the next x iterations are also the next x in contiguous memory.
-                    data[entityIdToIndex[i]] is effectively a gather: the elements could be anywhere in memory. Compilers often don’t auto-vectorize gather patterns unless they’re confident the hardware supports fast SIMD gathers.
-                </div>
-                <div className="passage-text">
-                    compare a movement system with different branching for oscillating, parabolic, boomerang, compare to all of those being isolated
-                </div>
+            <div className="passage-text">
+                As you can see, the data-oriented approach favors breaking large structs into smaller, focused ones. This isn't a criticism of object-oriented programming, but rather an observation that data-oriented design offers better performance in the context of ECS.
             </div>
-            <div className="flex flex-col items-center justify-center gap-4">
-                <BaseCard title="3) Parallelism"></BaseCard>
-                <div className="passage-text">
-                    Blah Blah Blah 
-                </div>
-            </div>
+            <br></br><br></br><br></br><br></br>
             <div className="passage-text">
                 this is very important do not skip this. performance is hardware dependent. needs to be profiled for certainly. not all systems will perform the same.
                 Short passage about how performance is hardware dependent and always a tradeoff (performance lottery). Also maybe something about GPU?
@@ -232,9 +181,11 @@ export const Rotmgabe = ({ className, visible }) => {
                 numeric types
                 eventBus
                 branch predictability
+                this isn't best approach. SoA for vectorization. AoS favors flexibility and easy entity/component access, SoA favors SIMD speed
+                system isolation allows parallelism
                 enums
                 initializer lists
-                SoA, AoS. SoA better usually
+                SoA, AoS. SoA better always
             </div>
             <img className="rounded-image w-[50%]" src="/memoryhole.drawio.png"></img>
             <div className="passage-text">
