@@ -175,6 +175,22 @@ export const Rotmgabe = ({ className, visible }) => {
             <div className="flex flex-col items-center justify-center gap-4">
                 <BaseCard title="2) Auto-Vectorization & Branch Predictability"></BaseCard>
                 <div className="passage-text">
+                    Iterating over contiguous memory with simple, independent operations gives the compiler an opportunity to apply auto-vectorization. In this process, data is loaded into single-instruction-multiple-data (SIMD) registers, allowing multiple elements to be updated in a single instruction rather than one at a time.
+                </div>
+                image of vectorizable code? -- yes describe it as "contiguous, indepdent iteration and update, that is what causes vectorization"
+                <div className="passage-text">
+                    Branches, gathers, and indirection are all bad for vectorization-- nothing should happen between the iterative-contiguous read and performing the operation.
+                    In truth, the ECS implementation that I've described above is not optimized for vectorization.
+                    Although systems iterate over a vector of entities, and the components are stored in vectors of pools, the gather operation to get a component from the pool breaks the opportunity for vectorization. In other words, since we don't know where the 
+                    Although our systems iterative over a vector of entities and their components are stored in vectors of pools, the position of an entitie's component in the pool is random. Only in the case where we know for certain that every component in the pool can be updated in the same fashion can we perform an update that is highly vecotrizable
+                </div>
+                <div className="passage-text">
+                    try to find a system that actuallly vectorizes but its unlikely. maybe rewrite one that iteratives over an entire pool -- such as hp regen. that would be vectorized! talk about SoA here maybe..
+                </div>
+                https://stackoverflow.com/a/28677057/20080198
+                <br></br>
+                also could talk about components designed for vectorization -- ie compound components if 95% of entities will have both, you may opt to combine them -- remember, performance is a lottery. nothing set in stone!
+                <div className="passage-text">
 
                     -- explain auto-vectorization (can only happen if the next x iterations are also the next x in contiguous memory.)
                     -- explain compiler dependence, gather operations hurt this, performance tradeoffs, different ecs implementations
@@ -207,6 +223,7 @@ export const Rotmgabe = ({ className, visible }) => {
                 </div>
             </div>
             <div className="passage-text">
+                this is very important do not skip this. performance is hardware dependent. needs to be profiled for certainly. not all systems will perform the same.
                 Short passage about how performance is hardware dependent and always a tradeoff (performance lottery). Also maybe something about GPU?
             </div>
             <div className="passage-text">
