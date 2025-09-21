@@ -1,43 +1,40 @@
-import { useState, useEffect } from "react";
-import { scrollToId, sectionIds, getCurrentIndexFromURL, indexToSection, sectionToIndex } from "../utils.js";
-
-// this hook creates a keypress event listener for the window
-// and keeps track of where we are so we can move between sections
+import { useEffect, useRef } from "react";
+import { sectionIds, indexToSection, scrollToId } from "../utils";
 
 export function useNavigationKey(currentIndex, setCurrentIndex) {
-  // for debugging
-  // useEffect(() => { 
-  //   console.log("Current index changed:", currentIndex, indexToSection.get(currentIndex));
-  // }, [currentIndex]);
+  const currentIndexRef = useRef(currentIndex);
+
+  useEffect(() => { currentIndexRef.current = currentIndex; }, [currentIndex]);
 
   useEffect(() => {
-    function handleKey(e) {
-      const arrowKeys = new Set(["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft", " "]);
-      const key = e.key;
+    const handleKey = (e) => {
+      const keys = new Set(["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft", " "]);
+      if (!keys.has(e.key)) return;
+      e.preventDefault();
+
       const maxIndex = sectionIds.length - 1;
-      if(key && arrowKeys.has(key)){
-        e.preventDefault();
-        let newIndex;
-        switch(key){
-          case " ":
-          case "ArrowDown":
-          case "ArrowRight": {
-            const incrementIndex = currentIndex + 1; 
-            newIndex = incrementIndex % (maxIndex + 1);
-          } break;
-          case "ArrowUp":
-          case "ArrowLeft": {
-            const decrementIndex = currentIndex - 1; 
-            decrementIndex < 0 ? newIndex = maxIndex : newIndex = decrementIndex
-          } break;
-        }
-        setCurrentIndex(newIndex);
-        const currentSection = indexToSection.get(newIndex);
-        scrollToId(currentSection);
+      let newIndex = currentIndexRef.current;
+
+      switch (e.key) {
+        case " ":
+        case "ArrowDown":
+        case "ArrowRight":
+          newIndex = (currentIndexRef.current + 1) % (maxIndex + 1);
+          break;
+        case "ArrowUp":
+        case "ArrowLeft":
+          newIndex = (currentIndexRef.current - 1 + (maxIndex + 1)) % (maxIndex + 1);
+          break;
       }
-    }
+
+      currentIndexRef.current = newIndex;
+      setCurrentIndex(newIndex);
+
+      const sectionId = indexToSection.get(newIndex);
+      if (sectionId) scrollToId(sectionId);
+    };
 
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [currentIndex, setCurrentIndex]);
+  }, [setCurrentIndex]);
 }

@@ -1,23 +1,22 @@
-import { useState, useEffect } from "react";
-import { sectionIds, sectionToIndex } from "../utils.js";
+import { useEffect } from "react";
+import { sectionIds } from "../utils";
 
-// this hook updates the url with current section in viewport
-
-export function useIntersectionObserver(currentIndex, setCurrentIndex, lastNavRef, options = {}) {
+export function useIntersectionObserver(currentIndex, setCurrentIndex, lastKeyNavRef, options = {}) {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      // skip updates if a navigation happened recently
-      if (Date.now() - lastNavRef.current < 200) return;
-
+      const now = Date.now();
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const newIndex = sectionIds.indexOf(entry.target.id);
-          if (newIndex !== -1 && newIndex !== currentIndex) {
-            setCurrentIndex(newIndex);
-          }
+          if (newIndex === -1 || newIndex === currentIndex) return;
+
+          // Ignore updates if a key navigation happened in the last 200ms
+          if (now - lastKeyNavRef.current < 200) return;
+
+          setCurrentIndex(newIndex); // triggers URL update in App.jsx
         }
       });
-    }, options);
+    }, { threshold: 0.5, ...options });
 
     sectionIds.forEach(id => {
       const el = document.getElementById(id);
@@ -25,5 +24,5 @@ export function useIntersectionObserver(currentIndex, setCurrentIndex, lastNavRe
     });
 
     return () => observer.disconnect();
-  }, [currentIndex, setCurrentIndex, lastNavRef, options]);
+  }, [currentIndex, setCurrentIndex, lastKeyNavRef, options]);
 }
