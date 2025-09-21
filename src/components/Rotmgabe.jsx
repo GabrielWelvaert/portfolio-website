@@ -1,6 +1,6 @@
 import { BaseCard } from "./BaseCard"
 
-export const Rotmgabe = ({ className, visible }) => {
+export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
     return (
         <div className={className}>
             <div className="passage-text">
@@ -9,7 +9,7 @@ export const Rotmgabe = ({ className, visible }) => {
                 Debugging was done with <a className="hover-image-text" href="https://sourceware.org/gdb/" target="_blank" rel="noopener noreferrer">GDB</a> and <a className="hover-image-text" href="https://valgrind.org/" target="_blank" rel="noopener noreferrer">Valgrind</a> while <a className="hover-image-text" href="https://www.libsdl.org/" target="_blank" rel="noopener noreferrer">SDL</a> handled all hardware interactions.
             </div>
             <div className="relative w-full pb-[56.25%]">
-                {visible && (
+                {visibleVideo && (
                 <iframe 
                     className="absolute top-0 left-0 w-full h-full"
                     src="https://www.youtube.com/embed/aP7Ju_zDels?rel=0" 
@@ -150,7 +150,7 @@ export const Rotmgabe = ({ className, visible }) => {
             </div>
             <div className="passage-text">
                 So, now we have entities, with their components in contiguous pools, that are modified by specialized systems. What are the advantages with this design? Why is this code so performant? 
-                For this ECS implementation, the primary reason is <span class="font-bold">cache efficiency</span>:
+                For this ECS implementation, the primary reason is <span className="font-bold">cache efficiency</span>:
             </div>
             <div className="passage-text">
                 Contiguous component pools provide spatial and temporal locality during system updates. When a system reads a component for an entity, it actually loads an entire cache line (usually 64 bytes) of contiguous data from RAM into the CPU cache. Given that systems update all of their entities each frame, fetching components often results in cache hits because that data has already been loaded into the CPU cache, which is orders of magnitude faster than getting the data from RAM in the case of a cache miss.
@@ -182,27 +182,30 @@ export const Rotmgabe = ({ className, visible }) => {
                 I've omitted to keep explanations concise and centered on the essential underlying mechanisms.
             </div>
             <div className="passage-text">
-                The ECS implementation that we have just explored uses an array-of-structures (AoS) layout, which works well when entire components are accessed. Many ECS implementations favor a struct-of-arrays (SoA) layout, which enables auto-vectorization for operations on individual fields. Choosing between AoS and SoA is a trade-off between flexibility, ease of use, and memory access patterns, and actual results will be hardware-dependent.
+                The ECS implementation that we have just explored uses an array-of-structures (AoS) layout, which works well when entire components access is needed. Many ECS implementations favor a struct-of-arrays (SoA) layout, which enables auto-vectorization for operations on individual fields. Choosing between AoS and SoA is a trade-off between flexibility, ease of use, and memory access patterns, and actual results will be hardware-dependent.
                 Here is a useful visualization the memory layout for each for a component with 3 fields:
             </div>
             <div className="grid grid-cols-2 items-start justify-center gap-12">
-                <div className="flex flex-col items-center justify-center gap-2">
+                <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text font-bold">AoS:</div>
                     <div className="passage-text">Code representation:</div>
                     <img className="rounded-image" src="/aos.png"></img>
                     <div className="passage-text">Components are adjacent in memory:</div>
                     <img className="rounded-image" src="/aos.drawio.png"></img>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-2">
+                <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text font-bold">SoA</div>
                     <div className="passage-text">Code representation:</div>
-                    <img className="rounded-image" src="/soa.png"></img>
+                    <img className="rounded-image mb-1" src="/soa.png"></img>
                     <div className="passage-text">Fields are adjacent in memory:</div>
                     <img className="rounded-image" src="/soa.drawio.png"></img>
                 </div>
             </div>
             <div className="passage-text">
-                This project was a rewarding mix of challenge, fun, and learning. I enjoy C++ programming and working on projects that directly involve data structures, memory representation, and algorithm design. I would be excited to pursue opportunities that allows me to apply and further develop skills relevant to this type of programming.
+                This project was a rewarding mix of challenge, fun, and learning. I enjoy C++ programming and working on projects that directly involve data structures, memory representation, and algorithm design.
+            </div>
+            <div className="passage-text">
+                <a className="interactable-text focus:outline-none cursor-pointer" onClick={() => setProject("TheGabebook")}>test</a>    
             </div>
         </div>
     )
