@@ -65,7 +65,7 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
                 </div>
             </div>
             <div className="passage-text">
-                As you can see, entities are decoupled from their components, so all operations on components are performed in the pools. 
+                With this pool pattern, entities are decoupled from their components, so all operations on components are performed in the pools. 
                 This enables a composition-based approach, in which an entity's behavior is determined by the set of components it holds. 
                 We track this using a signature, represented efficiently as a bitset in which each bit indicates the presence or absence of a component. Marking a component as present simply means flipping the bit at the index of the component's s static Id:
             </div>
@@ -198,7 +198,7 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
                     <img className="rounded-image" src="/aos.drawio.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text font-bold">SoA</div>
+                    <div className="passage-text font-bold">SoA:</div>
                     <div className="passage-text">Code representation:</div>
                     <img className="rounded-image mb-1" src="/soa.png"></img>
                     <div className="passage-text">Fields are adjacent in memory:</div>
