@@ -3,6 +3,7 @@ import { ButtonSelector } from "./ButtonSelector";
 import { Rotmgabe } from "./Rotmgabe";
 import { Gabebook } from "./Gabebook";
 import { Thiswebsite } from "./Thiswebsite";
+import { Fade } from "./Fade"
 
 export const Projects = () => {
     const projects = ["Realm of the Mad Gabe", "TheGabebook", "This Website"];
@@ -27,9 +28,15 @@ export const Projects = () => {
                             {project === projects[1] && <Gabebook className={`opacity-fading-project-non-absolute ${project === projects[1] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Gabebook>}
                             {project === projects[2] && <Thiswebsite className={`opacity-fading-project-non-absolute ${project === projects[2] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Thiswebsite>}
                         </div>
-                        <Rotmgabe className={`opacity-fading-project ${project === projects[0] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} visibleVideo={project === projects[0]} setProject={setProject}></Rotmgabe>
-                        <Gabebook className={`opacity-fading-project ${project === projects[1] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Gabebook>
-                        <Thiswebsite className={`opacity-fading-project ${project === projects[2] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Thiswebsite>
+                        <Fade show={project === projects[0]}>
+                            <Rotmgabe className={`opacity-fading-project ${project === projects[0] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} visibleVideo={project === projects[0]} setProject={setProject}></Rotmgabe>
+                        </Fade>
+                        <Fade show={project === projects[1]}>
+                            <Gabebook className={`opacity-fading-project ${project === projects[1] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Gabebook>
+                        </Fade>
+                        <Fade show={project === projects[2]}>
+                            <Thiswebsite className={`opacity-fading-project ${project === projects[2] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}></Thiswebsite>
+                        </Fade>
                     </div>
                 )}
             </div>
