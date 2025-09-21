@@ -5,8 +5,10 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
         <div className={className}>
             <div className="passage-text">
                 Realm of the Mad Gabe (<a className="hover-image-text" href="https://github.com/GabrielWelvaert/Realm-of-the-Mad-Gabe" target="_blank" rel="noopener noreferrer">GitHub</a>)
-                is a C++ video game that I wrote without the assistance of a game engine or game engine library. This project allowed me to sharpen my C++ skills while learning data-oriented design and high performance computing concepts.
-                Debugging was done with <a className="hover-image-text" href="https://sourceware.org/gdb/" target="_blank" rel="noopener noreferrer">GDB</a> and <a className="hover-image-text" href="https://valgrind.org/" target="_blank" rel="noopener noreferrer">Valgrind</a> while <a className="hover-image-text" href="https://www.libsdl.org/" target="_blank" rel="noopener noreferrer">SDL</a> handled all hardware interactions.
+                is a C++ video game that I wrote from scratch without the assistance of a game engine or game engine library. 
+                Through this project, I honed my C++ skills and gained hands-on experience with data-oriented design and high-performance computing concepts. 
+                I used <a className="hover-image-text" href="https://sourceware.org/gdb/" target="_blank" rel="noopener noreferrer">GDB</a> and <a className="hover-image-text" href="https://valgrind.org/" target="_blank" rel="noopener noreferrer">Valgrind</a> for debugging, and <a className="hover-image-text" href="https://www.libsdl.org/" target="_blank" rel="noopener noreferrer">SDL</a> for hardware interactions. 
+                The game is a clone of <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Realm_of_the_Mad_God" target="_blank" rel="noopener noreferrer">Realm of the Mad God</a> utilizing art from <a className="hover-image-text" href="https://www.oryxdesignlab.com/" target="_blank" rel="noopener noreferrer">Oryx Design Lab</a>.
             </div>
             <div className="relative w-full pb-[56.25%]">
                 {visibleVideo && (
@@ -36,7 +38,7 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
                 </div>
             </div>
             <div className="passage-text">
-                As you can see, an entity holds no data itself. Instead, their data lives in separate components. Components are stored in contiguous memory pools:
+                As you can see, an entity holds no data itself. Instead, their data lives in separate components. Components are stored in their own contiguous memory pools:
             </div>
             <div className="grid grid-cols-[54%_46%] items-center justify-center gap-6">
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -63,7 +65,9 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
                 </div>
             </div>
             <div className="passage-text">
-                In other words, any operation on an entity's components takes place in the pools. Behavior is composition-driven, so an entity's behavior will depend on the set of components it holds. We track this with a signature, efficiently represented as a bitset. Representing the presence of a component in the signature simply means flipping the bit at the index of the component's static id:
+                As you can see, entities are decoupled from their components, so all operations on components are performed in the pools. 
+                This enables a composition-based approach, in which an entity's behavior is determined by the set of components it holds. 
+                We track this using a signature, represented efficiently as a bitset in which each bit indicates the presence or absence of a component. Marking a component as present simply means flipping the bit at the index of the component's s static Id:
             </div>
             <div className="flex flex-col items-center justify-center gap-1">
                 <div className="passage-text">
@@ -101,7 +105,7 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
                 As you can see, even if entities differ conceptually, they may still share a common subset of components.
             </div>
             <div className="passage-text">
-                This brings us to the systems part of ECS, which are responsible for updating the data in components. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed— If an entity's component signature contains all the components in the system's signature, it will be tracked and processed. All systems perform their updates each frame on every entity that they track: 
+                This brings us to the systems part of ECS, which are responsible for updating the data in components. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed. If an entity's component signature contains all the components in the system's signature, it will be tracked and processed by that system. All systems perform their updates each frame on every entity that they track: 
             </div>
             <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -202,7 +206,8 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
                 </div>
             </div>
             <div className="passage-text">
-                This project was a rewarding mix of challenge, fun, and learning. I enjoy C++ programming and working on projects that directly involve data structures, memory representation, and algorithm design.
+                This project was a rewarding mix of challenge, fun, and learning. 
+                I enjoy C++ programming and working on projects that directly involve data structures, memory representation, and algorithm design. 
             </div>
             <div className="passage-text">
                 <a href="#projects" className="interactable-text focus:outline-none cursor-pointer" onClick={() => setTimeout(() => setProject("TheGabebook"), 1250)}>
