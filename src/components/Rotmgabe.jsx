@@ -205,7 +205,9 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
                 This project was a rewarding mix of challenge, fun, and learning. I enjoy C++ programming and working on projects that directly involve data structures, memory representation, and algorithm design.
             </div>
             <div className="passage-text">
-                <a className="interactable-text focus:outline-none cursor-pointer" onClick={() => setProject("TheGabebook")}>test</a>    
+                <a href="#projects" className="interactable-text focus:outline-none cursor-pointer" onClick={() => setTimeout(() => setProject("TheGabebook"), 1250)}>
+                    Click To View Next Project
+                </a>    
             </div>
         </div>
     )
