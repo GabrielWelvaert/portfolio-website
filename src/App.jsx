@@ -20,13 +20,12 @@ function App() {
   useNavigationKey(currentIndex, setCurrentIndex); // arrow keys navigation 
   useIntersectionObserver(currentIndex, setCurrentIndex); // scroll navigation
 
-  useEffect(() => { // update URL whenever current index changes
+  useEffect(() => {
     history.replaceState(null, "", `#${indexToSection.get(currentIndex)}`);
   }, [currentIndex]);
-  useEffect(() => { // scroll to current section once welcome screen is done
-    if(isLoaded){
-      scrollToId();
-    }
+
+  useEffect(() => {
+    if(isLoaded) scrollToId();
   }, [isLoaded]);
 
   return (
