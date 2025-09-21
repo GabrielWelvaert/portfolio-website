@@ -6,11 +6,12 @@ export const ButtonSelector = ({options, selected, callback}) => {
       {options.map((opt) => (
         <button 
             key={opt}
-            onClick={() => {
+        >
+            <span className="interactable-text text-[20px] cursor-pointer"
+              onClick={() => {
               callback(opt);
             }}
-        >
-            <span className="interactable-text text-[20px] cursor-pointer">
+            >
               {opt}
             </span>
         </button>
