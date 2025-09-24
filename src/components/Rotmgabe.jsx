@@ -61,7 +61,7 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
             <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">Here is a visualization of the component pools. Notice how there is a pool for each type of component, and that each cell of a pool holds the component for a given entity.</div>
-                    <img className="rounded-image" src="/pools.drawio(1).png"></img>
+                    <img className="rounded-image" src="/pools.drawio.png"></img>
                 </div>
             </div>
             <div className="passage-text">
@@ -150,7 +150,7 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
                 </div>
             </div> 
             <div className="passage-text">
-                The specific and isolated nature of system updates naturally allows them to run in parallel if needed.
+                Systems that do not share any of the same component requirements can often naturally run in parallel.
             </div>
             <div className="passage-text">
                 So, now we have entities, with their components in contiguous pools, that are modified by specialized systems. What are the advantages with this design? Why is this code so performant? 
