@@ -187,7 +187,7 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
             </div>
             <div className="passage-text">
                 The ECS implementation that we have just explored uses an array-of-structures (AoS) layout, which works well when entire components access is needed. Many ECS implementations favor a struct-of-arrays (SoA) layout, which enables auto-vectorization for operations on individual fields. Choosing between AoS and SoA is a trade-off between flexibility, ease of use, and memory access patterns, and actual results will be hardware-dependent.
-                Here is a useful visualization the memory layout for each for a component with 3 fields:
+                Here is a useful visualization of the memory layout for each approach for a component with 3 fields:
             </div>
             <div className="grid grid-cols-2 items-start justify-center gap-12">
                 <div className="flex flex-col items-center justify-center gap-1">
