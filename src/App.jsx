@@ -1,19 +1,15 @@
 import "./index.css";
 import { useState, useEffect, useRef } from "react";
-import { LoadingScreen } from './components/LoadingScreen';
 import { NavigationBar } from './components/NavigationBar';
 import { MobileMenu } from "./components/MobileMenu";
-import { Home } from "./components/Home";
 import { About } from "./components/About";
 import { Work } from "./components/Work";
 import { Projects } from "./components/Projects";
-import { Contact } from "./components/Contact";
 import { useNavigationKey } from "./hooks/useNavigationKey";
 import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
 import { scrollToId, getCurrentIndexFromURL, indexToSection, sectionIds } from "./utils.js";
 
 function App() {
-  const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(getCurrentIndexFromURL());
 
@@ -36,25 +32,23 @@ function App() {
     if (sectionId) history.replaceState(null, "", `#${sectionId}`);
   }, [currentIndex]);
 
-  // Scroll to current section once loaded
+  // Scroll to current section once loaded. avoids weirdness if refresh while viewing a project
   useEffect(() => {
-    if (isLoaded) scrollToId();
-  }, [isLoaded]);
+    const timer = setTimeout(() => {
+      scrollToId();
+    }, 1000); // match your fade duration
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <>
-      {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
-
-      <div className={`min-h-screen transition-opacity duration-1000 ${isLoaded ? "opacity-100" : "opacity-0"} bg-black text-gray-100`}>
-        <NavigationBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <Home />
-        <About />
-        <Work />
-        <Projects />
-        <Contact />
+      <div className={`min-h-screen animate-fadeIn bg-black text-gray-100`}>
+        <NavigationBar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+        <About/>
+        <Work/>
+        <Projects/>
       </div>
-    </>
   );
 }
 

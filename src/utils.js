@@ -14,7 +14,7 @@ export function getCurrentIndexFromURL(){
     return index >= 0 ? index : 0;
 }
 
-export const sectionIds = ["home", "about", "work", "projects", "contact"];
+export const sectionIds = ["about", "work", "projects"];
 
 // section to Index
 export const sectionToIndex = new Map(sectionIds.map((id, i) => [id, i]));
