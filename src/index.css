@@ -55,7 +55,7 @@ html, body {
 }
 
 .hover-image {
-  @apply w-64 h-64 rounded-lg object-cover; 
+  @apply w-48 h-48 rounded-lg object-cover; 
 }
 
 .hover-image-display-grid {

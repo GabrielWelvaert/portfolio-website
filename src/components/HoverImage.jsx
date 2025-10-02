@@ -15,7 +15,7 @@ export const HoverImage = ({text, images}) => {
                 {text}
             </span>
             {hovered && (
-                <div className="hover-image-display-grid" style={{ top: mouseY - 850 }}>
+                <div className="hover-image-display-grid" style={{ top: mouseY - 650 }}>
                     {displayedImages.map((src, id) => (
                     <img
                         key={id}
