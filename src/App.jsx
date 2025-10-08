@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       scrollToId();
-    }, 1000); // match your fade duration
+    }, 1000); // match fade duration
 
     return () => clearTimeout(timer);
   }, []);

@@ -17,11 +17,12 @@ export const Work = () => {
                     title=""
                     className="card-wide"
                     description={[
-                        "Remediated critical security issues (POA&Ms) including contextualized CSV attack protections and synchronizer-token CSRF mitigation on public pages",
+                        "Remediated critical security issues including CSV attack protections and CSRF protection on public pages",
                         "Optimized legacy code by converting server-side client logic to modern client-side JavaScript, reducing server hits while preserving final backend checks",
                         "Modernized page design and layout, ensuring 508 accessibility compliance",
                         "Implemented constraints and query optimizations to maintain data integrity and prevent duplicates in parallel, lag-heavy operations",
-                        "Designed and implemented Git utilization strategy to optimize ticket-to-release workflow, adopted as team standard"
+                        "Designed and implemented Git utilization strategies to optimize ticket-to-release workflow, adopted as team standard",
+                        "Optimized file-syncing process between servers across our ALB, reducing CPU and server load by orders of magnitude"
                     ]}
                 />
             </div>
