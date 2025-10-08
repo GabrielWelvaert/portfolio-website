@@ -3,7 +3,7 @@ import { ColumnCard } from "./ColumnCard";
 export const Work = () => {
     return (
         <>
-            <div id="work" className="page-content-container-centered-1000">
+            <div id="work" className="non-centered-scrollable-section page-content-container-1000">
                 <div className="passage-text-header">Work</div>
                 <div className="passage-text">
                     Since 2024, I have been working for <a className="hover-image-text" href="https://ardx.net/" target="_blank" rel="noopener noreferrer">ARDX</a>, a CMMI-SVC level 5 management and technology consulting firm that serves as an Application Development Organization (ADO) for the Centers for Medicare & Medicaid Services (CMS).
@@ -11,7 +11,7 @@ export const Work = () => {
                 </div>
                 <img className="rounded-image w-7/8 h-auto" src='/REGTAP.png'></img>
                 <div className="passage-text">
-                    I've written the majority of code for hotfixes and major releases, collaborating with testers, analysts, and technical leaders to deliver solutions in a complex framework-less legacy codebase, while supporting contract re-compete efforts, compliance, and client satisfaction, for example:
+                    Responsible for developing hotfixes and major releases by collaborating with testers, analysts, and technical leaders to deliver solutions in a complex framework-less legacy codebase, while supporting contract re-compete efforts, compliance, and client satisfaction, for example:
                 </div>
                 <ColumnCard
                     title=""

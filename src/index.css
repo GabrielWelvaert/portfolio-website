@@ -55,12 +55,13 @@ html, body {
 }
 
 .hover-image {
-  @apply w-48 h-48 rounded-lg object-cover; 
+  @apply w-48 h-48 rounded-lg object-cover min-w-[100px]; 
 }
 
 .hover-image-display-grid {
   @apply fixed left-1/2 transform -translate-x-1/2
          grid grid-cols-3 gap-2 bg-gradient-to-br from-[#101010] to-[#1a1a25] p-2 rounded shadow-lg z-39;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
 }
 
 .passage-text {
@@ -104,7 +105,7 @@ html, body {
 }
 
 .page-content-container-centered-1000 {
-  @apply min-h-screen flex flex-col items-center justify-center relative gap-6 mx-auto max-w-[1000px];
+  @apply min-h-screen flex flex-col items-center justify-center relative gap-6 mx-auto max-w-[1000px] pt-[60px] box-border;
 }
 
 .page-content-container-1000 {
