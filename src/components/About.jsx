@@ -18,6 +18,7 @@ export const About = () => {
             <div className="cards-row">
                 <ColumnCard
                     title="Preferred Languages"
+                    className="card-item"
                     description={[
                         "Python for scripting, automation, data analysis",
                         "C++ for performance and control",
@@ -26,12 +27,14 @@ export const About = () => {
                 />
                 <ColumnCard
                     title="Education"
+                    className="card-item"
                     description={[
                         "Computer Science, B.A. – University of Virginia (2023)"
                     ]}
                 />
                 <ButtonCard
                     title="Skills"
+                    className="card-item"
                     description={[
                         "C++", "Javascript", "Python", "PHP",
                         "HTML", "CSS", "Node/Express", "React", "Tailwind", "REST API",

@@ -1,8 +1,8 @@
 import { BaseCard } from "./BaseCard";
 
-export const ButtonCard = ({ title, description }) => {
+export const ButtonCard = ({ title, description, className  }) => {
   return (
-    <BaseCard title={title} className="max-w-sm">
+    <BaseCard title={title} className={`${className}`}>
       {Array.isArray(description) ? (
         <div className="flex flex-wrap gap-2 justify-center">
           {description.map((item, i) => (

@@ -1,6 +1,6 @@
-export const BaseCard = ({ title, children }) => {
+export const BaseCard = ({ title, children, className }) => {
   return (
-    <div className={`card-item`}>
+    <div className={`${className}`}>
       <h3 className="card-header">{title}</h3>
       {children}
     </div>

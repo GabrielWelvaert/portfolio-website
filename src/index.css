@@ -87,6 +87,10 @@ html, body {
   @apply flex-1 w-[400px] min-w-[250px] bg-[#054575] p-3 rounded-lg shadow-md;
 }
 
+.card-wide {
+  @apply w-full max-w-[900px] min-w-[250px] bg-[#054575] p-3 rounded-lg shadow-md;
+}
+
 .card-header {
   @apply text-white font-mono text-[24px] text-center w-full mb-[4px];
 }
