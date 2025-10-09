@@ -11,7 +11,7 @@ export const Work = () => {
                 </div>
                 <img className="rounded-image w-7/8 h-auto" src='/REGTAP.png'></img>
                 <div className="passage-text">
-                    I am responsible for developing hotfixes and major releases by collaborating with testers, analysts, and technical leaders to deliver solutions in a complex framework-less legacy codebase, while supporting contract re-compete efforts, compliance, and client satisfaction, for example:
+                    I am responsible for developing hotfixes and releases by collaborating with testers, analysts, and technical leaders to deliver solutions in a complex framework-less legacy codebase, while supporting contract re-compete efforts, maintaining compliance, and responding to client demands, for example:
                 </div>
                 <ColumnCard
                     title=""
