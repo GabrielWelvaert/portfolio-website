@@ -58,6 +58,9 @@ export const About = () => {
             <div className="passage-text">
                 Use the arrow keys (← ↑ → ↓) to navigate.
             </div>
+            <div className="passage-text">
+                todo click any image to expand? would help with mobile viewing and event desktop viewing
+            </div>
         </div>
     )
 };
