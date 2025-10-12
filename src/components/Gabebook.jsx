@@ -2,7 +2,49 @@
 export const Gabebook = ({ className }) => {
     return (
         <div className={className}>
-            <div className="passage-text">The gabebook The gabebook The gabebook The gabebook The gabebook The gabebook The gabebook The gabebook The gabebook The gabebook The gabebook The gabebook The gabebook The gabebook The gabebook The gabebook </div>
+            <div className="passage-text">
+                TheGabebook (<a className="hover-image-text" href="https://github.com/GabrielWelvaert/TheGabebook" target="_blank" rel="noopener noreferrer">GitHub</a>) is a social media web application I built to learn vanilla HTML, CSS, and JavaScript, explore Node and Express.js, and practice fundamental web development principles such as MVC architecture and RESTful design. It implements core social features including user posts, friendships, messaging, comments, likes, profiles, and notifications.
+            </div>
+            <div className="flex flex-col justify-center items-center">
+                <img className="rounded-image w-[80%]" src="/TheGabebook.png"></img>    
+            </div>
+            <div className="passage-text">
+                MVC allowed for a clear separation of concerns, keeping the project organized and easy to scale and maintain. Express.js made it simple to create routes, controllers, and models to support this structure:
+            </div>
+            <div className="flex flex-col justify-center items-center">
+                <img className="rounded-image" src="/MVC.drawio.png"></img>    
+            </div>
+            <div className="passage-text">
+                For example, let's see how liking a post is done with MVC:
+            </div>
+            <div className="grid grid-cols-2 items-center justify-around gap-2">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">On the client side, the post view provides a like button with an event handler that sends a request to the likePost route:</div>
+                    <img className="rounded-image" src="/likepostui.png"></img>
+                    <img className="rounded-image" src="/likePostEventHandler.png"></img>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text">On the server-side, the likePost controller processes the request and returns a structured response:</div>
+                    <img className="rounded-image" src="/.png"></img>
+                    <img className="rounded-image" src="/.png"></img>
+                </div>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+                <div className="passage-text">Once the response is recieved, the view will automatically update:</div>
+                <img className="rounded-image" src="/.png"></img>    
+            </div>
+            <div className="passage-text">
+                Say all business logic is like this. posting, commenting, adding friends, messaging, etc. authorization (are you allowed to do this), authentication (who are you), middleware.
+            </div>
+            <div className="passage-text">
+                security
+            </div>
+            <div className="passage-text">
+                websockets
+            </div>
+            <div className="passage-text">
+                production implementation: AWS (ec2, email, route58 blah blah!)
+            </div>
         </div>
     )
 }

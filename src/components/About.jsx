@@ -38,7 +38,7 @@ export const About = () => {
                     description={[
                         "C++", "Javascript", "Python", "PHP",
                         "HTML", "CSS", "Node/Express", "React", "Tailwind", "REST API",
-                        "MVC", "Docker", "MySQL", "OOP", "DoD",
+                        "MVC", "Docker", "MySQL", "OOP", "DOD",
                         "Git", "GitHub", "Confluence", "Jira", "Agile",
                         "VSCode", "Valgrind", "GDB", "GCC", "Fortify", "AWS",
                         "Linux", "Windows", "SDL2", "SSH"
