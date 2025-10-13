@@ -17,31 +17,43 @@ export const Gabebook = ({ className }) => {
             <div className="passage-text">
                 For example, let's see how liking a post is done with MVC:
             </div>
-            <div className="grid grid-cols-2 items-start justify-around gap-2">
+            <div className="grid grid-cols-[46%_54%] items-start justify-around gap-2">
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">On the client side, the post view provides a like button with an event handler that sends a request to the likePost route:</div>
-                    <img className="rounded-image" src="/likepostui.png"></img>
+                    <div className="passage-text">
+                        On the client side, the post view provides a like button whose handler sends an HTTPS request to the likePost endpoint:
+                    </div>
+                    <img className="rounded-image" src="/likePostUI.png"></img>
                     <img className="rounded-image" src="/likePostEventHandler.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">On the server side, the likePost route routes to the likePost controller which processes the request and returns a structured response:</div>
+                    <div className="passage-text">
+                        On the server, the Express.js router maps this endpoint to a method of the LikesController, which handles the request by accessing various model methods:
+                    </div>
                     <img className="rounded-image" src="/likePostRouter.png"></img>
                     <img className="rounded-image" src="/likePostController.png"></img>
                 </div>
             </div>
             <div className="flex flex-col justify-center items-center">
-                <div className="passage-text">Once the response is received, the view will automatically update:</div>
-                <img className="rounded-image" src="/likepostuireturned.png"></img>    
+                <div className="passage-text">Once the response is received by the client, the view will automatically update:</div>
+                <img className="rounded-image" src="/unlikePostUI.png"></img>    
             </div>
             <div className="flex flex-col justify-center items-center">
                 <div className="passage-text">
-                    Controllers can access any models they need. For example, the likePost controller as seen above uses methods from the PostModel, LikesModel, and UserModel.
-                    This allows model methods to stay specific while being used across multiple controllers, improving code maintainability and extensibility. For example, here are a few methods from the LikesModel:
+                    Controllers aren't restricted to their own models; the LikesController uses both the LikesModel and PostModel.
+                    This is because model methods are intentionally granular so they can be called from any controller, which improves code maintainability and scalability.
+                    Here are a few examples of model methods:
                 </div>
-                <img className="rounded-image" src="/likesmodel.png"></img>  
+                <div className="flex flex-col items-center gap-1">
+                    <img className="rounded-image w-150" src="/model1.png"></img>
+                    <img className="rounded-image w-150" src="/model2.png"></img>
+                    <img className="rounded-image w-150" src="/model3.png"></img>  
+                </div>
+                <div className="passage-text">
+                    They are essentially wrappers for queries, usually with no extra logic.
+                </div>
             </div>
             <div className="passage-text">
-                This request/response pattern, which dynamically updates views, drives most of the application's core functionality that users directly interact with (posting, commenting, messaging, etc.). Now, we'll explore some interal server-side features:
+                This request/response pattern, which dynamically updates views, drives most of the application's core functionality that users directly interact with (posting, commenting, messaging, etc.). Now, we'll explore some other interal server-side features:
             </div>
             <div className="passage-text">
                 authentication, authorization, custom middleware
