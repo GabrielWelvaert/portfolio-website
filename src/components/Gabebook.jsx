@@ -2,14 +2,15 @@
 export const Gabebook = ({ className }) => {
     return (
         <div className={className}>
-            <div className="passage-text">
-                TheGabebook (<a className="hover-image-text" href="https://github.com/GabrielWelvaert/TheGabebook" target="_blank" rel="noopener noreferrer">GitHub</a>) is a social media web application I built to learn vanilla HTML, CSS, and JavaScript, explore Node.js and Express.js, and practice fundamental web development principles such as MVC architecture and RESTful design. It implements core social features including user posts, friendships, messaging, comments, likes, profiles, and notifications.
+             <div className="passage-text">
+                TheGabebook (<a className="hover-image-text" href="https://github.com/GabrielWelvaert/TheGabebook" target="_blank" rel="noopener noreferrer">GitHub</a>) is a social media website that I built with vanilla HTML, CSS, JavaScript, and Node/Express.js. This project gave me hands-on experience with modern web development techniques and allowed me to practice essential web development principles such as RESTful design and Model-View-Controller <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank" rel="noopener noreferrer">(MVC)</a> architectural adherence.
             </div>
+            where to mention list of features? show dont tell? only mention the ones that aren't interesting like websocket and notificaion -- indirectly show these for brevity
             <div className="flex flex-col justify-center items-center">
                 <img className="rounded-image w-[80%]" src="/TheGabebook.png"></img>    
             </div>
             <div className="passage-text">
-                MVC allows for a clear separation of concerns, keeping the project organized and easy to scale. Node.js and Express.js make it simple to create routes, controllers, and models to support this structure:
+                MVC allows for a clear separation of concerns, keeping the project organized and easy to scale. Node/Express.js make it simple to create routes, controllers, and models to support this:
             </div>
             <div className="flex flex-col justify-center items-center">
                 <img className="rounded-image" src="/MVC.drawio.png"></img>    
