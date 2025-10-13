@@ -3,8 +3,10 @@ export const Gabebook = ({ className }) => {
     return (
         <div className={className}>
              <div className="passage-text">
-                TheGabebook (<a className="hover-image-text" href="https://github.com/GabrielWelvaert/TheGabebook" target="_blank" rel="noopener noreferrer">GitHub</a>) is a social media website that I built with vanilla HTML, CSS, JavaScript, and Node/Express.js. This project gave me hands-on experience with modern web development techniques and allowed me to practice essential web development principles such as RESTful design and Model-View-Controller <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank" rel="noopener noreferrer">(MVC)</a> architectural adherence.
+                TheGabebook (<a className="hover-image-text" href="https://github.com/GabrielWelvaert/TheGabebook" target="_blank" rel="noopener noreferrer">GitHub</a>) is a social media website that I built with vanilla HTML, CSS, JavaScript, and Node/Express.js.
+                This project gave me hands-on experience with modern web development techniques and allowed me to practice essential web development concepts such as RESTful design and Model-View-Controller <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank" rel="noopener noreferrer">(MVC)</a> architectural adherence.
             </div>
+            ^ can be rewritten "gave me hands-on experience with modern web development techniques" is a meaningless sentence. I learned the html css js node and express. say that. the rest of it is okay
             where to mention list of features? show dont tell? only mention the ones that aren't interesting like websocket and notificaion -- indirectly show these for brevity
             <div className="flex flex-col justify-center items-center">
                 <img className="rounded-image w-[80%]" src="/TheGabebook.png"></img>    
