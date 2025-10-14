@@ -10,7 +10,7 @@ export const Gabebook = ({ className }) => {
                 <img className="rounded-image w-[80%]" src="/TheGabebook.png"></img>    
             </div>
             <div className="passage-text">
-                MVC was used to enforce a clear separation of concerns, keeping the project organized, modular, and scalable. Node/Express.js makes it simple to create routes, controllers, and models to support this design:
+                MVC was used to create a clear separation of concerns, keeping the project organized, modular, and scalable. Node/Express.js makes it simple to create routes, controllers, and models to support this design:
             </div>
             <div className="flex flex-col justify-center items-center">
                 <img className="rounded-image" src="/MVC.drawio.png"></img>    
