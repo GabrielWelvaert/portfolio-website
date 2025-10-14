@@ -41,7 +41,7 @@ export const Gabebook = ({ className }) => {
             <div className="flex flex-col justify-center items-center">
                 <div className="passage-text">
                     Notably, controllers aren't restricted to their own models; the LikesController uses both the LikesModel and PostModel.
-                    To improve code maintainability and scalability, model methods are intentionally granular and self-contained so they can be called from any controller. 
+                    Model methods are intentionally simple and self-contained so they can be called from any controller. 
                     Here are a few examples:
                 </div>
                 <div className="flex flex-col items-center gap-1">
