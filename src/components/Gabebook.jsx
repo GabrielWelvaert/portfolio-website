@@ -3,16 +3,14 @@ export const Gabebook = ({ className }) => {
     return (
         <div className={className}>
              <div className="passage-text">
-                TheGabebook (<a className="hover-image-text" href="https://github.com/GabrielWelvaert/TheGabebook" target="_blank" rel="noopener noreferrer">GitHub</a>) is a social media website that I built with vanilla HTML, CSS, JavaScript, and Node/Express.js.
-                This project gave me hands-on experience with modern web development techniques and allowed me to practice essential web development concepts such as RESTful design and Model-View-Controller <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank" rel="noopener noreferrer">(MVC)</a> architectural adherence.
+                TheGabebook (<a className="hover-image-text" href="https://github.com/GabrielWelvaert/TheGabebook" target="_blank" rel="noopener noreferrer">GitHub</a>) is a social platform that I built to practice full-stack web development using vanilla HTML, CSS, JavaScript, Node/Express.js, Model-View-Controller <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank" rel="noopener noreferrer">(MVC)</a> adherence, and <a className="hover-image-text" href="https://en.wikipedia.org/wiki/REST" target="_blank" rel="noopener noreferrer">RESTful</a> design.
+                It includes profiles, posting, friendships, messaging, commenting, liking, and notifications.
             </div>
-            ^ can be rewritten "gave me hands-on experience with modern web development techniques" is a meaningless sentence. I learned the html css js node and express. say that. the rest of it is okay
-            where to mention list of features? show dont tell? only mention the ones that aren't interesting like websocket and notificaion -- indirectly show these for brevity
             <div className="flex flex-col justify-center items-center">
                 <img className="rounded-image w-[80%]" src="/TheGabebook.png"></img>    
             </div>
             <div className="passage-text">
-                MVC allows for a clear separation of concerns, keeping the project organized and easy to scale. Node/Express.js make it simple to create routes, controllers, and models to support this:
+                MVC was used to enforce a clear separation of concerns, keeping the project organized, modular, and scalable. Node/Express.js makes it simple to create routes, controllers, and models to support this design:
             </div>
             <div className="flex flex-col justify-center items-center">
                 <img className="rounded-image" src="/MVC.drawio.png"></img>    
@@ -37,26 +35,23 @@ export const Gabebook = ({ className }) => {
                 </div>
             </div>
             <div className="flex flex-col justify-center items-center">
-                <div className="passage-text">Once the response is received by the client, the view will automatically update:</div>
+                <div className="passage-text">Once the response is received by the client, the view will update by directly modifying DOM elements:</div>
                 <img className="rounded-image" src="/unlikePostUI.png"></img>    
             </div>
             <div className="flex flex-col justify-center items-center">
                 <div className="passage-text">
-                    Controllers aren't restricted to their own models; the LikesController uses both the LikesModel and PostModel.
-                    This is because model methods are intentionally granular so they can be called from any controller, which improves code maintainability and scalability.
-                    Here are a few examples of model methods:
+                    Notably, controllers aren't restricted to their own models; the LikesController uses both the LikesModel and PostModel.
+                    To improve code maintainability and scalability, model methods are intentionally granular and self-contained so they can be called from any controller. 
+                    Here are a few examples:
                 </div>
                 <div className="flex flex-col items-center gap-1">
                     <img className="rounded-image w-150" src="/model1.png"></img>
                     <img className="rounded-image w-150" src="/model2.png"></img>
                     <img className="rounded-image w-150" src="/model3.png"></img>  
                 </div>
-                <div className="passage-text">
-                    They are essentially wrappers for queries, usually with no extra logic.
-                </div>
             </div>
             <div className="passage-text">
-                This request/response pattern, which dynamically updates views, drives most of the application's core functionality that users directly interact with (posting, commenting, messaging, etc.). Now, we'll explore some other interal server-side features:
+                Most other user-facing features, including liking, posting, and commenting, follow the same request/response architecture as liking a post. Rather than reviewing these, we'll examine other internal features:
             </div>
             <div className="passage-text">
                 authentication, authorization, custom middleware
