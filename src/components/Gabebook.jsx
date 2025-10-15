@@ -40,8 +40,8 @@ export const Gabebook = ({ className }) => {
             </div>
             <div className="flex flex-col justify-center items-center">
                 <div className="passage-text">
-                    Notably, controllers aren't restricted to their own models; the LikesController uses both the LikesModel and PostModel.
-                    Model methods are intentionally simple and self-contained so they can be called from any controller. 
+                    Controllers aren't restricted to their own models; the LikesController uses both the LikesModel and PostModel.
+                    Model methods are intentionally simple so they can be called from any controller. 
                     Here are a few examples:
                 </div>
                 <div className="flex flex-col items-center gap-1">
@@ -51,7 +51,7 @@ export const Gabebook = ({ className }) => {
                 </div>
             </div>
             <div className="passage-text">
-                Most other user-facing features, including liking, posting, and commenting, follow the same request/response architecture as liking a post. Rather than reviewing these, we'll examine other internal features:
+                Most user-facing features, including profile customization, posting, and commenting, etc., follow the same request/response architecture as liking a post. Rather than reviewing these, we'll examine other internal features:
             </div>
             <div className="passage-text">
                 authentication, authorization, custom middleware
