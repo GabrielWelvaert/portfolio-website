@@ -3,7 +3,7 @@ export const Gabebook = ({ className }) => {
     return (
         <div className={className}>
              <div className="passage-text">
-                TheGabebook (<a className="hover-image-text" href="https://github.com/GabrielWelvaert/TheGabebook" target="_blank" rel="noopener noreferrer">GitHub</a>) is a social platform that I built to practice full-stack web development using vanilla HTML, CSS, JavaScript, Node/Express.js, Model-View-Controller <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank" rel="noopener noreferrer">(MVC)</a> adherence, and <a className="hover-image-text" href="https://en.wikipedia.org/wiki/REST" target="_blank" rel="noopener noreferrer">RESTful</a> design.
+                TheGabebook (<a className="hover-image-text" href="https://github.com/GabrielWelvaert/TheGabebook" target="_blank" rel="noopener noreferrer">GitHub</a>) is a social platform that I built to practice full-stack web development using vanilla HTML, CSS, JavaScript, Node/Express.js, Model-View-Controller <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank" rel="noopener noreferrer">(MVC)</a> adherence, <a className="hover-image-text" href="https://en.wikipedia.org/wiki/REST" target="_blank" rel="noopener noreferrer">RESTful</a> design, and Amazon Web Services <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Amazon_Web_Services" target="_blank" rel="noopener noreferrer">(AWS)</a> hosting.
                 It includes profiles, posting, friendships, messaging, commenting, liking, and notifications.
             </div>
             <div className="flex flex-col justify-center items-center">
@@ -21,7 +21,7 @@ export const Gabebook = ({ className }) => {
             <div className="grid grid-cols-[46%_54%] items-start justify-around gap-2">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">
-                        On the client side, the post view provides a like button whose handler sends an HTTPS request to the likePost endpoint:
+                        On the client side, the post view is built from database data and includes a like button that sends an HTTPS request to the likePost endpoint:
                     </div>
                     <img className="rounded-image" src="/likePostUI.png"></img>
                     <img className="rounded-image" src="/likePostEventHandler.png"></img>
@@ -35,7 +35,7 @@ export const Gabebook = ({ className }) => {
                 </div>
             </div>
             <div className="flex flex-col justify-center items-center">
-                <div className="passage-text">Once the response is received by the client, the view will update by directly modifying DOM elements:</div>
+                <div className="passage-text">Once the response is received by the client, the view will update by directly modifying <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank" rel="noopener noreferrer">DOM</a> elements:</div>
                 <img className="rounded-image" src="/unlikePostUI.png"></img>    
             </div>
             <div className="flex flex-col justify-center items-center">
