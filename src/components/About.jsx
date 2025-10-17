@@ -59,7 +59,15 @@ export const About = () => {
                 Use the arrow keys (← ↑ → ↓) to navigate.
             </div>
             <div className="passage-text">
-                todo click any image to expand? would help with mobile viewing and event desktop viewing
+                todo:
+                <br></br>
+                &bull; click any image to expand
+                <br></br>
+                &bull; hover image should disappear after scrolling
+                <br></br>
+                &bull; text with more than 1-2 lines should be left aligned. use passage-text-left not passage-text. thats how all websites look
+                <br></br>
+                &bull; final spellcheck, reinstall the spellchecker
             </div>
         </div>
     )

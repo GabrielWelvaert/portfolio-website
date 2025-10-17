@@ -10,10 +10,10 @@ export const Gabebook = ({ className }) => {
                 <img className="rounded-image w-[80%]" src="/TheGabebook.png"></img>    
             </div>
             <div className="passage-text">
-                MVC was used to create a clear separation of concerns, keeping the project organized, modular, and scalable. Node/Express.js makes it simple to create routes, controllers, and models to support this design:
-            </div>
-            <div className="flex flex-col justify-center items-center">
-                <img className="rounded-image" src="/MVC.drawio.png"></img>    
+                MVC was used to keep the project organized, modular, and extensibile through a clear separation of concerns. Node/Express.js makes it easy to create routes, controllers, and models to support this design:
+                <div className="flex flex-col justify-center items-center">
+                    <img className="rounded-image" src="/MVC.drawio.png"></img>    
+                </div>
             </div>
             <div className="passage-text">
                 For example, let's see how liking a post is done with MVC:
@@ -41,7 +41,7 @@ export const Gabebook = ({ className }) => {
             <div className="flex flex-col justify-center items-center">
                 <div className="passage-text">
                     Controllers aren't restricted to their own models; the LikesController uses both the LikesModel and PostModel.
-                    Model methods are intentionally simple so they can be called from any controller. 
+                    Model methods are intentionally simple so they can be called from any controller, which greatly improves code extensibility. 
                     Here are a few examples:
                 </div>
                 <div className="flex flex-col items-center gap-1">
@@ -51,13 +51,33 @@ export const Gabebook = ({ className }) => {
                 </div>
             </div>
             <div className="passage-text">
-                Most user-facing features, including profile customization, posting, and commenting, etc., follow the same request/response architecture as liking a post. Rather than reviewing these, we'll examine other internal features:
+                The majority of user-facing features (profile customization, posting, commenting, etc.) follow this same MVC request/response architecture. Rather than reviewing the same pattern in those features, we'll pivot to other internal mechanisms of the application.
             </div>
             <div className="passage-text">
-                authentication, authorization, custom middleware
+                Session-based authentication was implemented using the <a className="hover-image-text" href="https://expressjs.com/en/resources/middleware/session.html" target="_blank" rel="noopener noreferrer">express-session</a> middleware.
+                On login, the user receives a session cookie that we can compare to what we have in the session store to authenticate actions:
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="grid grid-cols-2 items-center justify-around gap-2">
+                        <div className="flex flex-col items-center justify-center gap-1">
+                            <img className="rounded-image" src="/sessionMiddleWare.png"></img>
+                        </div>
+                        <div className="flex flex-col items-center justify-center gap-1">
+                            <img className="rounded-image" src="/session.drawio.png"></img>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="passage-text">
-                security
+                In other words, we can identify a user on the server side by simply checking req.session:
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <img className="rounded-image w-[60%]" src="/req.session.userId.png"></img>
+                </div>
+            </div>
+            <div className="passage-text">
+                authorization; custom middleware
+            </div>
+            <div className="passage-text">
+                security (CSRF, sql injection, XSS)
             </div>
             <div className="passage-text">
                 websockets

@@ -23,7 +23,7 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
             </div>
             <div className="passage-text">
                 The core of this project is an implementation of the Entity-Component-System (<a className="hover-image-text" href="https://en.wikipedia.org/wiki/Entity_component_system" target="_blank" rel="noopener noreferrer">ECS</a>) architectural pattern.
-                In this pattern, the game is composed of <strong>entities</strong> that have <strong>components</strong> with mutable states, which are updated by various <strong>systems</strong>.
+                In this pattern, the game is composed of <strong>entities</strong> that have mutable <strong>components</strong> which are updated by various <strong>systems</strong>.
                 This unique design optimizes CPU memory access, allowing the game to sustain hundreds of frames per second even under high computational load.
                 Most professional game engines use ECS.
             </div>
