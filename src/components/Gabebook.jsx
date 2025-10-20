@@ -74,10 +74,22 @@ export const Gabebook = ({ className }) => {
                 </div>
             </div>
             <div className="passage-text">
-                authorization; custom middleware
+                Authorization is enforced through a friendship check before processing inter-user requests.
+                Even though the views to request these actions are only visible if the friendship exists, the system still enforces this check for these interactions.
+                Since this behavior is needed across many routes, it was implemented using custom middleware that executes before controller logic:
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <img className="rounded-image" src="/friendshipmiddleware.png"></img>
+                </div>
+            </div>
+            <div className="passage-text">
+                By applying the middleware to a given route, it will execute before the controller is reached:
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <img className="rounded-image" src="/friendshipmiddlewareroute.png"></img>
+                </div>
             </div>
             <div className="passage-text">
                 security (CSRF, sql injection, XSS)
+                "the likepost route also actually has CSRF middleware"
             </div>
             <div className="passage-text">
                 websockets

@@ -12,9 +12,6 @@ export const Projects = () => {
     return (
         <div id="projects" className="non-centered-scrollable-section page-content-container-1000">
             <div className="passage-text-header">Projects</div>
-            {/* <div className="passage-text">
-                Below are my two most recent projects and this website, all created independently from school or work.
-            </div> */}
             <ButtonSelector
                 options={projects}
                 selected={project}
