@@ -30,7 +30,7 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
             <div className="grid grid-cols-2 items-center justify-around gap-2">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">Entities only have an id:</div>
-                    <img className="rounded-image w-[60%]" src="/entity.png"></img>
+                    <img className="rounded-image" src="/entity.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text">Components only hold data:</div>

@@ -47,7 +47,6 @@ export const Gabebook = ({ className }) => {
                 <div className="flex flex-col items-center gap-1">
                     <img className="rounded-image w-150" src="/model1.png"></img>
                     <img className="rounded-image w-150" src="/model2.png"></img>
-                    <img className="rounded-image w-150" src="/model3.png"></img>  
                 </div>
             </div>
             <div className="passage-text">
@@ -56,14 +55,12 @@ export const Gabebook = ({ className }) => {
             <div className="passage-text">
                 Session-based authentication was implemented using the <a className="hover-image-text" href="https://expressjs.com/en/resources/middleware/session.html" target="_blank" rel="noopener noreferrer">express-session</a> middleware.
                 On login, the user receives a session cookie that we can compare to what we have in the session store to authenticate actions:
-                <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="grid grid-cols-2 items-center justify-around gap-2">
-                        <div className="flex flex-col items-center justify-center gap-1">
-                            <img className="rounded-image" src="/sessionMiddleWare.png"></img>
-                        </div>
-                        <div className="flex flex-col items-center justify-center gap-1">
-                            <img className="rounded-image" src="/session.drawio.png"></img>
-                        </div>
+                <div className="grid grid-cols-2 items-center justify-around gap-2">
+                    <div className="flex flex-col items-center justify-center gap-1">
+                        <img className="rounded-image" src="/sessionMiddleWare.png"></img>
+                    </div>
+                    <div className="flex flex-col items-center justify-center gap-1">
+                        <img className="rounded-image" src="/session.drawio.png"></img>
                     </div>
                 </div>
             </div>
@@ -82,9 +79,45 @@ export const Gabebook = ({ className }) => {
                 </div>
             </div>
             <div className="passage-text">
-                By applying the middleware to a given route, it will execute before the controller is reached:
+                By applying the middleware to a given route, it will execute before the controller is reached. If the middleware rejects the request, then the controller will never be invoked:
                 <div className="flex flex-col items-center justify-center gap-1">
                     <img className="rounded-image" src="/friendshipmiddlewareroute.png"></img>
+                </div>
+            </div>
+            <div className="passage-text">
+                As you can see, middleware are useful for generic, pre-controller logic that can be applied to any route. For this reason, I implemented CSRF protection using the csurf middleware:
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <img className="rounded-image" src="/csurf.png"></img>
+                </div>
+            </div>
+            <div className="passage-text">
+                This middleware allows me to verify the origin of state-changing (POST) requests. <strong>TODO concise explanation of how it was implemented</strong>
+                <div className="grid grid-cols-2 items-center justify-around gap-2">
+                    <div className="flex flex-col items-center justify-center gap-1">
+                        <img className="rounded-image" src="/csurfget.png"></img>
+                    </div>
+                    <div className="flex flex-col items-center justify-center gap-1">
+                        <img className="rounded-image" src="/.png"></img>
+                    </div>
+                </div>
+            </div>
+            <div className="passage-text">
+                As with the friendship middleware, the CSRF middleware is applied to routes and exceutes before the controller is reached:
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <img className="rounded-image" src="/likePostRouterFull.png"></img>
+                </div>
+            </div>
+            <div className="passage-text">
+                Other security measures:
+                <div className="grid grid-cols-2 items-start justify-center gap-12">
+                    <div className="flex flex-col items-center justify-center gap-1">
+                        <div className="passage-text font-bold">SQL Injection:</div>
+                        <div className="passage-text">Parameterized queries are used to prevent SQL injection by safely separating SQL code from user input.</div>
+                    </div>
+                    <div className="flex flex-col items-center justify-center gap-1">
+                        <div className="passage-text font-bold">XSS:</div>
+                        <div className="passage-text">Code representation:</div>
+                    </div>
                 </div>
             </div>
             <div className="passage-text">
@@ -96,6 +129,14 @@ export const Gabebook = ({ className }) => {
             </div>
             <div className="passage-text">
                 production implementation: AWS (ec2, email, route58 blah blah!)
+            </div>
+            <div className="passage-text">
+                This project was fun blah blah if I continued with this project section ie pagination, lazy loading, group messaging.
+            </div>
+            <div className="passage-text mb-10">
+                <a href="#projects" className="interactable-text focus:outline-none cursor-pointer" onClick={() => setTimeout(() => setProject("This Website"), 1250)}>
+                    Click To View Next Project
+                </a>    
             </div>
         </div>
     )
