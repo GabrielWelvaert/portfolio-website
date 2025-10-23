@@ -63,11 +63,13 @@ export const About = () => {
                 <br></br>
                 &bull; click any image to expand
                 <br></br>
-                &bull; hover image should disappear after scrolling
+                &bull; hover images (ie kittens) should disappear after scrolling
                 <br></br>
-                &bull; text with more than 1-2 lines should be left aligned. use passage-text-left not passage-text. thats how all websites look
+                &bull; text with more than 1-2 lines should be left aligned. use passage-text-left not passage-text.
                 <br></br>
                 &bull; final spellcheck, reinstall the spellchecker
+                <br></br>
+                &bull; sectionalize projects - this highlights features of project rather than having a huge essay. see notebook. rotmgabe may need sub-sections.
             </div>
         </div>
     )

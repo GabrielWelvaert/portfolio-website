@@ -79,50 +79,55 @@ export const Gabebook = ({ className }) => {
                 </div>
             </div>
             <div className="passage-text">
-                By applying the middleware to a given route, it will execute before the controller is reached. If the middleware rejects the request, then the controller will never be invoked:
+                When applied to a route, the middleware runs before the controller and blocks the request if validation fails:
                 <div className="flex flex-col items-center justify-center gap-1">
                     <img className="rounded-image" src="/friendshipmiddlewareroute.png"></img>
                 </div>
             </div>
             <div className="passage-text">
-                As you can see, middleware are useful for generic, pre-controller logic that can be applied to any route. For this reason, I implemented CSRF protection using the csurf middleware:
+                As you can see, middleware are useful for generic, pre-controller logic that can be applied to any route. 
+                For this reason, I used the csurf middleware to provide <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank" rel="noopener noreferrer">CSRF</a> protection on POST routes by issuing a secret token and validating it on each request.
+            </div>
+            <div className="passage-text">
+                csurf uses a cookie to store a per-client secret for token validation:
                 <div className="flex flex-col items-center justify-center gap-1">
                     <img className="rounded-image" src="/csurf.png"></img>
                 </div>
             </div>
-            <div className="passage-text">
-                This middleware allows me to verify the origin of state-changing (POST) requests. <strong>TODO concise explanation of how it was implemented</strong>
-                <div className="grid grid-cols-2 items-center justify-around gap-2">
+            <div className="grid grid-cols-2 items-start justify-around gap-6">
+                <div className="passage-text">
+                    The token is issued to clients through a dedicated route:
                     <div className="flex flex-col items-center justify-center gap-1">
                         <img className="rounded-image" src="/csurfget.png"></img>
                     </div>
+                </div>
+                <div className="passage-text">
+                    The token must be included in request headers for POST routes:
                     <div className="flex flex-col items-center justify-center gap-1">
-                        <img className="rounded-image" src="/.png"></img>
+                        <img className="rounded-image" src="/csrflike.png"></img>
                     </div>
                 </div>
             </div>
             <div className="passage-text">
-                As with the friendship middleware, the CSRF middleware is applied to routes and exceutes before the controller is reached:
+                As with the friendship middleware, the csurf middleware runs before the controller and rejects invalid requests:
                 <div className="flex flex-col items-center justify-center gap-1">
                     <img className="rounded-image" src="/likePostRouterFull.png"></img>
                 </div>
             </div>
             <div className="passage-text">
-                Other security measures:
-                <div className="grid grid-cols-2 items-start justify-center gap-12">
-                    <div className="flex flex-col items-center justify-center gap-1">
-                        <div className="passage-text font-bold">SQL Injection:</div>
-                        <div className="passage-text">Parameterized queries are used to prevent SQL injection by safely separating SQL code from user input.</div>
-                    </div>
-                    <div className="flex flex-col items-center justify-center gap-1">
-                        <div className="passage-text font-bold">XSS:</div>
-                        <div className="passage-text">Code representation:</div>
-                    </div>
-                </div>
+                Additional security measures were implemented:
             </div>
-            <div className="passage-text">
-                security (CSRF, sql injection, XSS)
-                "the likepost route also actually has CSRF middleware"
+            <div className="grid grid-cols-2 items-start justify-center gap-12">
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text font-bold"><a className="hover-image-text" href="https://en.wikipedia.org/wiki/SQL_injection" target="_blank" rel="noopener noreferrer">SQL Injection:</a></div>
+                    <div className="passage-text">Parameterized queries (using ?) prevent SQL injection by preventing input from altering the query structure:</div>
+                    <img className="rounded-image" src="/model2.png"></img>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="passage-text font-bold"><a className="hover-image-text" href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="noopener noreferrer">XSS:</a></div>
+                    <div className="passage-text">This <a className="hover-image-text" href="https://www.npmjs.com/package/xss?activeTab=dependents" target="_blank" rel="noopener noreferrer">xss package</a> was used on the server side to stop user-input from being stored or interpreted as HTML:</div>
+                    <img className="rounded-image" src="/xss.png"></img>
+                </div>
             </div>
             <div className="passage-text">
                 websockets
