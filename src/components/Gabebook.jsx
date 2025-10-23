@@ -120,7 +120,7 @@ export const Gabebook = ({ className }) => {
             <div className="grid grid-cols-2 items-start justify-center gap-12">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text font-bold"><a className="hover-image-text" href="https://en.wikipedia.org/wiki/SQL_injection" target="_blank" rel="noopener noreferrer">SQL Injection:</a></div>
-                    <div className="passage-text">Parameterized queries (using ?) prevent SQL injection by preventing input from altering the query structure:</div>
+                    <div className="passage-text">Parameterized queries (using ?) prevent SQL injection by stopping input from altering the query structure:</div>
                     <img className="rounded-image" src="/model2.png"></img>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
