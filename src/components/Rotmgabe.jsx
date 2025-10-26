@@ -3,7 +3,7 @@ import { BaseCard } from "./BaseCard"
 export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
     return (
         <div className={className}>
-            <div className="passage-text">
+            <div className="passage-text-left">
                 Realm of the Mad Gabe (<a className="hover-image-text" href="https://github.com/GabrielWelvaert/Realm-of-the-Mad-Gabe" target="_blank" rel="noopener noreferrer">GitHub</a>)
                 is a C++ video game that I wrote from scratch without the assistance of a game engine or game engine library. 
                 Through this project, I honed my C++ skills and gained hands-on experience with data-oriented design and high-performance computing concepts. 
@@ -21,7 +21,7 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
                 ></iframe>
                 )}
             </div>
-            <div className="passage-text">
+            <div className="passage-text-left">
                 The core of this project is an implementation of the Entity-Component-System (<a className="hover-image-text" href="https://en.wikipedia.org/wiki/Entity_component_system" target="_blank" rel="noopener noreferrer">ECS</a>) architectural pattern.
                 In this pattern, the game is composed of <strong>entities</strong> that have mutable <strong>components</strong> which are updated by various <strong>systems</strong>.
                 This unique design optimizes CPU memory access, allowing the game to sustain hundreds of frames per second even under high computational load.
@@ -37,8 +37,8 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
                     <img className="rounded-image w-[60%]" src="/componentexamples.png"></img>
                 </div>
             </div>
-            <div className="passage-text">
-                As you can see, an entity holds no data itself. Instead, their data lives in separate components. Components are stored in their own contiguous memory pools:
+            <div className="passage-text-left">
+                As you can see, an entity holds no data itself. Instead, their data lives in separate components. Additionally, components are stored together in their own contiguous memory pools.
             </div>
             <div className="grid grid-cols-[54%_46%] items-center justify-center gap-6">
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -60,25 +60,28 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
             </div>
             <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <div className="passage-text">Here is a visualization of the component pools. Notice how there is a pool for each type of component, and that each cell of a pool holds the component for a given entity.</div>
+                    <div className="passage-text">Here is a visualization of the component pools:</div>
                     <img className="rounded-image" src="/pools.drawio.png"></img>
+                    <div className="passage-text">There is a pool for each component and each cell of a pool holds the component for a given entity.</div>
                 </div>
             </div>
-            <div className="passage-text">
+            <div className="passage-text-left">
                 With this pool pattern, entities are decoupled from their components, so all operations on components are performed in the pools. 
                 This enables a composition-based approach, in which an entity's behavior is determined by the set of components it holds. 
-                We track this using a signature, represented efficiently as a bitset in which each bit indicates the presence or absence of a component. Marking a component as present simply means flipping the bit at the index of the component's s static Id:
+                We track this using a signature, represented efficiently as a bitset in which each bit indicates the presence or absence of a component. Marking a component as present simply means flipping the bit at the index of the component's s static id.
             </div>
-            <div className="flex flex-col items-center justify-center gap-1">
-                <div className="passage-text">
-                    Component signatures are bitsets indexable by component id's:
-                </div>
+            <div className="flex flex-col items-center justify-center gap-2">
+                <div className="passage-text">Component signatures are bitsets indexable by component ids:</div>
                 <img className="rounded-image" src="/signature.png"></img>
+                <div className="passage-text">Component signatures are stored in a vector that is indexable by entity ids:</div>
                 <img className="rounded-image" src="/signatures.png"></img>
             </div>
-            <div className="passage-text">
+            <div className="passage-text-left">
                 To exemplify pool access, here is sample code for adding a component to an entity.
-                First, the component id is used to find the correct pool. Then, the entity id and component data are passed to the pool, which inserts the component and records the location for later retrieval for this entity. We also update the entity's component signature: 
+                First, the component id is used to find the correct pool. Then, the entity id and component data are passed to the pool, which inserts the component and records the location for later retrieval for this entity. We also update the entity's component signature. 
+            </div>
+            <div className="flex flex-col items-center justify-center gap-1">
+                <div className="passage-text">AddComponent:</div>
                 <img className="rounded-image" src="/addcomponent.png"></img>
             </div>
             <div className="passage-text">
@@ -104,8 +107,8 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
             <div className="passage-text">
                 As you can see, even if entities differ conceptually, they may still share a common subset of components.
             </div>
-            <div className="passage-text">
-                This brings us to the systems part of ECS, which are responsible for updating the data in components. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed. If an entity's component signature contains all the components in the system's signature, it will be tracked and processed by that system. All systems perform their updates each frame on every entity that they track: 
+            <div className="passage-text-left">
+                This brings us to the systems part of ECS, which are responsible for updating the data in components. Systems are specialized and isolated, performing specific updates only for a specific group of entities. Each system maintains its own component signature, which serves as a set of requirements for being processed. If an entity's component signature contains all the components in the system's signature, it will be tracked and processed by that system. All systems perform their updates each frame on every entity that they track. 
             </div>
             <div className="flex flex-row items-center justify-center gap-22">
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -152,14 +155,14 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
             <div className="passage-text">
                 Systems that do not share any of the same component requirements can often naturally run in parallel.
             </div>
-            <div className="passage-text">
+            <div className="passage-text-left">
                 So, now we have entities, with their components in contiguous pools, that are modified by specialized systems. What are the advantages with this design? Why is this code so performant? 
                 For this ECS implementation, the primary reason is <span className="font-bold">cache efficiency</span>:
             </div>
-            <div className="passage-text">
+            <div className="passage-text-left">
                 Contiguous component pools provide spatial and temporal locality during system updates. When a system reads a component for an entity, it actually loads an entire cache line (usually 64 bytes) of contiguous data from RAM into the CPU cache. Given that systems update all of their entities each frame, fetching components often results in cache hits because that data has already been loaded into the CPU cache, which is orders of magnitude faster than getting the data from RAM in the case of a cache miss.
             </div>
-            <div className="passage-text">
+            <div className="passage-text-left">
                 With this in mind, components are designed to be as small as possible. Smaller components mean more of them fit into a single cache line, maximizing the amount of useful data loaded into the CPU cache at once. Additionally, components are structured around system access patterns—ideally, to reduce cache misses, all the data in a component will be needed whenever it is loaded from memory. To illustrate this, I'll show how a player-statistics component would be designed in an object-oriented approach and contrast it with a data-oriented approach:
             </div>
             <div className="grid grid-cols-2 items-start justify-center gap-12">
@@ -174,20 +177,21 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
                     <img className="rounded-image" src="/DODstats.png"></img>
                 </div>
             </div>
-            <div className="passage-text">
+            <div className="passage-text-left">
                 As you can see, the data-oriented approach favors breaking large structs into smaller, focused ones. This isn't a criticism of object-oriented programming, but rather an observation that data-oriented design offers better performance in the context of ECS.
             </div>
             <div className="flex flex-col items-center justify-center gap-1">
-                <div className="passage-text">Additionally, to minimize cache misses, pools are kept dense by filling memory holes when entities die. Here is an example of filling the hole left by the death of entity 1 in a pool of health components:</div>
+                {/* <div className="passage-text">Additionally, to minimize cache misses, pools are kept dense by filling memory holes when entities die. Here is an example of filling the hole left by the death of entity 1 in a pool of health components:</div> */}
+                <div className="passage-text">Additionally, pools are kept dense by filling memory holes when entities die to reduce cache misses:</div>
                 <img className="rounded-image w-[50%]" src="/memoryhole.drawio.png"></img>
             </div>
-            <div className="passage-text">
+            <div className="passage-text-left">
                 Essential operations like this and others including the management of entities, pools, and systems are the responsibility of the ECS "Manager" class which 
                 I've omitted to keep explanations concise and centered on the essential underlying mechanisms.
             </div>
-            <div className="passage-text">
+            <div className="passage-text-left">
                 The ECS implementation that we have just explored uses an array-of-structures (AoS) layout, which works well when entire components access is needed. Many ECS implementations favor a struct-of-arrays (SoA) layout, which enables auto-vectorization for operations on individual fields. Choosing between AoS and SoA is a trade-off between flexibility, ease of use, and memory access patterns, and actual results will be hardware-dependent.
-                Here is a useful visualization of the memory layout for each approach for a component with 3 fields:
+                Here is a useful visualization of the memory layout for each approach for a component with 3 fields.
             </div>
             <div className="grid grid-cols-2 items-start justify-center gap-12">
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -205,7 +209,7 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
                     <img className="rounded-image" src="/soa.drawio.png"></img>
                 </div>
             </div>
-            <div className="passage-text">
+            <div className="passage-text-left">
                 This project was a rewarding mix of challenge, fun, and learning. 
                 I enjoy C++ programming and working on projects that directly involve data structures, memory representation, and algorithm design. 
             </div>
