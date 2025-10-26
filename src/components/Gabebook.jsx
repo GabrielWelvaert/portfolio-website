@@ -50,7 +50,13 @@ export const Gabebook = ({ className }) => {
                 </div>
             </div>
             <div className="passage-text">
-                The majority of user-facing features (profile customization, posting, commenting, etc.) follow this same MVC request/response architecture. Rather than reviewing the same pattern in those features, we'll pivot to other internal mechanisms of the application.
+                The majority of user-facing features (profile customization, posting, commenting, etc.) follow this same MVC request/response architecture:
+            </div>
+            <div className="flex flex-col justify-center items-center">
+                <img className="rounded-image w-[80%]" src="/profile.png"></img>    
+            </div>
+            <div className="passage-text">
+                 Rather than reviewing the same pattern in those features, we'll pivot to examining other internal mechanisms of the application.
             </div>
             <div className="passage-text">
                 Session-based authentication was implemented using the <a className="hover-image-text" href="https://expressjs.com/en/resources/middleware/session.html" target="_blank" rel="noopener noreferrer">express-session</a> middleware.
@@ -86,7 +92,7 @@ export const Gabebook = ({ className }) => {
             </div>
             <div className="passage-text">
                 As you can see, middleware are useful for generic, pre-controller logic that can be applied to any route. 
-                For this reason, I used the csurf middleware to provide <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank" rel="noopener noreferrer">CSRF</a> protection on POST routes by issuing a secret token and validating it on each request.
+                For this reason, I used the <a className="hover-image-text" href="https://www.npmjs.com/package/csurf" target="_blank" rel="noopener noreferrer">csurf</a> middleware to provide <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank" rel="noopener noreferrer">CSRF</a> protection on POST routes by issuing a secret token and validating it on each request.
             </div>
             <div className="passage-text">
                 csurf uses a cookie to store a per-client secret for token validation:
@@ -96,13 +102,13 @@ export const Gabebook = ({ className }) => {
             </div>
             <div className="grid grid-cols-2 items-start justify-around gap-6">
                 <div className="passage-text">
-                    The token is issued to clients through a dedicated route:
+                    A token is issued to clients through a dedicated route:
                     <div className="flex flex-col items-center justify-center gap-1">
                         <img className="rounded-image" src="/csurfget.png"></img>
                     </div>
                 </div>
                 <div className="passage-text">
-                    The token must be included in request headers for POST routes:
+                    That token must be included in request headers for POST routes:
                     <div className="flex flex-col items-center justify-center gap-1">
                         <img className="rounded-image" src="/csrflike.png"></img>
                     </div>
@@ -130,7 +136,12 @@ export const Gabebook = ({ className }) => {
                 </div>
             </div>
             <div className="passage-text">
-                websockets
+                Instant client-to-client behavior was implemented using websockets (via <a className="hover-image-text" href="https://socket.io/" target="_blank" rel="noopener noreferrer">Socket.io</a>), which allows users to receive live notifications and messages.
+                This is done by maintaining a map of active users and relaying data between them for specific actions:
+                <div className="flex flex-col items-center justify-center gap-2">
+                    <img className="rounded-image w-[80%]" src="/websocket.drawio.png"></img>
+                    <img className="rounded-image w-[70%]" src="/msg-final.gif"></img>
+                </div>
             </div>
             <div className="passage-text">
                 production implementation: AWS (ec2, email, route58 blah blah!)
