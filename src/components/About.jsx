@@ -65,8 +65,6 @@ export const About = () => {
                 <br></br>
                 &bull; background gradient. research modern design principles. make this site look modern but simple
                 <br></br>
-                &bull; hover images (ie kittens) should disappear after scrolling
-                <br></br>
                 &bull; text with more than 1-2 lines should be left aligned. use passage-text-left not passage-text.
                 <br></br>
                 &bull; final spellcheck, reinstall the spellchecker

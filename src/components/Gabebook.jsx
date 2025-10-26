@@ -131,24 +131,30 @@ export const Gabebook = ({ className }) => {
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text font-bold"><a className="hover-image-text" href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="noopener noreferrer">XSS:</a></div>
-                    <div className="passage-text">This <a className="hover-image-text" href="https://www.npmjs.com/package/xss?activeTab=dependents" target="_blank" rel="noopener noreferrer">xss package</a> was used on the server side to stop user-input from being stored or interpreted as HTML:</div>
+                    <div className="passage-text">This <a className="hover-image-text" href="https://www.npmjs.com/package/xss?activeTab=dependents" target="_blank" rel="noopener noreferrer">xss package</a> was used on the server side to stop input from being stored or interpreted as HTML:</div>
                     <img className="rounded-image" src="/xss.png"></img>
                 </div>
             </div>
             <div className="passage-text">
                 Instant client-to-client behavior was implemented using websockets (via <a className="hover-image-text" href="https://socket.io/" target="_blank" rel="noopener noreferrer">Socket.io</a>), which allows users to receive live notifications and messages.
                 Websocket-driven behavior is separate from controllers and models: it enhances the experience for online users, while offline users still see their new messages and notifications on their next login.
-                This works by maintaining a map of active users and relaying data between them for specific actions:
+                This works by maintaining a map of active users and relaying data between them for specific actions.
+            </div>
+            <div className="passage-text">
+                Here is an example of websocket-driven behavior for instant messaging:
                 <div className="flex flex-col items-center justify-center gap-2">
                     <img className="rounded-image w-[80%]" src="/websocket.drawio.png"></img>
                     <img className="rounded-image w-[70%]" src="/msg-final.gif"></img>
                 </div>
             </div>
             <div className="passage-text">
-                production implementation: AWS (ec2, email, route58 blah blah!)
+                This project was made publicly available by hosting it on AWS.
+                To keep it free, both the application and its database ran on a single EC2 t2.micro instance running <a className="hover-image-text" href="https://ubuntu.com/" target="_blank" rel="noopener noreferrer">Ubuntu</a>.
+                I used <a className="hover-image-text" href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a> as a reverse proxy to route traffic from my domain to the backend with automatic HTTPS.
+                I purchased the domain from <a className="hover-image-text" href="https://www.namecheap.com/" target="_blank" rel="noopener noreferrer">Namecheap</a>, pointed its nameservers to <a className="hover-image-text" href="https://aws.amazon.com/route53/" target="_blank" rel="noopener noreferrer">Route 53</a> for DNS management, and added <a className="hover-image-text" href="https://resend.com/" target="_blank" rel="noopener noreferrer">Resend</a> verification records so it could send emails from my domain.
             </div>
             <div className="passage-text">
-                This project was fun blah blah if I continued with this project section ie pagination, lazy loading, group messaging.
+                This project was a great learning exercise, and if I were to continue developing it, I'd add features like pagination, lazy loading, and group messaging.
             </div>
             <div className="passage-text mb-10">
                 <a href="#projects" className="interactable-text focus:outline-none cursor-pointer" onClick={() => setTimeout(() => setProject("This Website"), 1250)}>
