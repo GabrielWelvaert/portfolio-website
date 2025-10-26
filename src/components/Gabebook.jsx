@@ -137,7 +137,8 @@ export const Gabebook = ({ className }) => {
             </div>
             <div className="passage-text">
                 Instant client-to-client behavior was implemented using websockets (via <a className="hover-image-text" href="https://socket.io/" target="_blank" rel="noopener noreferrer">Socket.io</a>), which allows users to receive live notifications and messages.
-                This is done by maintaining a map of active users and relaying data between them for specific actions:
+                Websocket-driven behavior is separate from controllers and models: it enhances the experience for online users, while offline users still see their new messages and notifications on their next login.
+                This works by maintaining a map of active users and relaying data between them for specific actions:
                 <div className="flex flex-col items-center justify-center gap-2">
                     <img className="rounded-image w-[80%]" src="/websocket.drawio.png"></img>
                     <img className="rounded-image w-[70%]" src="/msg-final.gif"></img>
