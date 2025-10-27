@@ -126,7 +126,7 @@ export const Gabebook = ({ className }) => {
                 </div>
             </div>
             <div className="passage-text">
-                Additional security measures were also included.
+                Additional security measures were also included:
             </div>
             <div className="grid grid-cols-2 items-start justify-center gap-12">
                 <div className="flex flex-col items-center justify-center gap-1">
