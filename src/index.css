@@ -68,11 +68,11 @@ html, body {
 }
 
 .small-button-text {
-  @apply text-white bg-black font-sans text-[15px] text-center py-1 px-3 rounded-lg shadow-md leading-relaxed;
+  @apply text-white bg-[#121826] font-sans text-[15px] text-center py-1 px-3 rounded-lg shadow-md leading-relaxed;
 }
 
 .card-button-text {
-  @apply text-white bg-black font-sans text-[20px] text-left py-1 px-3 rounded-lg shadow-md leading-relaxed;
+  @apply text-white bg-[#121826] font-sans text-[20px] text-left py-1 px-3 rounded-lg shadow-md leading-relaxed;
 }
 
 .passage-text-left {
