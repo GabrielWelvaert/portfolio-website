@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { ButtonSelector } from "./ButtonSelector";
 import { Rotmgabe } from "./Rotmgabe";
 import { Gabebook } from "./Gabebook";
-import { Thiswebsite } from "./Thiswebsite";
 import { Fade } from "./Fade"
 
 export const Projects = () => {
