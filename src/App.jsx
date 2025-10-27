@@ -42,7 +42,7 @@ function App() {
   }, []);
 
   return (
-      <div className={`min-h-screen animate-fadeIn bg-black text-gray-100`}>
+      <div className={`min-h-screen animate-fadeIn bg-fixed bg-gradient-to-b from-[#0a0a0a] to-[#121826] text-gray-100`}>
         <NavigationBar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
         <About/>

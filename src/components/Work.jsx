@@ -17,12 +17,12 @@ export const Work = () => {
                     title=""
                     className="card-wide"
                     description={[
-                        "Optimized file synchronization between application servers and S3 by leveraging AWS Lambda, reducing server load by orders of magnitude",
-                        "Designed and implemented Git utilization strategies to optimize ticket-to-release workflow, adopted as team standard",
-                        "Implemented defenses for security vulnerabilities including custom CSV injection protection and CSRF protection via synchronizer tokens",
-                        "Refactored legacy code by relocating client-side logic from the server to the browser, reducing unnecessary server load while preserving final backend validation",
+                        "Optimized file synchronization between application servers and S3 by leveraging AWS Lambda",
+                        "Refactored legacy code by moving client-side logic to the browser, reducing server load while preserving final backend validation",
+                        "Enhanced query performance and enforced constraints to maintain data integrity and prevent duplicates in parallel operations",
+                        "Strengthened defenses for security vulnerabilities including custom CSV injection protection and CSRF protection via synchronizer tokens",
                         "Modernized page design and layout, ensuring 508 accessibility compliance",
-                        "Implemented constraints and query optimizations to improve performance, maintain data integrity, and prevent duplicates in parallel, lag-heavy operations",
+                        "Implemented git strategies to optimize ticket-to-release workflow, adopted as team standard"
                     ]}
                 />
             </div>

@@ -1,14 +1,10 @@
 export function scrollToId(id){
-    console.log("scrolltoId");
     if(!id){
         id = window.location.hash.replace("#","");    
     }
     const section = document.getElementById(id);
     if(section){
-        console.log("here");
         section.scrollIntoView({ behavior: "smooth" });
-    } else {
-        console.log("??");
     }
 }
 
