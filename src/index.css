@@ -17,9 +17,8 @@ html, body {
   @apply inset-0 transition-opacity duration-500 ease-in-out flex flex-col gap-6;
 }
 
-
 .button-selector-container {
-  @apply inline-flex bg-[#054575] p-3 rounded-lg shadow-md gap-10;
+  @apply inline-flex bg-[rgb(2,74,128)] p-3 rounded-lg shadow-md gap-10;
 }
 
 .button-selector-selected-item {
@@ -51,7 +50,7 @@ html, body {
 }
 
 .hover-image-text {
-  @apply font-sans text-[20px] text-center w-full leading-relaxed text-[#247dc2] hover:text-[#a5bfd3] cursor-pointer transition-colors;
+  @apply font-sans font-bold text-[20px] text-center w-full leading-relaxed text-[#247dc2] hover:text-[#a5bfd3] cursor-pointer transition-colors;
 }
 
 .hover-image {
