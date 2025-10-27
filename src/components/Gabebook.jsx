@@ -1,5 +1,5 @@
 
-export const Gabebook = ({ className }) => {
+export const Gabebook = ({ className, setProject }) => {
     return (
         <div className={className}>
              <div className="passage-text-left">
@@ -162,8 +162,8 @@ export const Gabebook = ({ className }) => {
                 This project was a great learning exercise, and if I were to continue developing it, I'd add features like pagination, lazy loading, and group messaging.
             </div>
             <div className="passage-text mb-10">
-                <a href="#projects" className="interactable-text focus:outline-none cursor-pointer" onClick={() => setTimeout(() => setProject("This Website"), 1250)}>
-                    Click To View Next Project
+                <a href="#projects" className="interactable-text focus:outline-none cursor-pointer" onClick={() => setTimeout(() => setProject("Realm of the Mad Gabe"), 1250)}>
+                    Click To View Previous Project
                 </a>    
             </div>
         </div>
