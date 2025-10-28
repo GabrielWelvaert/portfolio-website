@@ -13,7 +13,7 @@ export const About = () => {
                 <a className="hover-image-text" href="mailto:gabewelvaert@gmail.com" target="_blank" rel="noopener noreferrer">Email</a> 
                 <a className="hover-image-text" href="http://www.linkedin.com/in/gabriel-welvaert-509444284" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a className="hover-image-text" href="https://github.com/GabrielWelvaert" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a className="hover-image-text" href="/test.pdf" download>Resume</a>
+                <a className="hover-image-text" href="/resume.pdf" download>Resume</a>
             </div>
             <div className="cards-row">
                 <ColumnCard
