@@ -11,7 +11,7 @@ export const Work = () => {
                 </div>
                 <img className="rounded-image w-7/8 h-auto" src='/REGTAP.png'></img>
                 <div className="passage-text-left">
-                    I am responsible for developing hotfixes and releases by collaborating with testers, analysts, and technical leaders to deliver solutions in a complex framework-less legacy codebase, while supporting business development proposals, maintaining compliance (<a className="hover-image-text" href="https://www.section508.gov/" target="_blank" rel="noopener noreferrer">508</a>, <a className="hover-image-text" href="https://ardx.net/" target="_blank" rel="noopener noreferrer">NIST</a>, <a className="hover-image-text" href="https://www.fedramp.gov/" target="_blank" rel="noopener noreferrer">FedRamp</a>), and responding to client demands, for example:
+                    I am responsible for developing hotfixes and releases by collaborating with testers, analysts, and technical leaders to deliver solutions in a complex framework-less legacy codebase, while supporting business development proposals, maintaining compliance (<a className="hover-image-text" href="https://www.section508.gov/" target="_blank" rel="noopener noreferrer">508</a>, <a className="hover-image-text" href="https://www.nist.gov/" target="_blank" rel="noopener noreferrer">NIST</a>, <a className="hover-image-text" href="https://www.fedramp.gov/" target="_blank" rel="noopener noreferrer">FedRAMP</a>), and responding to client demands, for example:
                 </div>
                 <ColumnCard
                     title=""
