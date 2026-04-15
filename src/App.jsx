@@ -12,6 +12,12 @@ import { scrollToId, getCurrentIndexFromURL, indexToSection, sectionIds } from "
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(getCurrentIndexFromURL());
+  const [theme, setTheme] = useState("light");
+  
+  // for the theme (dark or light)
+  useEffect(() => {
+    document.documentElement.className = theme;
+  }, [theme]);
 
   // Track last arrow key navigation to avoid flicker
   const lastKeyNavRef = useRef(0);
@@ -42,8 +48,8 @@ function App() {
   }, []);
 
   return (
-      <div className={`min-h-screen animate-fadeIn bg-fixed bg-gradient-to-b from-[#0a0a0a] to-[#121826] text-gray-100`}>
-        <NavigationBar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+      <div className={`min-h-screen animate-fadeIn`}>
+        <NavigationBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} theme={theme} setTheme={setTheme}/>
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
         <About/>
         <Work/>

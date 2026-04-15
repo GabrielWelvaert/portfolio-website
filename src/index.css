@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --nav: #024a80;
+}
+
+.dark {
+  --bg: #0a0a0a;
+  --text: #eaeaea;
+  --nav: #111827;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -7,6 +19,8 @@ html, body {
   background: #000000;
   color: #f3f4f6;
   scroll-behavior: smooth;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .opacity-fading-project {
@@ -18,7 +32,8 @@ html, body {
 }
 
 .button-selector-container {
-  @apply inline-flex bg-[rgb(2,74,128)] p-3 rounded-lg shadow-md gap-10;
+  @apply inline-flex p-3 rounded-lg shadow-md gap-10;
+  background: var(--bg)
 }
 
 .button-selector-selected-item {
@@ -64,19 +79,19 @@ html, body {
 }
 
 .passage-text {
-  @apply text-white font-sans text-[20px] text-center w-full leading-relaxed;
+  @apply font-sans text-[20px] text-center w-full leading-relaxed;
 }
 
 .small-button-text {
-  @apply text-white bg-[#121826] font-sans text-[15px] text-center py-1 px-3 rounded-lg shadow-md leading-relaxed;
+  @apply bg-[#121826] font-sans text-[15px] text-center py-1 px-3 rounded-lg shadow-md leading-relaxed;
 }
 
 .card-button-text {
-  @apply text-white bg-[#121826] font-sans text-[20px] text-left py-1 px-3 rounded-lg shadow-md leading-relaxed;
+  @apply bg-[#121826] font-sans text-[20px] text-left py-1 px-3 rounded-lg shadow-md leading-relaxed;
 }
 
 .passage-text-left {
-  @apply text-white font-sans text-[20px] text-left w-full leading-relaxed;
+  @apply font-sans text-[20px] text-left w-full leading-relaxed;
 }
 
 .cards-row {

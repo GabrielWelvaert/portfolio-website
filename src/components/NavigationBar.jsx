@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { MobileMenu } from './MobileMenu'
 
-export const NavigationBar = ({menuOpen, setMenuOpen}) => {
+export const NavigationBar = ({menuOpen, setMenuOpen, theme, setTheme }) => {
 
     useEffect(() => {
         document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -11,6 +11,9 @@ export const NavigationBar = ({menuOpen, setMenuOpen}) => {
         <nav className="fixed top-0  w-full z-40 bg-[#024a80] backdrop-blur-lg border-b border-white/10 shadow-lg">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
+                    <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+                        Toggle theme
+                    </button>
                     <a href="#about" className="interactable-text text-2xl">Gabriel Welvaert</a>
                     <div className="w-7 relative z-40 md:hidden interactable-text text-2xl focus:outline-none cursor-pointer" onClick={() => setMenuOpen((prev) => !prev)}>
                         &#9776; 
