@@ -1,6 +1,6 @@
 import "./index.css";
 import { useState, useEffect, useRef } from "react";
-import { NavigationBar } from './components/NavigationBar';
+import { Header } from './components/Header';
 import { MobileMenu } from "./components/MobileMenu";
 import { About } from "./components/About";
 import { Work } from "./components/Work";
@@ -12,7 +12,7 @@ import { scrollToId, getCurrentIndexFromURL, indexToSection, sectionIds } from "
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(getCurrentIndexFromURL());
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   
   // for the theme (dark or light)
   useEffect(() => {
@@ -49,9 +49,9 @@ function App() {
 
   return (
       <div className={`min-h-screen animate-fadeIn`}>
-        <NavigationBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} theme={theme} setTheme={setTheme}/>
+        <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} theme={theme} setTheme={setTheme}/>
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
-        <About/>
+        <About theme={theme}/>
         <Work/>
         <Projects/>
       </div>
