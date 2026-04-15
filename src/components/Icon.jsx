@@ -8,7 +8,7 @@ export const Icon = ({ theme, onClick, href, darkPath, lightPath }) => {
         <svg
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-8 h-8 cursor-pointer"
+            className="w-8 h-8 cursor-pointer transition-colors duration-200 text-[var(--text)] hover:text-[var(--accent)]"
         >
             {/* changes vector graphic dispalyed depeding on if dark mode or light mode */}
             <path d={theme === "dark" ? lightPath : darkPath} />

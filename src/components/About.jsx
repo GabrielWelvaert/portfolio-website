@@ -6,10 +6,10 @@ import { Icon } from "./Icon";
 export const About = ({theme}) => {
     return (
         <div id="about" className="page-content-container-centered-1000">
-            <div className="flex flex-row gap-6">
-                <img className="portrait-image w-50% h-50%" src='/gabe.jpg'></img>
-                <div className="flex flex-col gap-4">
-                    <div className="flex flex-row gap-4">
+            <div className="flex flex-wrap gap-6 m-3 justify-center">
+                <img className="portrait-image w-60% h-60%" src='/cat.jpg'></img>
+                <div className="flex flex-col justify-between gap-4">
+                    <div className="flex gap-4">
                         <Icon 
                             theme={theme} 
                             href={"https://github.com/GabrielWelvaert"}
@@ -31,6 +31,9 @@ export const About = ({theme}) => {
                     </div>
                     <div className="text-2xl font-bold">
                         Full Stack Software Engineer
+                    </div>
+                    <div className="text-2xl font-bold">
+                        UVA CS Alum | AWS SAA Certified
                     </div>
                 </div>
             </div>
