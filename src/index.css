@@ -25,6 +25,25 @@ html, body {
   color: var(--text);
 }
 
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.dark-bg {
+  background-image: url("/bg1.png");
+}
+
+.light-bg {
+  background-image: url("/bg.png");
+}
+
+
 .opacity-fading-project {
   @apply absolute inset-0 transition-opacity duration-500 ease-in-out flex flex-col gap-6;
 }
@@ -123,6 +142,10 @@ html, body {
 
 .page-content-container-centered-500 {
   @apply min-h-screen flex flex-col items-center justify-center relative gap-6 mx-auto max-w-[500px];
+}
+
+.page-content-container-centered-full-w {
+  @apply min-h-screen flex flex-col items-center justify-center relative gap-6 mx-auto w-full pt-[60px] box-border;
 }
 
 .page-content-container-centered-1000 {

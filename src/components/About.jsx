@@ -5,7 +5,7 @@ import { Icon } from "./Icon";
 
 export const About = ({theme}) => {
     return (
-        <div id="about" className="page-content-container-centered-1000">
+        <div id="about" className={`page-content-container-centered-full-w bg-layer ${ theme === "dark" ? "dark-bg" : "light-bg" }`}>
             <div className="flex flex-wrap gap-6 m-3 justify-center">
                 <img className="portrait-image w-60% h-60%" src='/cat.jpg'></img>
                 <div className="flex flex-col justify-between gap-4">

@@ -48,12 +48,12 @@ function App() {
   }, []);
 
   return (
-      <div className={`min-h-screen animate-fadeIn`}>
-        <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} theme={theme} setTheme={setTheme}/>
-        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
-        <About theme={theme}/>
-        <Work/>
-        <Projects/>
+      <div className={`min-h-screen animate-fadeIn`} >
+          <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} theme={theme} setTheme={setTheme}/>
+          <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+          <About theme={theme}/>
+          <Work/>
+          <Projects/>
       </div>
   );
 }
