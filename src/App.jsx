@@ -14,7 +14,17 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(getCurrentIndexFromURL());
   const [theme, setTheme] = useState("dark");
-  const [image, setImage] = useState("/bg1.png");
+
+  const images = Object.values(
+  import.meta.glob("/public/yan/*.{jpg,png,jpeg}", {
+      eager: true,
+      as: "url"
+    })
+  );
+
+  const [image] = useState(() =>
+    images[Math.floor(Math.random() * images.length)]
+  );
   
   // for the theme (dark or light)
   useEffect(() => {
