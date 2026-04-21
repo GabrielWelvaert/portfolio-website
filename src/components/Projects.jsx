@@ -10,7 +10,7 @@ export const Projects = () => {
     
     return (
         <div id="projects" className="non-centered-scrollable-section page-content-container-1000">
-            <div className="passage-text-header">Projects</div>
+            <div className="passage-text-header">Select Projects</div>
             <ButtonSelector
                 options={projects}
                 selected={project}

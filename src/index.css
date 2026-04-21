@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* default values for theme variables */
 :root {
   --bg: #ffffff;
   --text: #111111;
@@ -7,6 +8,7 @@
   --accent: #2563eb
 }
 
+/* when dark is used, it overrides the variable values */
 .dark {
   --bg: #0a0a0a;
   --text: #eaeaea;
@@ -17,7 +19,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-mono);
   background: #000000;
   color: #f3f4f6;
   scroll-behavior: smooth;
@@ -71,11 +73,6 @@ html, body {
 
 .rounded-image {
   @apply rounded-lg object-cover;
-}
-
-.portrait-image {
-  @apply object-cover w-50 aspect-square;
-  border-radius: 50%;
 }
 
 .non-centered-scrollable-section {

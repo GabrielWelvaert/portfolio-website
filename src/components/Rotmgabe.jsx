@@ -87,7 +87,7 @@ export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
             <div className="passage-text">
                 For example, here are some basic entities, which have behavior defined by their components:
             </div>
-            <div className="grid grid-cols-3 items-start justify-center gap-12">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-12">
                 <div className="flex flex-col items-center justify-center gap-1">
                     <div className="passage-text min-h-[200px]">Entities with sprite and position components are visible; with only these, they may be the floor or some decorative object.</div>
                     <img className="w-48 h-48" src="/floor.png"></img>

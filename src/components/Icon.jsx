@@ -15,6 +15,7 @@ export const Icon = ({ theme, onClick, href, darkPath, lightPath }) => {
         </svg>
     )
 
+    // wrap the content in an anchor with href for links
     if (href && !onClick) {
         return (
         <a href={href} target="_blank" rel="noopener noreferrer">
@@ -22,6 +23,6 @@ export const Icon = ({ theme, onClick, href, darkPath, lightPath }) => {
         </a>
         );
     }
-
+    // otherwise, wrap the content in a div with onClick (ex: light/dark mode button)
     return <div onClick={onClick}>{content}</div>;
 };

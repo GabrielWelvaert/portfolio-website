@@ -1,11 +1,19 @@
-import { ColumnCard } from "./ColumnCard";
+import { Tag } from "./Tag";
 
 export const Work = () => {
+    const workStack = ["Git", "GitHub Actions", "Docker", "AWS", "Azure", "Linux", "Snowflake", "Pandas", "Selenium"];
     return (
         <>
-            <div id="work" className="non-centered-scrollable-section page-content-container-1000">
-                <div className="passage-text-header">Work</div>
-                <div className="passage-text-left">
+            <div id="work" className="">
+                <div className="passage-text-header">Work Experience</div>
+                <div>
+                    Full-Stack Software Developer
+                    
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    {workStack.map(item => <Tag key={item}>{item}</Tag>)}
+                </div>
+                {/* <div className="passage-text-left">
                     Since 2024, I have been working for <a className="hover-image-text" href="https://ardx.net/" target="_blank" rel="noopener noreferrer">ARDX</a>, a CMMI-SVC level 5 management and technology consulting firm that serves as an Application Development Organization (ADO) for the Centers for Medicare & Medicaid Services (CMS).
                     As a software developer, my primary responsibility is maintaining and developing REGTAP, an <a className="hover-image-text" href="https://en.wikipedia.org/wiki/Amazon_Web_Services" target="_blank" rel="noopener noreferrer">AWS</a>-integrated <a className="hover-image-text" href="https://en.wikipedia.org/wiki/LAMP_(software_bundle)" target="_blank" rel="noopener noreferrer">LAMP</a>-stack web application which supports over 180,000 users. 
                 </div>
@@ -27,7 +35,7 @@ export const Work = () => {
                         "Modernized page design and layout, ensuring 508 accessibility compliance",
                         "Implemented git strategies to optimize ticket-to-release workflow, adopted as team standard"
                     ]}
-                />
+                /> */}
             </div>
         </>
     )

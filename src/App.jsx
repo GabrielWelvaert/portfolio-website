@@ -8,11 +8,13 @@ import { Projects } from "./components/Projects";
 import { useNavigationKey } from "./hooks/useNavigationKey";
 import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
 import { scrollToId, getCurrentIndexFromURL, indexToSection, sectionIds } from "./utils.js";
+import { Hero } from "./components/Hero";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(getCurrentIndexFromURL());
   const [theme, setTheme] = useState("dark");
+  const [image, setImage] = useState("/bg1.png");
   
   // for the theme (dark or light)
   useEffect(() => {
@@ -51,9 +53,10 @@ function App() {
       <div className={`min-h-screen animate-fadeIn`} >
           <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} theme={theme} setTheme={setTheme}/>
           <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+          <Hero image={image}></Hero>
           <About theme={theme}/>
-          <Work/>
-          <Projects/>
+          {/* <Work/> */}
+          {/* <Projects/> */}
       </div>
   );
 }
