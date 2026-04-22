@@ -14,13 +14,9 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(getCurrentIndexFromURL());
   const [theme, setTheme] = useState("dark");
+  // hero header is a random image between /yan/Acid_Texture_1 - /yan/Acid_Texture_150
+  const [image] = useState(() => `/yan/Acid_Texture_${Math.floor(Math.random() * 150) + 1}.jpg`);
 
-  // obtain a random image from public/yan/ to use as image state variable
-  const images = Object.values(import.meta.glob("/public/yan/*.{jpg,png,jpeg}", {eager: true,as: "url"}));
-  const [image] = useState(() =>
-    images[Math.floor(Math.random() * images.length)]
-  );
-  
   // for the theme (dark or light)
   useEffect(() => {
     document.documentElement.className = theme;
