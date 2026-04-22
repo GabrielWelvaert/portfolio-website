@@ -15,13 +15,8 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(getCurrentIndexFromURL());
   const [theme, setTheme] = useState("dark");
 
-  const images = Object.values(
-  import.meta.glob("/public/yan/*.{jpg,png,jpeg}", {
-      eager: true,
-      as: "url"
-    })
-  );
-
+  // obtain a random image from public/yan/ to use as image state variable
+  const images = Object.values(import.meta.glob("/public/yan/*.{jpg,png,jpeg}", {eager: true,as: "url"}));
   const [image] = useState(() =>
     images[Math.floor(Math.random() * images.length)]
   );
