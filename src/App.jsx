@@ -14,7 +14,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(getCurrentIndexFromURL());
   const [theme, setTheme] = useState("dark");
-  // hero header is a random image between /yan/Acid_Texture_1 - /yan/Acid_Texture_150
+  // hero header is a random image between /yan/Acid_Texture_1.jpg - /yan/Acid_Texture_150.jpg
   const [image] = useState(() => `/yan/Acid_Texture_${Math.floor(Math.random() * 150) + 1}.jpg`);
 
   // for the theme (dark or light)
@@ -36,10 +36,10 @@ function App() {
   useIntersectionObserver(currentIndex, handleSetCurrentIndex, lastKeyNavRef);
 
   // Update URL whenever currentIndex changes (keys or scroll)
-  useEffect(() => {
-    const sectionId = indexToSection.get(currentIndex);
-    if (sectionId) history.replaceState(null, "", `#${sectionId}`);
-  }, [currentIndex]);
+  // useEffect(() => {
+  //   const sectionId = indexToSection.get(currentIndex);
+  //   if (sectionId) history.replaceState(null, "", `#${sectionId}`);
+  // }, [currentIndex]);
 
   // Scroll to current section once loaded. avoids weirdness if refresh while viewing a project
   useEffect(() => {
@@ -55,9 +55,11 @@ function App() {
           <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} theme={theme} setTheme={setTheme}/>
           <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
           <Hero image={image}></Hero>
-          <About theme={theme}/>
-          {/* <Work/> */}
-          {/* <Projects/> */}
+          <div className="max-w-[1170px] mx-auto flex flex-col">
+            <About theme={theme}/>
+            <Work/>
+            {/* <Projects/> */}
+          </div>
       </div>
   );
 }
