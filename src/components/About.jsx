@@ -35,7 +35,7 @@ export const About = ({theme}) => {
 
             <div className="flex flex-col gap-4 justify-center p-2">
                 <div className="text-3xl">Full Stack Software Engineer</div>
-                <div className="text-3xl">UVA CS 2023 | AWS SAA 2026</div>
+                <div className="text-3xl">UVA CS Alum | AWS SAA Certified</div>
             </div>
         </div>
     )

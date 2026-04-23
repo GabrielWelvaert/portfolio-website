@@ -9,6 +9,7 @@ import { useNavigationKey } from "./hooks/useNavigationKey";
 import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
 import { scrollToId, getCurrentIndexFromURL, indexToSection, sectionIds } from "./utils.js";
 import { Hero } from "./components/Hero";
+import { Skills } from "./components/Skills";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,9 +56,12 @@ function App() {
           <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} theme={theme} setTheme={setTheme}/>
           <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
           <Hero image={image}></Hero>
-          <div className="max-w-[1170px] mx-auto flex flex-col">
+          <div className="max-w-[1220px] mx-auto flex flex-col">
             <About theme={theme}/>
-            <Work/>
+            <div className="flex flex-row flex-wrap m-3 gap-6 max-w-7xl">
+              <Work/>
+              <Skills/>
+            </div>
             {/* <Projects/> */}
           </div>
       </div>

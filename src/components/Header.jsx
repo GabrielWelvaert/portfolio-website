@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { MobileMenu } from './MobileMenu'
 import { Icon } from "./Icon";
 
-export const Header = ({menuOpen, setMenuOpen, theme, setTheme }) => {
+export const Header = ({menuOpen, setMenuOpen, theme, setTheme, maxWidth }) => {
 
     useEffect(() => {
         document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -10,7 +10,7 @@ export const Header = ({menuOpen, setMenuOpen, theme, setTheme }) => {
 
     return (<>
         <nav className="fixed top-0  w-full z-40 shadow-lg" style={{ background: "var(--bg)", borderBottom: "1px solid var(--border)" }}>
-            <div className="max-w-[1170px] mx-auto px-4 ">
+            <div className="max-w-[1220px] mx-auto px-4 ">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex gap-6">
                         <Icon 
