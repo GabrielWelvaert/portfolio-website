@@ -1,4 +1,4 @@
-import { BaseCard } from "./BaseCard"
+// import { BaseCard } from "./BaseCard"
 
 export const Rotmgabe = ({ className, visibleVideo, setProject }) => {
     return (

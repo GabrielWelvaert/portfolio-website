@@ -1,4 +1,5 @@
-// pass either href or onClick - not both
+
+// Icons are clickable SVG elements that respond to dark / light mode. pass either href or onClick - not both
 export const Icon = ({ theme, onClick, href, darkPath, lightPath }) => {
     if(!lightPath){
         lightPath = darkPath

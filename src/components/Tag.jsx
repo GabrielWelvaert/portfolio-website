@@ -1,17 +1,9 @@
+
+// Tags are text surrounded by a rounded background, like a sticker
 export const Tag = ({ children }) => {
     return (
-        <span style={{
-            display: 'inline-block',
-            padding: '4px 10px',
-            borderRadius: '999px',
-            fontSize: '15px',
-            fontWeight: '550',
-            backgroundColor: 'var(--text)',
-            color: 'var(--bg)',
-            border: '1px solid var(--border)',
-            margin: '4px'
-        }}>
-            {children}
+        <span className="inline-block px-[10px] py-[4px] rounded-full text-[15px] font-bold bg-[var(--text)] text-[var(--bg)] border border-[var(--border)] m-1 ">
+        {children}
         </span>
     );
 };

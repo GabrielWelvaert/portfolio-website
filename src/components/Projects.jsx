@@ -1,35 +1,59 @@
 import { useState, useEffect } from "react";
-import { ButtonSelector } from "./ButtonSelector";
 import { Rotmgabe } from "./Rotmgabe";
 import { Gabebook } from "./Gabebook";
 import { Fade } from "./Fade"
+import { ProjectCard } from "./ProjectCard";
+import { Icon } from "./Icon";
+import { githubSVGDark } from "../utils";
 
-export const Projects = () => {
-    const projects = ["Realm of the Mad Gabe", "TheGabebook"];
-    const [project, setProject] = useState("");
+
+export const Projects = (theme) => {
     
     return (
-        <div id="projects" className="non-centered-scrollable-section page-content-container-1000">
-            <div className="passage-text-header">Select Projects</div>
-            <ButtonSelector
-                options={projects}
-                selected={project}
-                callback={setProject}
-            ></ButtonSelector>
-            {project !== "" && (
-                <div className={`relative min-w-[100%]`}>
-                    <div className="invisible"> {/*invisible div used for height calculations because real project elements are absolute, so aren't growing height of parent*/}
-                        {project === projects[0] && <Rotmgabe className={`opacity-fading-project-non-absolute ${project === projects[0] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} visibleVideo={project === projects[0] } setProject={setProject}></Rotmgabe>}
-                        {project === projects[1] && <Gabebook className={`opacity-fading-project-non-absolute ${project === projects[1] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} setProject={setProject}></Gabebook>}
-                    </div>
-                    <Fade show={project === projects[0]}>
-                        <Rotmgabe className={`opacity-fading-project ${project === projects[0] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} visibleVideo={project === projects[0]} setProject={setProject}></Rotmgabe>
-                    </Fade>
-                    <Fade show={project === projects[1]}>
-                        <Gabebook className={`opacity-fading-project ${project === projects[1] ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} setProject={setProject}></Gabebook>
-                    </Fade>
-                </div>
-            )}
+        <div id="projects" className="flex-col ml-6 mr-6 gap-6">
+            <div className="text-4xl font-bold mb-2">Projects</div>    
+            <div id="project-card-container" className="flex flex-row flex-wrap gap-4">
+                <ProjectCard 
+                    title="C++ Video Game" 
+                    description="Implemented a custom Entity-Component-System (ECS) architecture with contiguous memory pools and data-oriented design for cache-efficient CPU execution."
+                    tags={["C++23","ECS","Valgrind", "GCC", "SDL2","DOD","OOP","CPU caching"]}
+                    Icon={<Icon 
+                        theme={theme} 
+                        href={"https://github.com/GabrielWelvaert"}
+                        darkPath = {githubSVGDark}
+                    />}
+                />
+                <ProjectCard 
+                    title="Node.js Social Site" 
+                    description="test description"
+                    tags={["1","2","3"]}
+                    Icon={<Icon 
+                        theme={theme} 
+                        href={"https://github.com/GabrielWelvaert"}
+                        darkPath = {githubSVGDark}
+                    />}
+                />
+                <ProjectCard 
+                    title="Portfolio Website" 
+                    description="test description"
+                    tags={["1","2","3"]}
+                    Icon={<Icon 
+                        theme={theme} 
+                        href={"https://github.com/GabrielWelvaert"}
+                        darkPath = {githubSVGDark}
+                    />}
+                />
+                <ProjectCard 
+                    title="Recipe Encylopedia" 
+                    description="test description"
+                    tags={["1","2","3"]}
+                    Icon={<Icon 
+                        theme={theme} 
+                        href={"https://github.com/GabrielWelvaert"}
+                        darkPath = {githubSVGDark}
+                    />}
+                />
+            </div>
         </div>
     )
 };

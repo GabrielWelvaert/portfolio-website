@@ -8,7 +8,7 @@ export const Work = () => {
             <div id="work" className="flex flex-wrap gap-6 text-2xl justify-between">
                 <div className="flex flex-col gap-4">
                     <div>ARDX - Software Engineer (2024 - Present)</div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    <div className="flex flex-wrap gap-2">
                         {workStack.map(item => <Tag key={item}>{item}</Tag>)}
                     </div>
                 </div>

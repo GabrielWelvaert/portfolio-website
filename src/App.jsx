@@ -23,18 +23,18 @@ function App() {
     document.documentElement.className = theme;
   }, [theme]);
 
-  // Track last arrow key navigation to avoid flicker
-  const lastKeyNavRef = useRef(0);
+  // // Track last arrow key navigation to avoid flicker
+  // const lastKeyNavRef = useRef(0);
 
-  const handleSetCurrentIndex = (newIndex, source = "scroll") => {
-    setCurrentIndex(newIndex);
-    if (source === "key") lastKeyNavRef.current = Date.now();
-  };
+  // const handleSetCurrentIndex = (newIndex, source = "scroll") => {
+  //   setCurrentIndex(newIndex);
+  //   if (source === "key") lastKeyNavRef.current = Date.now();
+  // };
 
-  // Arrow key navigation
-  useNavigationKey(currentIndex, (newIndex) => handleSetCurrentIndex(newIndex, "key"));
-  // Scroll navigation
-  useIntersectionObserver(currentIndex, handleSetCurrentIndex, lastKeyNavRef);
+  // // Arrow key navigation
+  // useNavigationKey(currentIndex, (newIndex) => handleSetCurrentIndex(newIndex, "key"));
+  // // Scroll navigation
+  // useIntersectionObserver(currentIndex, handleSetCurrentIndex, lastKeyNavRef);
 
   // Update URL whenever currentIndex changes (keys or scroll)
   // useEffect(() => {
@@ -43,13 +43,13 @@ function App() {
   // }, [currentIndex]);
 
   // Scroll to current section once loaded. avoids weirdness if refresh while viewing a project
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      scrollToId();
-    }, 1000); // match fade duration
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     scrollToId();
+  //   }, 1000); // match fade duration
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
       <div className={`min-h-screen animate-fadeIn`} >
@@ -62,7 +62,7 @@ function App() {
               <Work/>
               <Skills/>
             </div>
-            {/* <Projects/> */}
+            <Projects theme={theme}/>
           </div>
       </div>
   );

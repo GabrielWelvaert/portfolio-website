@@ -9,10 +9,10 @@ export const Header = ({menuOpen, setMenuOpen, theme, setTheme, maxWidth }) => {
     }, [menuOpen]);
 
     return (<>
-        <nav className="fixed top-0  w-full z-40 shadow-lg" style={{ background: "var(--bg)", borderBottom: "1px solid var(--border)" }}>
+        <nav className="fixed top-0  w-full z-40 shadow-lg bg-[var(--bg)] border-b border-[var(--border)]">
             <div className="max-w-[1220px] mx-auto px-4 ">
                 <div className="flex justify-between items-center h-16">
-                    <div className="flex gap-6">
+                    <div className="flex gap-[20px]">
                         <Icon 
                             theme={theme} 
                             onClick={() => setTheme(t => t === "light" ? "dark" : "light")}
@@ -21,7 +21,7 @@ export const Header = ({menuOpen, setMenuOpen, theme, setTheme, maxWidth }) => {
                         />
                         <a href="#about" className="interactable-text text-2xl select-none">Gabriel Welvaert</a>
                     </div>
-                    <div className="w-7 relative z-40 md:hidden interactable-text text-2xl focus:outline-none cursor-pointer" onClick={() => setMenuOpen((prev) => !prev)}>
+                    <div className="w-7 relative z-40 md:hidden interactable-text text-2xl focus:outline-none cursor-pointer select-none" onClick={() => setMenuOpen((prev) => !prev)}>
                         &#9776;  
                     </div>
                     <div className="hidden md:flex items-center space-x-5">

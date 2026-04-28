@@ -11,19 +11,19 @@ export const Skills = () => {
             <div className="flex flex-wrap">
                 <div className="flex flex-col max-w-[182px]">
                     <div className="text-2xl mb-4" >Languages</div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    <div className="flex flex-wrap gap-2">
                         {languages.map(item => <Tag key={item}>{item}</Tag>)}
                     </div>
                 </div>
                 <div className="flex flex-col max-w-[182px]">
-                    <div className="text-2xl mb-4" >Infra</div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    <div className="text-2xl mb-4" >DevOps</div>
+                    <div className="flex flex-wrap gap-2">
                         {DevOps.map(item => <Tag key={item}>{item}</Tag>)}
                     </div>
                 </div>
                 <div className="flex flex-col max-w-[182px]">
-                    <div className="text-2xl mb-4" >Design</div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    <div className="text-2xl mb-4" >Patterns</div>
+                    <div className="flex flex-wrap gap-2">
                         {Patterns.map(item => <Tag key={item}>{item}</Tag>)}
                     </div>
                 </div>
