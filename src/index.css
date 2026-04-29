@@ -37,14 +37,6 @@ html, body {
   background-position: center;
 }
 
-.dark-bg {
-  background-image: url("/bg1.png");
-}
-
-.light-bg {
-  background-image: url("/bg.png");
-}
-
 .tag-container {
   @apply flex flex-wrap gap-0;
 }
