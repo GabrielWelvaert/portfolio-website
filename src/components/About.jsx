@@ -6,7 +6,7 @@ export const About = ({theme}) => {
         <div id="about" className="flex flex-wrap m-3 gap-6">
            
             <div className="flex flex-col gap-4 p-2"> {/* headshot and icons */} 
-                <img className="object-cover w-40 aspect-square rounded-full" src='/cat.jpg'></img>
+                <img className="object-cover w-40 aspect-square rounded-full" src='/gabe.jpg'></img>
                 <div className="flex gap-4 justify-center">
                     <Icon 
                         theme={theme} 
