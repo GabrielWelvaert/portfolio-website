@@ -45,6 +45,9 @@ html, body {
   background-image: url("/bg.png");
 }
 
+.tag-container {
+  @apply flex flex-wrap gap-0;
+}
 
 .opacity-fading-project {
   @apply absolute inset-0 transition-opacity duration-500 ease-in-out flex flex-col gap-6;

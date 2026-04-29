@@ -8,7 +8,7 @@ export const ProjectCard = ({title, description, tags, Icon}) => {
                 {Icon}
             </div>
             <div>{description}</div>
-            <div className="flex flex-wrap gap-2">
+            <div className="tag-container">
                 {tags.map(item => <Tag key={item}>{item}</Tag>)}
             </div>
         </div>

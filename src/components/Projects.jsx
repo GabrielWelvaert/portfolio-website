@@ -19,27 +19,27 @@ export const Projects = (theme) => {
                     tags={["C++23","Valgrind", "ECS","DOD","OOP","CPU caching","SDL2"]}
                     Icon={<Icon 
                         theme={theme} 
-                        href={"https://github.com/GabrielWelvaert"}
+                        href={"https://github.com/GabrielWelvaert/Realm-of-the-Mad-Gabe"}
                         darkPath = {githubSVGDark}
                     />}
                 />
                 <ProjectCard 
                     title="Node.js Social Site" 
-                    description="test description"
-                    tags={["Node.js","Express","JavaScript","HTML/CSS","MySQL","REST APIs","WebSockets","MVC"]}
+                    description="MVC architecture, RESTful APIs, real-time messaging via Socket.IO, session-based authentication, and custom middleware, deployed on AWS."
+                    tags={["Node.js","Express","HTML/CSS","MySQL","REST APIs","WebSockets","MVC"]}
                     Icon={<Icon 
                         theme={theme} 
-                        href={"https://github.com/GabrielWelvaert"}
+                        href={"https://github.com/GabrielWelvaert/TheGabebook"}
                         darkPath = {githubSVGDark}
                     />}
                 />
                 <ProjectCard 
                     title="Portfolio Website" 
-                    description="test description"
-                    tags={["React","Tailwind","Vite","GitHub Actions","AWS","S3","CloudFront","Route 53"]}
+                    description="React SPA with Tailwind, deployed via S3/CloudFront with CI/CD using GitHub Actions. You're viewing this currently."
+                    tags={["React","Tailwind","Vite","AWS","S3","GitHub Actions","CloudFront","Route 53"]}
                     Icon={<Icon 
                         theme={theme} 
-                        href={"https://github.com/GabrielWelvaert"}
+                        href={"https://github.com/GabrielWelvaert/portfolio-website"}
                         darkPath = {githubSVGDark}
                     />}
                 />
