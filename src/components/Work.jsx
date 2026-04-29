@@ -1,7 +1,7 @@
 import { Tag } from "./Tag";
 
 export const Work = () => {
-    const workStack = ["PHP","MySQL","AWS","Javascript","HTML/CSS","Python","RHEL","REST APIs"];
+    const workStack = ["PHP","MySQL","AWS","JavaScript","HTML/CSS","Python","RHEL","REST APIs"];
     return (
         <div id="work" className="flex-col m-3 gap-6 max-w-[560px]">
             <div className="text-4xl font-bold">Work History</div>

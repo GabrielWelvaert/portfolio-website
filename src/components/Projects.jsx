@@ -15,8 +15,8 @@ export const Projects = (theme) => {
             <div id="project-card-container" className="flex flex-row flex-wrap gap-4">
                 <ProjectCard 
                     title="C++ Video Game" 
-                    description="Implemented a custom Entity-Component-System (ECS) architecture with contiguous memory pools and data-oriented design for cache-efficient CPU execution."
-                    tags={["C++23","ECS","Valgrind", "GCC", "SDL2","DOD","OOP","CPU caching"]}
+                    description="Custom Entity-Component-System (ECS) architecture with contiguous pools & data-oriented design for cache-efficient execution."
+                    tags={["C++23","Valgrind", "ECS","DOD","OOP","CPU caching","SDL2"]}
                     Icon={<Icon 
                         theme={theme} 
                         href={"https://github.com/GabrielWelvaert"}
@@ -26,7 +26,7 @@ export const Projects = (theme) => {
                 <ProjectCard 
                     title="Node.js Social Site" 
                     description="test description"
-                    tags={["1","2","3"]}
+                    tags={["Node.js","Express","JavaScript","HTML/CSS","MySQL","REST APIs","WebSockets","MVC"]}
                     Icon={<Icon 
                         theme={theme} 
                         href={"https://github.com/GabrielWelvaert"}
@@ -36,17 +36,7 @@ export const Projects = (theme) => {
                 <ProjectCard 
                     title="Portfolio Website" 
                     description="test description"
-                    tags={["1","2","3"]}
-                    Icon={<Icon 
-                        theme={theme} 
-                        href={"https://github.com/GabrielWelvaert"}
-                        darkPath = {githubSVGDark}
-                    />}
-                />
-                <ProjectCard 
-                    title="Recipe Encylopedia" 
-                    description="test description"
-                    tags={["1","2","3"]}
+                    tags={["React","Tailwind","Vite","GitHub Actions","AWS","S3","CloudFront","Route 53"]}
                     Icon={<Icon 
                         theme={theme} 
                         href={"https://github.com/GabrielWelvaert"}
