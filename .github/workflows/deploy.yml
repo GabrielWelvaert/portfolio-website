@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Build Project
+        run: |
+          npm install
+          npm run build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::621716744482:role/GHARole
+          aws-region: us-east-1
+
+      - name: S3 Sync and Invalidation
+        run: |
+          aws s3 sync ./dist s3://gabrielwelvaert.com-621716744482-us-east-1-an --delete
+          aws cloudfront create-invalidation --distribution-id E2N25ZYA36C2IY --paths "/*"

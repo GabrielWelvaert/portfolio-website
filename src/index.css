@@ -1,12 +1,44 @@
 @import "tailwindcss";
 
+/* default values for theme variables */
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --border: rgba(0, 0, 0, 0.08);
+  --accent: #2563eb
+}
+
+/* when dark is used, it overrides the variable values */
+.dark {
+  --bg: #0a0a0a;
+  --text: #eaeaea;
+  --border: rgba(255, 255, 255, 0.12);
+  --accent: #60a5fa;
+}
+
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-mono);
   background: #000000;
   color: #f3f4f6;
   scroll-behavior: smooth;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.tag-container {
+  @apply flex flex-wrap gap-0;
 }
 
 .opacity-fading-project {
@@ -18,7 +50,8 @@ html, body {
 }
 
 .button-selector-container {
-  @apply inline-flex bg-[rgb(2,74,128)] p-3 rounded-lg shadow-md gap-10;
+  @apply inline-flex p-3 rounded-lg shadow-md gap-10;
+  background: var(--bg)
 }
 
 .button-selector-selected-item {
@@ -41,8 +74,8 @@ html, body {
   scroll-margin-top: 84px;
 }
 
-.interactable-text {
-  @apply text-gray-300 hover:text-white transition-colors font-mono;
+.interactable-text{
+  @apply font-mono cursor-pointer transition-colors duration-200 text-[var(--text-muted)] hover:text-[var(--accent)]
 }
 
 .list {
@@ -64,19 +97,19 @@ html, body {
 }
 
 .passage-text {
-  @apply text-white font-sans text-[20px] text-center w-full leading-relaxed;
+  @apply font-sans text-[20px] text-center w-full leading-relaxed;
 }
 
 .small-button-text {
-  @apply text-white bg-[#121826] font-sans text-[15px] text-center py-1 px-3 rounded-lg shadow-md leading-relaxed;
+  @apply bg-[#121826] font-sans text-[15px] text-center py-1 px-3 rounded-lg shadow-md leading-relaxed;
 }
 
 .card-button-text {
-  @apply text-white bg-[#121826] font-sans text-[20px] text-left py-1 px-3 rounded-lg shadow-md leading-relaxed;
+  @apply bg-[#121826] font-sans text-[20px] text-left py-1 px-3 rounded-lg shadow-md leading-relaxed;
 }
 
 .passage-text-left {
-  @apply text-white font-sans text-[20px] text-left w-full leading-relaxed;
+  @apply font-sans text-[20px] text-left w-full leading-relaxed;
 }
 
 .cards-row {
@@ -92,15 +125,19 @@ html, body {
 }
 
 .card-header {
-  @apply text-white font-mono text-[24px] text-center w-full mb-[4px];
+  @apply  font-mono text-[24px] text-center w-full mb-[4px];
 }
 
 .passage-text-header {
-  @apply text-white font-mono text-4xl text-center w-full;
+  @apply font-mono text-4xl text-center w-full;
 }
 
 .page-content-container-centered-500 {
   @apply min-h-screen flex flex-col items-center justify-center relative gap-6 mx-auto max-w-[500px];
+}
+
+.page-content-container-centered-full-w {
+  @apply min-h-screen flex flex-col items-center justify-center relative gap-6 mx-auto w-full pt-[60px] box-border;
 }
 
 .page-content-container-centered-1000 {
