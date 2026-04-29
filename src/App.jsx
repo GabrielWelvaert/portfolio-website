@@ -51,6 +51,7 @@ function App() {
   //   return () => clearTimeout(timer);
   // }, []);
 
+  
   return (
       <div className={`min-h-screen animate-fadeIn`} >
           <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} theme={theme} setTheme={setTheme}/>
