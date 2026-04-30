@@ -31,5 +31,5 @@ jobs:
 
       - name: S3 Sync and Invalidation
         run: |
-          aws s3 sync ./dist s3://gabrielwelvaert.com-621716744482-us-east-1-an --delete
-          aws cloudfront create-invalidation --distribution-id E2N25ZYA36C2IY --paths "/*"
+          aws s3 sync ./dist s3://gabrielwelvaert.com-621716744482-us-east-1-an --delete --dryrun
+          # aws cloudfront create-invalidation --distribution-id E2N25ZYA36C2IY --paths "/*"
