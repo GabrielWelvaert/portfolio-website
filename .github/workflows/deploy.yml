@@ -18,19 +18,25 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: Build Project
+      - name: Run "npm run build"
         run: |
           npm install
           npm run build
 
-      - name: Configure AWS Credentials
+      - name: Authenticate to AWS using GitHub OIDC (GHARole)
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::621716744482:role/GHARole
           aws-region: us-east-1
 
-      - name: S3 Sync and Invalidation
+      - name: S3 Sync
         run: |
+          # the active command attempts to preserve the yan folder in the bucket, which is not part of the repo
+          # append --dryrun to for testing purposes
           aws s3 sync ./dist s3://gabrielwelvaert.com-621716744482-us-east-1-an --delete --exclude "yan/*" --exclude "yan" --dryrun
-          # aws s3 sync ./dist s3://gabrielwelvaert.com-621716744482-us-east-1-an --delete --dryrun
-          # aws cloudfront create-invalidation --distribution-id E2N25ZYA36C2IY --paths "/*"
+          # this commented out variation does not attempt to preserve the yan folder in the bucket, , which is not part of the repo
+          # aws s3 sync ./dist s3://gabrielwelvaert.com-621716744482-us-east-1-an --delete
+      
+      - name: Cloudfront invalidation
+        run:
+          aws cloudfront create-invalidation --distribution-id E2N25ZYA36C2IY --paths "/*"
