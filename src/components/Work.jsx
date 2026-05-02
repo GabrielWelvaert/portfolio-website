@@ -8,7 +8,7 @@ export const Work = () => {
             <div id="work" className="flex flex-wrap gap-6 justify-between">
                 <div className="flex flex-col gap-2">
                     <div className="text-2xl">ARDX - Software Engineer (2024 - Present)</div>
-                    <div>Delivered full-stack improvements for a federal application serving 200,000+ users, spanning backend APIs, frontend refactors, database work, and security remediations.</div>
+                    <div>Developing full-stack improvements for a federal application serving 200,000+ users, spanning backend APIs, frontend refactors, database work, and security remediations.</div>
                     <div className="tag-container">
                         {workStack.map(item => <Tag key={item}>{item}</Tag>)}
                     </div>
