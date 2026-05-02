@@ -10,6 +10,7 @@ import { Skills } from "./components/Skills";
 import { Footer } from "./components/Footer";
 
 function App() {
+  const lastDeployed = import.meta.env.VITE_BUILD_TIME;
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState("dark");
   // hero header is a random image between /yan/Acid_Texture_1.jpg - /yan/Acid_Texture_150.jpg
@@ -21,20 +22,31 @@ function App() {
   }, [theme]);
 
   return (
-      <div className={`min-h-screen animate-fadeIn`} >
-          <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} theme={theme} setTheme={setTheme}/>
-          <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
-          <Hero image={image}></Hero>
-          <div className="max-w-[1220px] mx-auto flex flex-col">
-            <About theme={theme}/>
-            <div className="flex flex-row flex-wrap m-3 gap-6 max-w-7xl">
-              <Work/>
-              <Skills/>
-            </div>
-            <Projects theme={theme}/>
-          </div>
+  <div className="min-h-screen flex flex-col animate-fadeIn">
+
+    <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} theme={theme} setTheme={setTheme}/>
+    <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+    <Hero image={image} />
+
+    <div className="flex-1">
+      <div className="max-w-[1220px] mx-auto flex flex-col">
+        <About theme={theme}/>
+
+        <div className="flex flex-row flex-wrap m-3 gap-6 max-w-7xl">
+          <Work/>
+          <Skills/>
+        </div>
+
+        <Projects theme={theme}/>
       </div>
-  );
+    </div>
+
+    <footer className="max-w-[1220px] mx-auto w-full align-center flex flex-row align-center justify-center p-2">
+      Last deployed: {lastDeployed}
+    </footer>
+
+  </div>
+);
 }
 
 export default App;
