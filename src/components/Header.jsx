@@ -9,7 +9,7 @@ export const Header = ({menuOpen, setMenuOpen, theme, setTheme, maxWidth }) => {
     }, [menuOpen]);
 
     return (<>
-        <nav className="fixed top-0  w-full z-40 shadow-lg bg-[var(--bg)] border-b border-[var(--border)]">
+        <nav className="fixed top-0 w-full z-40 shadow-lg bg-[var(--bg)] border-b border-[var(--border)]">
             <div className="max-w-[1220px] mx-auto px-4 ">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex gap-[20px]">
@@ -27,6 +27,7 @@ export const Header = ({menuOpen, setMenuOpen, theme, setTheme, maxWidth }) => {
                     <div className="hidden md:flex items-center space-x-5">
                         <a href="#about" className="interactable-text text-[20px] select-none">About</a>
                         <a href="#work" className="interactable-text text-[20px] select-none">Work</a>
+                        <a href="#skills" className="interactable-text text-[20px] select-none">Skills</a>
                         <a href="#projects" className="interactable-text text-[20px] select-none">Projects</a>
                     </div>
                 </div>
