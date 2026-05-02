@@ -7,7 +7,6 @@ import { Work } from "./components/Work";
 import { Projects } from "./components/Projects";
 import { Hero } from "./components/Hero";
 import { Skills } from "./components/Skills";
-import { Footer } from "./components/Footer";
 
 function App() {
   const lastDeployed = import.meta.env.VITE_BUILD_TIME;

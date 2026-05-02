@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Fade } from "./Fade"
 import { ProjectCard } from "./ProjectCard";
 import { Icon } from "./Icon";
 import { githubSVGDark } from "../utils";
