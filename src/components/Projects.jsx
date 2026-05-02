@@ -8,7 +8,7 @@ import { githubSVGDark } from "../utils";
 export const Projects = (theme) => {
     
     return (
-        <div id="projects" className="flex-col ml-6 mr-6 gap-6 scroll-mt-[64px]">
+        <div id="projects" className="flex-col m-3 pl-2 pr-2 pb-2 gap-6 scroll-mt-[64px]">
             <div className="text-4xl font-bold mb-2">Projects</div>    
             <div id="project-card-container" className="flex flex-row flex-wrap gap-4">
                 <ProjectCard 
