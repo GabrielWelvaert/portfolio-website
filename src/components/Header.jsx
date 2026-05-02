@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { MobileMenu } from './MobileMenu'
 import { Icon } from "./Icon";
+import { focusSection } from "../utils"
 
 export const Header = ({menuOpen, setMenuOpen, theme, setTheme, maxWidth }) => {
 
@@ -25,10 +26,26 @@ export const Header = ({menuOpen, setMenuOpen, theme, setTheme, maxWidth }) => {
                         &#9776;  
                     </div>
                     <div className="hidden md:flex items-center space-x-5">
-                        <a href="#about" className="interactable-text text-[20px] select-none">About</a>
-                        <a href="#work" className="interactable-text text-[20px] select-none">Work</a>
-                        <a href="#skills" className="interactable-text text-[20px] select-none">Skills</a>
-                        <a href="#projects" className="interactable-text text-[20px] select-none">Projects</a>
+                        <a onClick={(e) => {
+                                e.preventDefault();
+                                focusSection("about");
+                            }} className="interactable-text text-[20px] select-none">About
+                        </a>
+                        <a onClick={(e) => {
+                                e.preventDefault();
+                                focusSection("work");
+                            }} className="interactable-text text-[20px] select-none">Work
+                        </a>
+                        <a onClick={(e) => {
+                                e.preventDefault();
+                                focusSection("skills");
+                            }} className="interactable-text text-[20px] select-none">Skills
+                        </a>
+                        <a onClick={(e) => {
+                                e.preventDefault();
+                                focusSection("projects");
+                            }} className="interactable-text text-[20px] select-none">Projects
+                        </a>
                     </div>
                 </div>
             </div>
