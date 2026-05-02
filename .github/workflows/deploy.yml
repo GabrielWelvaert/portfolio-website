@@ -18,6 +18,9 @@ jobs:
           node-version: 20
           cache: 'npm'
 
+      - name: Set build time
+        run: echo "VITE_BUILD_TIME=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_ENV
+
       - name: Run "npm run build"
         run: |
           npm install
