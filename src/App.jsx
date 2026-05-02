@@ -9,6 +9,7 @@ import { Hero } from "./components/Hero";
 import { Skills } from "./components/Skills";
 
 function App() {
+  // the value for VITE_BUILD_TIME is created in deploy.yml
   const lastDeployed = import.meta.env.VITE_BUILD_TIME;
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState("dark");
