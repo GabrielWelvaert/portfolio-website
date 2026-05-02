@@ -3,7 +3,7 @@ import { githubSVGDark } from "../utils";
 
 export const About = ({theme}) => {
     return (
-        <div id="about" className="flex flex-wrap m-3 gap-6">
+        <div id="about" className="flex flex-wrap m-3 gap-6 scroll-mt-[64px]">
            
             <div className="flex flex-col gap-4 p-2"> {/* headshot and icons */} 
                 <img className="object-cover w-40 aspect-square rounded-full" src='/gabe.jpg'></img>

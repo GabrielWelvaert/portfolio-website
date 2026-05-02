@@ -31,11 +31,7 @@ jobs:
 
       - name: S3 Sync
         run: |
-          # the active command attempts to preserve the yan folder in the bucket, which is not part of the repo
-          # append --dryrun to for testing purposes
           aws s3 sync ./dist s3://gabrielwelvaert.com-621716744482-us-east-1-an --delete --exclude "yan/*" --exclude "yan"
-          # this commented out variation does not attempt to preserve the yan folder in the bucket, , which is not part of the repo
-          # aws s3 sync ./dist s3://gabrielwelvaert.com-621716744482-us-east-1-an --delete
       
       - name: Cloudfront invalidation
         run:
