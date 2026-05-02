@@ -19,7 +19,13 @@ jobs:
           cache: 'npm'
 
       - name: Set build time
-        run: echo "VITE_BUILD_TIME=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_ENV
+        run: |
+          DAY=$(date -u +%-d)
+          SUFFIX="th"
+          if [ "$DAY" -eq 1 ] || [ "$DAY" -eq 21 ] || [ "$DAY" -eq 31 ]; then SUFFIX="st"; fi
+          if [ "$DAY" -eq 2 ] || [ "$DAY" -eq 22 ]; then SUFFIX="nd"; fi
+          if [ "$DAY" -eq 3 ] || [ "$DAY" -eq 23 ]; then SUFFIX="rd"; fi
+          echo "VITE_BUILD_TIME=$(date -u +'%B ')$DAY$SUFFIX$(date -u +', %Y')" >> $GITHUB_ENV
 
       - name: Run "npm run build"
         run: |
