@@ -4,7 +4,7 @@ Single-page React application built with Tailwind and Vite, deployed on AWS usin
 
 ## Architecture
 
-Hosted on a private S3 bucket, delivered through CloudFront, and Route 53 DNS. CloudFront uses Origin Access Control (OAC) so the bucket is only accessible through the CDN.
+Hosted from a private S3 bucket and delivered globally through CloudFront, with Route 53 DNS and OAC-secured origin access.
 
 <p align="center">
   <img src="./portfolio-architecture.png" width="100%" />
