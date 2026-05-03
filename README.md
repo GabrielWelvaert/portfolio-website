@@ -1,10 +1,10 @@
 # Portfolio Website
 
-A React single-page application built with Tailwind and Vite, deployed on AWS using a fully automated CI/CD pipeline. You can view it [here](https://gabrielwelvaert.com/).
+Single-page React application built with Tailwind and Vite, deployed on AWS using a fully automated CI/CD pipeline. You can view it [here](https://gabrielwelvaert.com/).
 
 ## Architecture
 
-This React SPA is hosted on a private S3 bucket, delivered through CloudFront, and routed with Route 53. CloudFront uses Origin Access Control (OAC) so the bucket is only accessible through the CDN.
+Hosted on a private S3 bucket, delivered through CloudFront, and Route 53 DNS. CloudFront uses Origin Access Control (OAC) so the bucket is only accessible through the CDN.
 
 <p align="center">
   <img src="./portfolio-architecture.png" width="100%" />
