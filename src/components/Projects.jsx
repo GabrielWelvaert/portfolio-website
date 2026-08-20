@@ -22,7 +22,7 @@ export const Projects = (theme) => {
                 />
                 <ProjectCard 
                     title="Node.js Social Site" 
-                    description="MVC architecture, RESTful APIs, real-time messaging via Socket.IO, session-based authentication, and custom middleware, deployed on AWS."
+                    description="MVC architecture, RESTful APIs, real-time messaging via Socket.IO, session-based authentication, and custom middleware."
                     tags={["Node.js","Express","HTML/CSS","MySQL","REST APIs","WebSockets","MVC"]}
                     Icon={<Icon 
                         theme={theme} 
@@ -40,6 +40,28 @@ export const Projects = (theme) => {
                         darkPath = {githubSVGDark}
                     />}
                 />
+                <ProjectCard 
+                    title="Study Bank" 
+                    description="Python app that manages categorized questions and sends a daily study set by email using a serverless AWS backend."
+                    tags={["Python","Streamlit","DynamoDB","Lambda","SES","EventBridge Scheduler","AWS"]}
+                    Icon={<Icon 
+                        theme={theme} 
+                        href={"https://github.com/GabrielWelvaert/study-bank"}
+                        darkPath = {githubSVGDark}
+                    />}
+                />
+                <div className="opacity-60 border-dashed">
+                    <ProjectCard
+                        title="Coming Soon"
+                        description="New project in progress."
+                        Icon={<Icon 
+                            theme={theme} 
+                            href={"https://github.com/GabrielWelvaert/study-bank"}
+                            darkPath = {githubSVGDark}
+                            disabled = {true}
+                        />}
+                    />
+                </div>
             </div>
         </div>
     )

@@ -42,7 +42,7 @@ function App() {
       </div>
 
       <footer className="max-w-[1220px] mx-auto w-full align-center flex flex-row align-center justify-center p-2">
-        {lastDeployed ? `Updated ${lastDeployed}` : null}
+        {`Last Updated ${lastDeployed}`}
       </footer>
 
     </div>
