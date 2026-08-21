@@ -9,7 +9,7 @@ export const Work = () => {
                 <div className="flex flex-col gap-2">
                     <div className="text-2xl">ARDX - Software Engineer (2024 - Present)</div>
                     <div>
-                        Developing and maintaining a federal RHEL 9 LAMP application, with work spanning backend development, frontend refactors, MySQL performance and data integrity, RDS administration, security & audit remediation, and automated regression testing.
+                        Maintaining a RHEL 9 LAMP application supporting a federal government contract, with work spanning backend development, frontend refactors, MySQL performance and data integrity, RDS administration, security, audit, and compliance remediation, and development of a custom regression testing framework.
                     </div>
                     <div className="tag-container">
                         {workStack.map(item => <Tag key={item}>{item}</Tag>)}
