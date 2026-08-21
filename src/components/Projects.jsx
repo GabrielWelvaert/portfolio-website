@@ -43,7 +43,7 @@ export const Projects = (theme) => {
                 <ProjectCard 
                     title="Study Bank" 
                     description="Python app that manages categorized questions and sends a daily study set by email using a serverless AWS backend."
-                    tags={["Python","Streamlit","DynamoDB","Lambda","SES","EventBridge Scheduler","AWS"]}
+                    tags={["Python","AWS","Bedrock","DynamoDB","Lambda","SES","EventBridge Scheduler"]}
                     Icon={<Icon 
                         theme={theme} 
                         href={"https://github.com/GabrielWelvaert/study-bank"}
