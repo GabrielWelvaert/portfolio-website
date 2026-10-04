@@ -1,6 +1,9 @@
 # Portfolio Website
 
-Single-page React application built with Tailwind and Vite, hosted in a private S3 bucket and delivered through CloudFront. CloudFront accesses the S3 origin through Origin Access Control (OAC), while GitHub Actions deploys by assuming an AWS IAM role through OpenID Connect (OIDC). Route 53 manages DNS for gabrielwelvaert.com. You can view it [here](https://gabrielwelvaert.com/).
+Single-page React application built with Tailwind and Vite that can be viewed [here](https://gabrielwelvaert.com/).
+- **Architecture**: CloudFront serves the site from a private S3 bucket using OAC. HTTPS is provided through ACM.
+- **CI/CD**: GitHub Actions uses OIDC to assume an AWS role, build the app, deploy to S3, and invalidate CloudFront cache.
+- **Route 53**: Registered gabrielwelvaert.com and configured a hosted zone with an Alias A record pointing to the CloudFront distribution.
 
 <p align="center">
   <img src="./portfolio-architecture.png" width="100%" />
